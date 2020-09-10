@@ -1,5 +1,10 @@
 import  styled  from 'styled-components';
 import colors from "./General-Styles/colors"
+import heroImage from "../../images/heroImage.jpg"
+
+
+
+
 export const StyledHome = styled.div`
 
     width: 100vw;
@@ -15,19 +20,24 @@ export const StyledHome = styled.div`
     margin:0;
 
     .heroSection{
-        background-color:${colors.primary};
         width:100%;
         display:flex;
         flex-direction:column;
         justify-content:space-evenly;
         align-items: center;
-        height:70vh;
+        height:100vh;
         padding:0;
         margin:0;
+        background-image: url(${heroImage});
+        background-position: 50% 20%;
+        background-attachment: fixed;
+        background-size:cover;
         h2{
-            font-size:1.5rem;
+            color:${colors.middle};
+            font-size:2rem;
+            margin-top:-2rem;
             width:80vw;
-            filter: drop-shadow(0px .2rem .2rem rgba(0, 0, 0, 0.17));
+            filter: drop-shadow(0px .2rem .2rem rgba(255, 255, 255, 0.25));
         }
     }
     .infoSection{
@@ -36,6 +46,6 @@ export const StyledHome = styled.div`
         flex-direction:column;
         justify-content:space-evenly;
         align-items: center;
-        height:70vh;
+        
     }
 `;
