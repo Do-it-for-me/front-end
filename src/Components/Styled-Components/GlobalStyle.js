@@ -1,11 +1,18 @@
 import { createGlobalStyle } from 'styled-components';
-
+import colors from "./General-Styles/colors"
 export const GlobalStyle = createGlobalStyle`
   body {
-    margin: 0;
+    position:relative;
+    margin: 0 auto ;
     padding: 0;
     box-sizing: border-box;
     text-align: center;
-    background-color: rgb(190, 190, 190);
+    background-color: ${colors.light};
+
+    *{
+      padding: 0;
+      margin: 0 ;
+      box-sizing: border-box;
+    }
   }
 `;
