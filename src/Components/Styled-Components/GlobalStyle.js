@@ -1,6 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 import colors from "./General-Styles/colors"
 export const GlobalStyle = createGlobalStyle`
+:root {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  @media screen and (min-width: 768px) {
+    font-size: 100%;
+  }
+}
   body {
     position:relative;
     margin: 0 auto ;
