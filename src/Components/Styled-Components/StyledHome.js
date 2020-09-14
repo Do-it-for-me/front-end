@@ -16,6 +16,7 @@ export const StyledHome = styled.div`
   margin: 0;
 
   .heroSection {
+    padding-top: 6rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -28,12 +29,16 @@ export const StyledHome = styled.div`
     background-position: 50% 20%;
     background-attachment: fixed;
     background-size: cover;
+
     h2 {
       color: ${colors.middle};
       font-size: 2rem;
       margin-top: -2rem;
       width: 80vw;
-      filter: drop-shadow(0px 0.2rem 0.2rem rgba(255, 255, 255, 0.25));
+      filter: drop-shadow(0px 0.2rem 0.2rem rgba(0, 0, 0, 0.1));
+      /*       @media (orientation: landscape) {
+        margin-top: 0rem;
+      } */
     }
   }
   .infoSection {
