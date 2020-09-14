@@ -1,12 +1,16 @@
-import { createGlobalStyle } from 'styled-components';
-import colors from "./General-Styles/colors"
+import { createGlobalStyle } from "styled-components";
+import colors from "./General-Styles/colors";
 export const GlobalStyle = createGlobalStyle`
 :root {
   font-size: 62.5%;
   box-sizing: border-box;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) and (orientation : portrait) {
     font-size: 100%;
   }
+  @media screen and (min-width: 900px) {
+    font-size: 100%;
+  }
+
 }
   body {
     position:relative;
