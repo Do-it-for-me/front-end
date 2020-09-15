@@ -3,32 +3,14 @@ import React from "react";
 import { StyledHome } from "../Styled-Components/StyledHome";
 import { StyledButton } from "../Styled-Components/StyledButton";
 import SelectServices from "../Elements/SelectServices";
-
-const services = [
-  {
-    value: "Dog Walking",
-  },
-  {
-    value: "Plants Watering",
-  },
-  {
-    value: "Dog Sitting",
-  },
-];
-
-const cities = [
-  {
-    value: "Berlin",
-  },
-  {
-    value: "Leipzig",
-  },
-  {
-    value: "Damascus",
-  },
-];
+import { useOptionsFetch } from "../../data/useOptionsFetch";
 
 const Home = () => {
+  const [
+    { services, cities, loading, error },
+    fetchOptions,
+  ] = useOptionsFetch();
+
   return (
     <StyledHome>
       <div className="heroSection">
