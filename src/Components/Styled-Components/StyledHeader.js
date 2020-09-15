@@ -16,6 +16,9 @@ export const StyledHeader = styled.div`
   filter: drop-shadow(0px 0.7rem 0.7rem rgba(0, 0, 0, 0.25));
   padding: 0;
   margin: 0;
+  @media (min-width: 900px) {
+    height: 6rem;
+  }
   .navBarContainer {
     font-size: 1.6rem;
     padding: 0;

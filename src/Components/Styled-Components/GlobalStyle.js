@@ -7,14 +7,14 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   margin:none;
   width:100vw;
-  @media screen and (min-width: 768px) and (orientation: portrait) {
+/*   @media screen and (min-width: 768px) and (orientation: portrait) {
     font-size: 100%;
-  }
-  @media (min-width: 900px) {
+  } */
+/*   @media (min-width: 900px) {
     font-size: 100%;
-  }
+  } */
   @media (min-width: 1024px) {
-    font-size: 110%;
+    font-size: 100%;
   }
 }
   body {
