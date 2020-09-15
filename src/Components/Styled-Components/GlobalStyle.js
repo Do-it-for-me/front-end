@@ -7,8 +7,11 @@ export const GlobalStyle = createGlobalStyle`
   @media screen and (min-width: 768px) and (orientation: portrait) {
     font-size: 100%;
   }
-  @media screen and (min-width: 900px) {
+  @media (min-width: 900px) {
     font-size: 100%;
+  }
+  @media (min-width: 1024px) {
+    font-size: 110%;
   }
 }
   body {
