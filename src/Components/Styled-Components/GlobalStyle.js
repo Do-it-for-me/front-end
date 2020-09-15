@@ -26,6 +26,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${colors.light};
     width:100vw;
     *{
+      font-family: 'Assistant', sans-serif;
       padding: 0;
       margin: 0 ;
       box-sizing: border-box;

@@ -13,11 +13,10 @@ export const StyledNavBar = styled.div`
     font-size: inherit;
   }
   div {
-    margin: 0.3rem;
     position: relative;
     font-weight: bold;
     text-align: center;
-    width: 20%;
+    /* width: 20%; */
     color: ${colors.light};
     cursor: pointer;
     :hover {
@@ -26,5 +25,8 @@ export const StyledNavBar = styled.div`
   }
   @media screen and (min-width: 768px) {
     display: flex;
+  }
+  @media screen and (min-width: 1400px) {
+    width: 40vw;
   }
 `;

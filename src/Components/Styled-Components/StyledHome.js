@@ -20,7 +20,7 @@ export const StyledHome = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 0;
@@ -46,6 +46,7 @@ export const StyledHome = styled.div`
     }
     /* search section ends here */
     .headlineSection {
+      margin-bottom: 5rem;
       position: relative;
       width: 80vw;
       height: 3rem;
@@ -54,15 +55,15 @@ export const StyledHome = styled.div`
         top: 0;
         left: 0;
         content: "";
-        filter: blur(50px);
+        filter: blur(40px);
         width: 80vw;
         height: 3rem;
-        background-color: ${colors.light};
+        background-color: ${colors.middle};
       }
       h2 {
         filter: blur(0px);
-        color: ${colors.secondary};
-        font-size: 2rem;
+        color: ${colors.primary};
+        font-size: 2.2rem;
         width: 80vw;
         font-weight: bold;
         filter: drop-shadow(0px 0.2rem 0.2rem rgba(0, 0, 0, 0.1));
