@@ -4,13 +4,12 @@ export const GlobalStyle = createGlobalStyle`
 :root {
   font-size: 62.5%;
   box-sizing: border-box;
-  @media screen and (min-width: 768px) and (orientation : portrait) {
+  @media screen and (min-width: 768px) and (orientation: portrait) {
     font-size: 100%;
   }
   @media screen and (min-width: 900px) {
     font-size: 100%;
   }
-
 }
   body {
     position:relative;
