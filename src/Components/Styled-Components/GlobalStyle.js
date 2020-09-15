@@ -2,8 +2,11 @@ import { createGlobalStyle } from "styled-components";
 import colors from "./General-Styles/colors";
 export const GlobalStyle = createGlobalStyle`
 :root {
+  overflow-x: hidden;
   font-size: 62.5%;
   box-sizing: border-box;
+  margin:none;
+  width:100vw;
   @media screen and (min-width: 768px) and (orientation: portrait) {
     font-size: 100%;
   }
@@ -16,16 +19,17 @@ export const GlobalStyle = createGlobalStyle`
 }
   body {
     position:relative;
-    margin: 0 auto ;
+    margin:none;
     padding: 0;
     box-sizing: border-box;
     text-align: center;
     background-color: ${colors.light};
-
+    width:100vw;
     *{
       padding: 0;
       margin: 0 ;
       box-sizing: border-box;
+
     }
   }
 `;

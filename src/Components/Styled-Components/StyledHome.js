@@ -3,6 +3,7 @@ import colors from "./General-Styles/colors";
 import heroImage from "../../images/heroImage.jpg";
 
 export const StyledHome = styled.div`
+  overflow-x: hidden;
   width: 100vw;
   min-height: 100vh;
   top: 0px;
@@ -14,7 +15,6 @@ export const StyledHome = styled.div`
   color: ${colors.dark};
   padding: 0;
   margin: 0;
-
   .heroSection {
     padding-top: 6rem;
     width: 100%;
@@ -22,7 +22,7 @@ export const StyledHome = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     padding: 0;
     margin: 0;
     background-image: url(${heroImage});
@@ -58,13 +58,11 @@ export const StyledHome = styled.div`
         width: 80vw;
         height: 3rem;
         background-color: ${colors.light};
-        z-index: 0;
       }
       h2 {
         filter: blur(0px);
         color: ${colors.secondary};
         font-size: 2rem;
-        /* margin-top: -2rem; */
         width: 80vw;
         font-weight: bold;
         filter: drop-shadow(0px 0.2rem 0.2rem rgba(0, 0, 0, 0.1));

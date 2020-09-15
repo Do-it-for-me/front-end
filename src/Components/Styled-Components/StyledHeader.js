@@ -2,10 +2,12 @@ import styled from "styled-components";
 import colors from "./General-Styles/colors";
 
 export const StyledHeader = styled.div`
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 7rem;
   top: 0px;
+  left: 0;
+  right: 0;
   background-color: ${colors.dark};
   display: flex;
   justify-content: center;
@@ -17,9 +19,9 @@ export const StyledHeader = styled.div`
   .navBarContainer {
     font-size: 1.6rem;
     padding: 0;
-    margin: 0 2rem;
+    margin: 0;
     max-width: 1920px;
-    width: 100%;
+    width: 90%;
     height: 7rem;
     display: flex;
     justify-content: space-between;
