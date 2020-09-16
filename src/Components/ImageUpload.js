@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-
-export default class FileUpload extends Component {
+import { StyledButton } from "./Styled-Components/StyledButton";
+import { StyledImageUpload } from "./Styled-Components/StyledImageUpload";
+export default class ImageUpload extends Component {
   state = {
     // Initially, no file is selected
     selectedFile: null,
@@ -15,7 +16,6 @@ export default class FileUpload extends Component {
 
   // On file upload (click the upload button)
   onFileUpload = () => {
-    console.log("clicked");
     // Create an object of formData
     const formData = new FormData();
 
@@ -42,21 +42,17 @@ export default class FileUpload extends Component {
   fileData = () => {
     if (this.state.selectedFile) {
       return (
-        <div>
+        <div class="fileInfo">
           <h2>File Details:</h2>
           <p>File Name: {this.state.selectedFile.name}</p>
           <p>File Type: {this.state.selectedFile.type}</p>
-          <p>
-            Last Modified:{" "}
-            {this.state.selectedFile.lastModifiedDate.toDateString()}
-          </p>
         </div>
       );
     } else {
       return (
         <div>
           <br />
-          <h4>Choose before Pressing the Upload button</h4>
+          {/* <h4>No File Chosen</h4> */}
         </div>
       );
     }
@@ -64,21 +60,14 @@ export default class FileUpload extends Component {
 
   render() {
     return (
-      <div>
-        <h1>GeeksforGeeks</h1>
-        <h3>File Upload using React!</h3>
-        <div>
-          <button onClick={this.onFileUpload}>Upload!</button>
-          <input type="file" onChange={this.onFileChange} />
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-        </div>
+      <StyledImageUpload>
+        <h3 class="title">Please Upload your Photo</h3>
+        <input class="choose-a-file" type="file" onChange={this.onFileChange} />
         {this.fileData()}
-      </div>
+        <button class="upload-btn" onClick={this.onFileUpload}>
+          Upload!
+        </button>
+      </StyledImageUpload>
     );
   }
 }
