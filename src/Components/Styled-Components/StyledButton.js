@@ -16,6 +16,15 @@ export const StyledButton = styled.button`
   filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.17));
   border-radius: 3px;
   outline: none;
+  a{
+    :visited, :link, :hover, :active{
+      color:${colors.light};
+    } 
+  }
+ div{
+    width:100%;
+    height:100%100vh;
+  }
   :hover {
     opacity: 0.8;
   }
