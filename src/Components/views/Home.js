@@ -1,21 +1,13 @@
 import React from "react";
-import { Link } from "@reach/router";
 
 import { StyledHome } from "../Styled-Components/StyledHome";
-import { StyledButton } from "../Styled-Components/StyledButton";
-import SelectServices from "../Elements/SelectServices";
-
-import { useOptionsFetch } from "../../data/useOptionsFetch";
+import { HeroSection } from "../Elements/HeroSection";
 
 const Home = () => {
-  const [
-    { services, cities, loading, error },
-    fetchOptions,
-  ] = useOptionsFetch();
-
   return (
     <StyledHome>
-      <div className="heroSection">
+      <HeroSection />
+      {/* <div className="heroSection">
         <div className="headlineSection">
           <h2>Find trustworthy people to help with your daily chores</h2>
         </div>
@@ -29,7 +21,7 @@ const Home = () => {
             </Link>
           </StyledButton>
         </div>
-      </div>
+      </div> */}
       <div className="infoSection">
         <div className="infoItem">INFO ITEM</div>
         <div className="infoItem">INFO ITEM</div>
