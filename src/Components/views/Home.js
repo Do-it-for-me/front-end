@@ -28,8 +28,14 @@ const cities = [
     value: "Damascus",
   },
 ];
+import { useOptionsFetch } from "../../data/useOptionsFetch";
 
 const Home = () => {
+  const [
+    { services, cities, loading, error },
+    fetchOptions,
+  ] = useOptionsFetch();
+
   return (
     <StyledHome>
       <div className="heroSection">
