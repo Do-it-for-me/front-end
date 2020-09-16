@@ -3,7 +3,7 @@ import colors from "./General-Styles/colors";
 
 export const StyledHeader = styled.div`
   position: absolute;
-  width: 100vw;
+  width: 100%;
   height: 7rem;
   top: 0px;
   background-color: ${colors.dark};
