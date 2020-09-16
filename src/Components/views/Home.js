@@ -5,13 +5,27 @@ import {StyledHome }from "../Styled-Components/StyledHome"
 import image2 from "../../images/image 2.png";
 import image4 from "../../images/image 4.png";
 import image7 from "../../images/image 7.png";
+import { StyledButton } from "../Styled-Components/StyledButton";
+import SelectServices from "../Elements/SelectServices";
+import { useOptionsFetch } from "../../data/useOptionsFetch";
 
 const Home = () => {
+  const [
+    { services, cities, loading, error },
+    fetchOptions,
+  ] = useOptionsFetch();
+
   return (
     <StyledHome>
       <div className="heroSection">
-        <div className="headlineSection"><h2>Find trustworthy people to help  with your daily chores</h2></div>
-        <div className="searchSection">SEARCH SECTION</div>
+        <div className="headlineSection">
+          <h2>Find trustworthy people to help with your daily chores</h2>
+        </div>
+        <div className="searchSection">
+          <SelectServices options={services} type="Service" />
+          <SelectServices options={cities} type="City" />
+          <StyledButton type="primary">Search</StyledButton>
+        </div>
       </div>
       <div className="infoSection">
         <div className="infoItem">
