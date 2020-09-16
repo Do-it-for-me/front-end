@@ -3,6 +3,7 @@ import React from "react";
 import { StyledHome } from "../Styled-Components/StyledHome";
 import { StyledButton } from "../Styled-Components/StyledButton";
 import SelectServices from "../Elements/SelectServices";
+import FileUpload from "../../Components/FileUpload";
 
 const services = [
   {
@@ -40,6 +41,7 @@ const Home = () => {
           <SelectServices options={cities} type="City" />
           <StyledButton type="primary">Search</StyledButton>
         </div>
+        <FileUpload />
       </div>
       <div className="infoSection">
         <div className="infoItem">INFO ITEM</div>
