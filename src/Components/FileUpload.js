@@ -31,7 +31,10 @@ export default class FileUpload extends Component {
 
     // Request made to the backend api
     // Send formData object
-    axios.post("http://localhost:3000/api/users/userImage", formData);
+    axios.post(
+      "http://localhost:3000/api/users/5f58cca54b249c4dac1d7e40/userImage",
+      formData
+    );
   };
 
   // File content to be displayed after
