@@ -4,6 +4,7 @@ import { StyledHome } from "../Styled-Components/StyledHome";
 import { StyledButton } from "../Styled-Components/StyledButton";
 import SelectServices from "../Elements/SelectServices";
 import FileUpload from "../../Components/FileUpload";
+import { useOptionsFetch } from "../../data/useOptionsFetch";
 
 const services = [
   {
@@ -28,7 +29,6 @@ const cities = [
     value: "Damascus",
   },
 ];
-import { useOptionsFetch } from "../../data/useOptionsFetch";
 
 const Home = () => {
   const [
