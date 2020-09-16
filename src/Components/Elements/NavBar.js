@@ -1,13 +1,20 @@
 import React from "react";
+import { Link } from "@reach/router";
 import { StyledNavBar } from "../Styled-Components/StyledNavBar";
 import { StyledButton } from "../Styled-Components/StyledButton";
 const NavBar = (props) => {
   return (
     <StyledNavBar>
-      <div>Signup</div>
-      <div>Login</div>
+      <Link to="/signup">
+        <div>Signup</div>
+      </Link>
+      <Link to="/login">
+        <div>Login</div>
+      </Link>
       <StyledButton type="secondary">Provide a Service</StyledButton>
-      <div>profile</div>
+      <Link to="/">
+        <div>profile</div>
+      </Link>
     </StyledNavBar>
   );
 };
