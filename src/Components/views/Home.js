@@ -30,11 +30,6 @@ const Home = () => {
         </div>
       </div> */}
       <div className="infoSection">
-<<<<<<< HEAD
-        <div className="infoItem">INFO ITEM</div>
-        <div className="infoItem">INFO ITEM</div>
-        <div className="infoItem">INFO ITEM</div>
-=======
         <div className="infoItem">
           <img src={image2} alt="image2" className="image2" width="225px" />
           <p>
@@ -57,7 +52,6 @@ const Home = () => {
             skills, and one provides money or at least a thank you
           </p>
         </div>
->>>>>>> master
       </div>
     </StyledHome>
   );

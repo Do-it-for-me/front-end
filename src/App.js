@@ -16,14 +16,13 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Home />
-      <GlobalStyle />
-      <ImageUpload />
+
       <Router>
         <Home path="/" />
         <SearchResult path="/search-result" />
         <Login path="/login" />
         <Signup path="/signup" />
+        <ImageUpload path="/test" />
       </Router>
       <GlobalStyle />
     </div>
