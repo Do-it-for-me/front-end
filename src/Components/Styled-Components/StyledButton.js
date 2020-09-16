@@ -6,6 +6,7 @@ export const StyledButton = styled.button`
     if (props.type === "primary") return colors.primary;
     if (props.type === "secondary") return colors.secondary;
   }};
+  cursor: pointer;
   font-size: 1.5rem;
   font-weight: bold;
   border: none;
