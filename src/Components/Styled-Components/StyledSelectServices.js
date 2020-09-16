@@ -16,6 +16,7 @@ export const StyledSelectServices = styled.div`
       border-right-color: ${colors.primary};
       border-bottom-color: ${colors.primary};
       border-left-color: ${colors.primary};
+      outline-color: ${colors.primary};
       border-right-width: 1px !important;
       .ant-select-selector {
         border-color: ${colors.primary};
