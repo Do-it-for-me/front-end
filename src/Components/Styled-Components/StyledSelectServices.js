@@ -3,7 +3,9 @@ import colors from "./General-Styles/colors";
 
 export const StyledSelectServices = styled.div`
   width: 17rem;
+  
   .ant-select {
+   
     width: 100%;
     height: 3.5rem;
     :hover,
@@ -11,6 +13,7 @@ export const StyledSelectServices = styled.div`
     :focus,
     :focus-within,
     :visited {
+      
       border-color: ${colors.primary};
       border-top-color: ${colors.primary};
       border-right-color: ${colors.primary};
@@ -18,6 +21,7 @@ export const StyledSelectServices = styled.div`
       border-left-color: ${colors.primary};
       outline-color: ${colors.primary};
       border-right-width: 1px !important;
+      
       .ant-select-selector {
         border-color: ${colors.primary};
         border-top-color: ${colors.primary};
@@ -26,10 +30,13 @@ export const StyledSelectServices = styled.div`
         border-left-color: ${colors.primary};
         border-right-width: 1px !important;
       }
+      
+    
     }
     .ant-select-selector {
       height: 3.5rem;
       background-color: none;
+      
       span {
         height: 3.5rem;
         display: flex;
