@@ -13,7 +13,7 @@ export const useOptionsFetch = () => {
     try {
       const servicesArray = await (await fetch(SERVICES_ENDPOINT)).json();
       const servicesArr = servicesArray.filter((item) => {
-        return { value: item.value };
+        return { value: item.value, id: item._id };
       });
       setServices(servicesArr);
 
