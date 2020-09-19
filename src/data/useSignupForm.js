@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const useSignUpForm = (callback) => {
   const [userData, setUserData] = useState({});
@@ -9,16 +9,31 @@ const useSignUpForm = (callback) => {
   const handleCityChange = (value) => {
     setUserData((prev) => ({ ...prev, city: value }));
   };
+  const handleDateChange = (dates) => {
+    const [startDate, endDate] = dates;
+    setUserData((prev) => ({ ...prev, availability: { startDate, endDate } }));
+  };
   const handleSubmit = (event) => {
     if (event) {
       event.preventDefault();
+      const user = {
+        ...userData,
+        address: {
+          city: userData.city,
+          street: userData.street,
+          zip: userData.zip,
+        },
+      };
+      delete user.street;
+      delete user.city;
+      delete user.zip;
+      console.log("USER", user);
     }
-    callback();
   };
 
   const handleServiceChange = (e) => {
     let services = userData.services || [];
-    console.log(e.target);
+
     if (!services.includes(e.target.name)) {
       services.push(e.target.name);
     } else {
@@ -33,6 +48,7 @@ const useSignUpForm = (callback) => {
     handleCityChange,
     handleSubmit,
     handleServiceChange,
+    handleDateChange,
   };
 };
 

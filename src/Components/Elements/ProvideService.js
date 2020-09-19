@@ -1,12 +1,13 @@
-import React from "react";
+import React, { memo } from "react";
 import { useOptionsFetch } from "../../data/useOptionsFetch";
 import useSignupForm from "../../data/useSignupForm";
 import DateRangePicker from "../Elements/DateRangePicker";
 import { StyledProvideService } from "../Styled-Components/StyledProvideService";
 
-const ProvideService = () => {
+const ProvideService = memo((props) => {
   const [{ services }] = useOptionsFetch();
-  const { handleServiceChange } = useSignupForm();
+  /* console.log(props); */
+  /*   const { handleServiceChange, handleDateChange } = useSignupForm(); */
   return (
     <StyledProvideService>
       <div className="serviceContainer">
@@ -18,7 +19,12 @@ const ProvideService = () => {
                 type="checkbox"
                 key={item._id}
                 name={item._id}
-                onChange={(e) => handleServiceChange(e)}
+                onChange={props.handleServiceChange}
+                value={() =>
+                  props.stateServices && props.stateServices.includes(item.id)
+                    ? true
+                    : false
+                }
               />
               <label htmlFor={item._id}>{item.value} </label>
             </div>
@@ -27,10 +33,13 @@ const ProvideService = () => {
       </div>
       <div className="availabilityContainer">
         <h2>Availability</h2>
-        <DateRangePicker />
+        <DateRangePicker
+          onChange={props.handleDateChange}
+          value={props.value}
+        />
       </div>
     </StyledProvideService>
   );
-};
+});
 
 export default ProvideService;
