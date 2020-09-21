@@ -20,7 +20,12 @@ export const SignupForm = () => {
     handleDateChange,
   } = useSignupForm();
   const [extendProvider, setExtendProvider] = useState(false);
-  /*  console.log("STATE!!!", stateError.details.firstName, stateError.status); */
+  console.log(
+    "STATE-ERROR!!!",
+    stateError.details.firstName,
+    stateError.status
+  );
+  console.log("USERDATA", userData);
   return (
     <StyledSignupForm>
       <form onSubmit={handlePreSubmit}>
@@ -68,8 +73,8 @@ export const SignupForm = () => {
           required
           placeholder="Password"
         />
-        {stateError.status && stateError.details.street && (
-          <ErrorMsg msg={stateError.details.street} />
+        {stateError.status && stateError.details["address.street"] && (
+          <ErrorMsg msg={stateError.details["address.street"]} />
         )}
         <input
           value={userData.street || ""}
@@ -79,8 +84,11 @@ export const SignupForm = () => {
           required
           placeholder="Street and House Number"
         />
-        {stateError.status && stateError.details.city && (
-          <ErrorMsg msg={stateError.details.city} />
+        {stateError.status && stateError.details["address.city"] && (
+          <ErrorMsg msg={stateError.details["address.city"]} />
+        )}
+        {stateError.status && stateError.details["address.zip"] && (
+          <ErrorMsg msg={stateError.details["address.zip"]} />
         )}
         <div className="city">
           <SelectServices
@@ -89,9 +97,7 @@ export const SignupForm = () => {
             name="city"
             required="true"
           />
-          {stateError.status && stateError.details.zip && (
-            <ErrorMsg msg={stateError.details.zip} />
-          )}
+
           <input
             value={userData.zip || ""}
             onChange={(e) => handleFieldsChange(e.target)}

@@ -56,17 +56,20 @@ const useSignUpForm = (callback) => {
         })
       ).json();
       //console.log(response.error);
-      if (response.status !== 201) {
+      if (response.status != 201) {
+        console.log("response", response);
         let errorDetails = {};
-        response.error.details.map(
-          (item) => (errorDetails[item.field] = item.message)
-        );
-        /*  console.log("errorDetails", errorDetails); */
+        response.error.details &&
+          response.error.details.map(
+            (item) => (errorDetails[item.field] = item.message)
+          );
+        console.log("errorDetails", errorDetails);
         setError({ status: true, details: errorDetails });
       } else {
       }
     } catch (err) {
-      setError({ status: true, details: err });
+      console.log("catch Error", err);
+      //setError({ status: true, details: err });
     }
   };
 

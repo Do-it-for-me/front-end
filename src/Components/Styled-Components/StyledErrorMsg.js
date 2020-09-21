@@ -3,6 +3,6 @@ import colors from "./General-Styles/colors";
 
 export const StyledErrorMsg = styled.span`
   width: 100;
-  height: 1rem;
+  /* height: 2rem; */
   color: red;
 `;
