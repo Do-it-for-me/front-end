@@ -5,23 +5,28 @@ import ProvideService from "../Elements/ProvideService";
 import SelectServices from "../Elements/SelectServices";
 import { StyledSignupForm } from "../Styled-Components/StyledSignupForm";
 import { StyledButton } from "../Styled-Components/StyledButton";
-
+import ErrorMsg from "../Elements/ErrorMsg";
 import useSignupForm from "../../data/useSignupForm";
 
 export const SignupForm = () => {
   const {
     userData,
+    stateError,
+    cleanupProviderData,
     handleFieldsChange,
     handleCityChange,
-    handleSubmit,
+    handlePreSubmit,
     handleServiceChange,
     handleDateChange,
   } = useSignupForm();
   const [extendProvider, setExtendProvider] = useState(false);
-
+  /*  console.log("STATE!!!", stateError.details.firstName, stateError.status); */
   return (
     <StyledSignupForm>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handlePreSubmit}>
+        {stateError.status && stateError.details.firstName && (
+          <ErrorMsg msg={stateError.details.firstName} />
+        )}
         <input
           value={userData.firstName || ""}
           onChange={(e) => handleFieldsChange(e.target)}
@@ -30,6 +35,9 @@ export const SignupForm = () => {
           required
           placeholder="First Name"
         />
+        {stateError.status && stateError.details.lastName && (
+          <ErrorMsg msg={stateError.details.lastName} />
+        )}
         <input
           value={userData.lastName || ""}
           onChange={(e) => handleFieldsChange(e.target)}
@@ -38,6 +46,9 @@ export const SignupForm = () => {
           required
           placeholder="Last Name"
         />
+        {stateError.status && stateError.details.email && (
+          <ErrorMsg msg={stateError.details.email} />
+        )}
         <input
           value={userData.email || ""}
           onChange={(e) => handleFieldsChange(e.target)}
@@ -46,6 +57,9 @@ export const SignupForm = () => {
           required
           placeholder="Email Address"
         />
+        {stateError.status && stateError.details.password && (
+          <ErrorMsg msg={stateError.details.password} />
+        )}
         <input
           value={userData.password || ""}
           onChange={(e) => handleFieldsChange(e.target)}
@@ -54,6 +68,9 @@ export const SignupForm = () => {
           required
           placeholder="Password"
         />
+        {stateError.status && stateError.details.street && (
+          <ErrorMsg msg={stateError.details.street} />
+        )}
         <input
           value={userData.street || ""}
           onChange={(e) => handleFieldsChange(e.target)}
@@ -62,12 +79,19 @@ export const SignupForm = () => {
           required
           placeholder="Street and House Number"
         />
+        {stateError.status && stateError.details.city && (
+          <ErrorMsg msg={stateError.details.city} />
+        )}
         <div className="city">
           <SelectServices
             handleCityChange={(v) => handleCityChange(v)}
             type="city"
             name="city"
+            required="true"
           />
+          {stateError.status && stateError.details.zip && (
+            <ErrorMsg msg={stateError.details.zip} />
+          )}
           <input
             value={userData.zip || ""}
             onChange={(e) => handleFieldsChange(e.target)}
@@ -86,11 +110,14 @@ export const SignupForm = () => {
           />
           <label htmlFor="provider">Provide Services </label>
         </div>
+        {stateError.status && stateError.details.availability && (
+          <ErrorMsg msg={stateError.details.availability} />
+        )}
         {extendProvider ? (
           <ProvideService
             handleServiceChange={handleServiceChange}
             handleDateChange={handleDateChange}
-            stateServices={userData.services}
+            cleanupProviderData={cleanupProviderData}
           />
         ) : (
           ""

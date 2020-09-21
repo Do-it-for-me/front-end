@@ -11,9 +11,9 @@ import Signup from "./Components/views/Signup";
 import { DateRangePicker } from "./Components/Elements/DateRangePicker";
 // Global Style///////////
 import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";
-function onChange(date, dateString) {
+/* function onChange(date, dateString) {
   console.log(date, dateString);
-}
+} */
 function App() {
   return (
     <div className="App">
@@ -25,7 +25,7 @@ function App() {
         <Login path="/login" />
         <Signup path="/signup" />
         <ImageUpload path="/test" />
-        <DateRangePicker onChange={onChange} path="/test1" />
+        {/*         <DateRangePicker onChange={onChange} path="/test1" /> */}
       </Router>
       <GlobalStyle />
     </div>

@@ -1,13 +1,16 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useRef } from "react";
 import { useOptionsFetch } from "../../data/useOptionsFetch";
-import useSignupForm from "../../data/useSignupForm";
+
 import DateRangePicker from "../Elements/DateRangePicker";
 import { StyledProvideService } from "../Styled-Components/StyledProvideService";
 
 const ProvideService = memo((props) => {
   const [{ services }] = useOptionsFetch();
-  /* console.log(props); */
-  /*   const { handleServiceChange, handleDateChange } = useSignupForm(); */
+  useEffect(() => {
+    return () => {
+      props.cleanupProviderData();
+    };
+  }, []);
   return (
     <StyledProvideService>
       <div className="serviceContainer">
@@ -20,11 +23,6 @@ const ProvideService = memo((props) => {
                 key={item._id}
                 name={item._id}
                 onChange={props.handleServiceChange}
-                value={() =>
-                  props.stateServices && props.stateServices.includes(item.id)
-                    ? true
-                    : false
-                }
               />
               <label htmlFor={item._id}>{item.value} </label>
             </div>

@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { SERVER_ENDPOINT } from "../config";
 
 const useSignUpForm = (callback) => {
   const [userData, setUserData] = useState({});
-
+  const [loading, setLoading] = useState(false);
+  const [stateError, setError] = useState({ status: false, details: "" });
   const handleFieldsChange = (e) => {
     setUserData((prev) => ({ ...prev, [e.name]: e.value }));
   };
@@ -13,7 +15,10 @@ const useSignUpForm = (callback) => {
     const [startDate, endDate] = dates;
     setUserData((prev) => ({ ...prev, availability: { startDate, endDate } }));
   };
-  const handleSubmit = (event) => {
+  const cleanupProviderData = () =>
+    setUserData((prev) => ({ ...prev, services: [], availability: {} }));
+
+  const handlePreSubmit = (event) => {
     if (event) {
       event.preventDefault();
       const user = {
@@ -27,7 +32,41 @@ const useSignUpForm = (callback) => {
       delete user.street;
       delete user.city;
       delete user.zip;
-      console.log("USER", user);
+      setUserData((prev) => ({ ...user }));
+      signupForm(user);
+    }
+  };
+  const signupForm = async (user) => {
+    setError({ status: false, details: {} });
+    const url = `${SERVER_ENDPOINT}/users/signup`;
+    let response;
+
+    try {
+      response = await (
+        await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            /*  "Access-Control-Allow-Origin":
+            "* ,'http://localhost:3000','http://localhost:3001'",
+          "Access-Control-Allow-Headers": "*", */
+            //" Accept": "*/*",
+          },
+          body: JSON.stringify(user),
+        })
+      ).json();
+      //console.log(response.error);
+      if (response.status !== 201) {
+        let errorDetails = {};
+        response.error.details.map(
+          (item) => (errorDetails[item.field] = item.message)
+        );
+        /*  console.log("errorDetails", errorDetails); */
+        setError({ status: true, details: errorDetails });
+      } else {
+      }
+    } catch (err) {
+      setError({ status: true, details: err });
     }
   };
 
@@ -41,14 +80,16 @@ const useSignUpForm = (callback) => {
     }
     setUserData((prev) => ({ ...prev, services: services }));
   };
-  console.log(userData);
+
   return {
     userData,
+    stateError,
     handleFieldsChange,
     handleCityChange,
-    handleSubmit,
+    handlePreSubmit,
     handleServiceChange,
     handleDateChange,
+    cleanupProviderData,
   };
 };
 
