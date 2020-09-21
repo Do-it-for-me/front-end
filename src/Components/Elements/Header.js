@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "@reach/router";
 
 import { StyledHeader } from "../Styled-Components/StyledHeader";
 import NavBar from "../Elements/NavBar";
+import BurgerMenuIcon from "../Elements/BurgerMenuIcon";
 
 import logo from "../../images/Logo.png";
 
 const Header = () => {
+  const [extend, setExtend] = useState(false);
+  const invertExtend = () => {
+    console.log("clicked");
+    setExtend(!extend);
+  };
   return (
     <StyledHeader>
       <div className="navBarContainer">
@@ -17,6 +23,7 @@ const Header = () => {
         </div>
         <div className="navigationContainer">
           <NavBar />
+          <BurgerMenuIcon extend={extend} onClick={invertExtend} />
         </div>
       </div>
     </StyledHeader>
