@@ -21,6 +21,7 @@ const useSignUpForm = (callback) => {
   const handlePreSubmit = (event) => {
     if (event) {
       event.preventDefault();
+      setError({ status: false, details: {} });
       /*       const user = {
         ...userData,
         address: {
