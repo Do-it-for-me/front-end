@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const StyledInfoSection = styled.div`
     
     width: 100%;
@@ -12,10 +11,9 @@ export const StyledInfoSection = styled.div`
 
     .infoItem{
         
-        width: 100%;
+        width: 95%;
         margin-top: 2rem;
         height: 35%;
-        
         padding: 1rem;
         display: flex;
         flex-direction: column;

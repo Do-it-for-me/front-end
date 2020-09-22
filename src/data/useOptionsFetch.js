@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { SERVICES_ENDPOINT, CITIES_ENDPOINT } from "../config";
+import { SERVER_ENDPOINT, CITIES_ENDPOINT } from "../config";
 
 export const useOptionsFetch = () => {
   const [services, setServices] = useState([]);
@@ -11,9 +11,11 @@ export const useOptionsFetch = () => {
     setError(false);
     setLoading(true);
     try {
-      const servicesArray = await (await fetch(SERVICES_ENDPOINT)).json();
+      const servicesArray = await (
+        await fetch(`${SERVER_ENDPOINT}/services`)
+      ).json();
       const servicesArr = servicesArray.filter((item) => {
-        return { value: item.value };
+        return { value: item.value, id: item._id };
       });
       setServices(servicesArr);
 
