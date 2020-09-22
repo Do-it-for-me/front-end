@@ -8,6 +8,7 @@ import ImageUpload from "./Components/ImageUpload";
 import SearchResult from "./Components/views/SearchResult";
 import Login from "./Components/views/Login";
 import Signup from "./Components/views/Signup";
+import Cards from "./Components/Elements/Cards";
 
 // Global Style///////////
 import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";

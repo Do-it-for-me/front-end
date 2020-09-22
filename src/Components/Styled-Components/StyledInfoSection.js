@@ -72,7 +72,7 @@ export const StyledInfoSection = styled.div`
             
     }
         
-        
+}
         
     
 `;

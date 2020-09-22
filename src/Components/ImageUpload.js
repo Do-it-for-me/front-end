@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { StyledButton } from "./Styled-Components/StyledButton";
 import { StyledImageUpload } from "./Styled-Components/StyledImageUpload";
+
 export default class ImageUpload extends Component {
   state = {
     // Initially, no file is selected
@@ -68,6 +69,7 @@ export default class ImageUpload extends Component {
           Upload!
         </button>
       </StyledImageUpload>
+      
     );
   }
 }
