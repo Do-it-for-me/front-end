@@ -4,6 +4,7 @@ import colors from "./General-Styles/colors";
 export const StyledNavBarMobile = styled.div`
   position: fixed;
   margin-top: 7rem;
+  padding-top: 10rem;
   top: 0;
   left: 0;
   font-size: 32px;

@@ -21,7 +21,7 @@ const useSignUpForm = (callback) => {
   const handlePreSubmit = (event) => {
     if (event) {
       event.preventDefault();
-      const user = {
+      /*       const user = {
         ...userData,
         address: {
           city: userData.city,
@@ -32,8 +32,8 @@ const useSignUpForm = (callback) => {
       delete user.street;
       delete user.city;
       delete user.zip;
-      setUserData((prev) => ({ ...user }));
-      signupForm(user);
+      setUserData(userData); */
+      signupForm(userData);
     }
   };
   const signupForm = async (user) => {

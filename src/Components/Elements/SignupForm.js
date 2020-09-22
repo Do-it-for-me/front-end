@@ -73,8 +73,8 @@ export const SignupForm = () => {
           required
           placeholder="Password"
         />
-        {stateError.status && stateError.details["address.street"] && (
-          <ErrorMsg msg={stateError.details["address.street"]} />
+        {stateError.status && stateError.details.street && (
+          <ErrorMsg msg={stateError.details.street} />
         )}
         <input
           value={userData.street || ""}
@@ -84,11 +84,11 @@ export const SignupForm = () => {
           required
           placeholder="Street and House Number"
         />
-        {stateError.status && stateError.details["address.city"] && (
-          <ErrorMsg msg={stateError.details["address.city"]} />
+        {stateError.status && stateError.details.city && (
+          <ErrorMsg msg={stateError.details.city} />
         )}
-        {stateError.status && stateError.details["address.zip"] && (
-          <ErrorMsg msg={stateError.details["address.zip"]} />
+        {stateError.status && stateError.details.zip && (
+          <ErrorMsg msg={stateError.details.zip} />
         )}
         <div className="city">
           <SelectServices
