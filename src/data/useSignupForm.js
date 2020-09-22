@@ -5,6 +5,7 @@ const useSignUpForm = (callback) => {
   const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(false);
   const [stateError, setError] = useState({ status: false, details: "" });
+  const [loggedInUserData, setLoggedInUserData] = useState(null);
   const handleFieldsChange = (e) => {
     setUserData((prev) => ({ ...prev, [e.name]: e.value }));
   };
@@ -20,7 +21,6 @@ const useSignUpForm = (callback) => {
 
   const handlePreSubmit = (event) => {
     if (event) {
-      event.preventDefault();
       setError({ status: false, details: {} });
       /*       const user = {
         ...userData,
@@ -34,11 +34,12 @@ const useSignUpForm = (callback) => {
       delete user.city;
       delete user.zip;
       setUserData(userData); */
-      signupForm(userData);
+      signupForm(event, userData);
     }
   };
-  const signupForm = async (user) => {
+  const signupForm = async (e, user) => {
     setError({ status: false, details: {} });
+    e.preventDefault();
     const url = `${SERVER_ENDPOINT}/users/signup`;
     let response;
 
@@ -53,25 +54,27 @@ const useSignUpForm = (callback) => {
           "Access-Control-Allow-Headers": "*", */
             //" Accept": "*/*",
           },
+          credentials: "same-origin",
           body: JSON.stringify(user),
         })
       ).json();
+      console.log("fetched");
       //console.log(response.error);
-      if (response.status != 201) {
-        console.log("response", response);
+      if (response.status !== 201) {
+        //console.log("response", response);
         let errorDetails = {};
         response.error.details &&
           response.error.details.map(
             (item) => (errorDetails[item.field] = item.message)
           );
-        console.log("errorDetails", errorDetails);
+        console.log("cookies", await response.cookie);
         setError({ status: true, details: errorDetails });
-      } else {
       }
     } catch (err) {
       console.log("catch Error", err);
       //setError({ status: true, details: err });
     }
+    setLoggedInUserData({ ...response });
   };
 
   const handleServiceChange = (e) => {
@@ -94,6 +97,7 @@ const useSignUpForm = (callback) => {
     handleServiceChange,
     handleDateChange,
     cleanupProviderData,
+    loggedInUserData,
   };
 };
 

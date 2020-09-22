@@ -18,6 +18,7 @@ export const SignupForm = () => {
     handlePreSubmit,
     handleServiceChange,
     handleDateChange,
+    loggedInUserData,
   } = useSignupForm();
   const [extendProvider, setExtendProvider] = useState(false);
   console.log(
@@ -25,7 +26,7 @@ export const SignupForm = () => {
     stateError.details.firstName,
     stateError.status
   );
-  console.log("USERDATA", userData);
+  console.log("loggedInUserData", loggedInUserData);
   return (
     <StyledSignupForm>
       <form onSubmit={handlePreSubmit}>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Router } from "@reach/router";
 
 // Components ///////////////
@@ -15,6 +15,41 @@ import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";
   console.log(date, dateString);
 } */
 function App() {
+  /*   useEffect(() => {
+    const fetch = async () => {
+      let response;
+      try {
+        response = await (
+          await fetch("http://localhost:3000/api/users/signup", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              /*  "Access-Control-Allow-Origin":
+        "* ,'http://localhost:3000','http://localhost:3001'",
+      "Access-Control-Allow-Headers": "*", */
+  //" Accept": "*/*",
+
+  /*          credentials: "same-origin",
+            body: JSON.stringify({
+              role: "user",
+              firstName: "Test",
+              lastName: "Amer",
+              email: "wafi.amer.317@gmail.com",
+              password: "Super!secret21",
+              street: "Leipzig",
+              city: "Leipzig",
+              zip: "04177",
+            }),
+          })
+        ).json();
+        console.log(response);
+      } catch (err) {
+        console.log("catch Error", err);
+        //setError({ status: true, details: err });
+      }
+    };
+    fetch();
+  }, []); */
   return (
     <div className="App">
       <Header />
