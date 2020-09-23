@@ -48,7 +48,7 @@ const useSignUpForm = () => {
         ).json();
         /*       console.log("fetched"); */
 
-        if (response.status.hasOwnProperty("_id")) {
+        if (response.status != 201) {
           let errorDetails = {};
           if (response.error && response.error.details)
             response.error.details.map(
@@ -61,7 +61,10 @@ const useSignUpForm = () => {
         console.log("catch Error", err);
       }
       console.log("handelSignupForm-response", response);
-      if (response && response._id) handleLoggedInUser(true, { ...response });
+      if (response && response._id) {
+        handleLoggedInUser(true, { ...response });
+        window.location = BROWSER_ENDPOINT;
+      }
     }
   };
 
@@ -115,7 +118,10 @@ const useSignUpForm = () => {
         console.log("catch Error", err);
       }
 
-      if (response && response._id) handleLoggedInUser(true, { ...response });
+      if (response && response._id) {
+        handleLoggedInUser(true, { ...response });
+        window.location = BROWSER_ENDPOINT;
+      }
     }
   };
 
