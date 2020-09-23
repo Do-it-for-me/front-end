@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
 
 // Components ///////////////
@@ -14,44 +14,41 @@ import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";
 /* function onChange(date, dateString) {
   console.log(date, dateString);
 } */
+import UserContext from "./data/UserContext";
 function App() {
-  /*   useEffect(() => {
-    const fetch = async () => {
-      let response;
-      try {
-        response = await (
-          await fetch("http://localhost:3000/api/users/signup", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              /*  "Access-Control-Allow-Origin":
-        "* ,'http://localhost:3000','http://localhost:3001'",
-      "Access-Control-Allow-Headers": "*", */
-  //" Accept": "*/*",
+  const [loggedInUser, setLoggedInUser] = useState({});
+  const handleLoggedInUser = (logged, user) => {
+    setLoggedInUser({ logged: logged, user: user });
+  };
+  const contextValue = {
+    user: loggedInUser,
+    handleLoggedInUser: handleLoggedInUser,
+  };
 
-  /*          credentials: "same-origin",
-            body: JSON.stringify({
-              role: "user",
-              firstName: "Test",
-              lastName: "Amer",
-              email: "wafi.amer.317@gmail.com",
-              password: "Super!secret21",
-              street: "Leipzig",
-              city: "Leipzig",
-              zip: "04177",
-            }),
-          })
-        ).json();
-        console.log(response);
-      } catch (err) {
-        console.log("catch Error", err);
-        //setError({ status: true, details: err });
+  useEffect(() => {
+    console.log(loggedInUser.user);
+    if (loggedInUser.user && loggedInUser.user._id) {
+      window.localStorage.setItem(
+        "loggedUser",
+        JSON.stringify(loggedInUser.user)
+      );
+    }
+  }, [loggedInUser]);
+
+  useEffect(() => {
+    if (document.cookie.includes("loggedIn=true")) {
+      const existingUsers = window.localStorage.getItem("loggedUser");
+      //console.log("existingUsers", typeof existingUsers, existingUsers);
+      if (existingUsers != "undefined") {
+        const user = JSON.parse(existingUsers);
+
+        handleLoggedInUser(true, user);
       }
-    };
-    fetch();
-  }, []); */
+    }
+  }, []);
+
   return (
-    <div className="App">
+    <UserContext.Provider value={contextValue}>
       <Header />
 
       <Router>
@@ -63,7 +60,7 @@ function App() {
         {/*         <DateRangePicker onChange={onChange} path="/test1" /> */}
       </Router>
       <GlobalStyle />
-    </div>
+    </UserContext.Provider>
   );
 }
 

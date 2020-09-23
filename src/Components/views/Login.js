@@ -1,15 +1,12 @@
 import React from "react";
-
+import { StyledSignup } from "../Styled-Components/StyledSignup";
+import LoginForm from "../Elements/LoginForm";
 const Login = () => {
   return (
-    <div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+    <StyledSignup>
       <h1>Login</h1>
-    </div>
+      <LoginForm />
+    </StyledSignup>
   );
 };
 
