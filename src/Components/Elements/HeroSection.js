@@ -5,22 +5,44 @@ import { StyledHeroSection } from "../Styled-Components/StyledHeroSection";
 import { StyledButton } from "../Styled-Components/StyledButton";
 import SelectServices from "../Elements/SelectServices";
 
+import useSearchProviders from "../../data/useSearchProviders";
+
 export const HeroSection = () => {
+  const {
+    handleServiceChange,
+    handleCityChange,
+    handlePreFetchSearchForm,
+    searchData,
+  } = useSearchProviders();
+  console.log("searchData", searchData);
   return (
     <StyledHeroSection>
       <div className="heroSection">
         <div className="headlineSection">
           <h2>Find trustworthy people to help with your daily chores</h2>
         </div>
-        <div className="searchSection">
-          <SelectServices type="Service" />
-          <SelectServices type="City" />
-          <StyledButton type="primary">
+        {/* <div className="searchSection"> */}
+        <form className="searchSection">
+          <SelectServices
+            type="Service"
+            onChange={(string, v) => handleServiceChange(v)}
+            name="city"
+          />
+          <SelectServices
+            onChange={(string, v) => handleCityChange(v)}
+            type="city"
+            name="city"
+          />
+          <StyledButton
+            onClick={(e) => handlePreFetchSearchForm(e)}
+            type="primary"
+          >
             <Link to="/search-result">
               <div>Search</div>
             </Link>
           </StyledButton>
-        </div>
+        </form>
+        {/*    </div> */}
       </div>
     </StyledHeroSection>
   );
