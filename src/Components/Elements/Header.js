@@ -7,12 +7,15 @@ import BurgerMenuIcon from "../Elements/BurgerMenuIcon";
 import NavBarMobile from "../Elements/NavBarMobile";
 
 import logo from "../../images/Logo.png";
+import useSignUpForm from "../../data/useSignupForm";
 
 const Header = () => {
   const [extend, setExtend] = useState(false);
   const invertExtend = () => {
-    console.log("clicked");
     setExtend(!extend);
+  };
+  const unExtend = () => {
+    setExtend(false);
   };
   return (
     <StyledHeader>
@@ -23,8 +26,8 @@ const Header = () => {
           </Link>
         </div>
         <div className="navigationContainer">
-          <NavBar />
-          <NavBarMobile extend={extend} onClick={invertExtend} />
+          <NavBar loggedInUserData />
+          <NavBarMobile extend={extend} unExtend={unExtend} />
           <BurgerMenuIcon extend={extend} onClick={invertExtend} />
         </div>
       </div>

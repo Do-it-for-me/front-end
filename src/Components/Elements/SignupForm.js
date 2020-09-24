@@ -7,7 +7,7 @@ import { StyledSignupForm } from "../Styled-Components/StyledSignupForm";
 import { StyledButton } from "../Styled-Components/StyledButton";
 import ErrorMsg from "../Elements/ErrorMsg";
 import useSignupForm from "../../data/useSignupForm";
-
+import UserContext from "../../data/UserContext";
 export const SignupForm = () => {
   const {
     userData,
@@ -15,7 +15,7 @@ export const SignupForm = () => {
     cleanupProviderData,
     handleFieldsChange,
     handleCityChange,
-    handlePreSubmit,
+    handelSignupForm,
     handleServiceChange,
     handleDateChange,
   } = useSignupForm();
@@ -25,10 +25,10 @@ export const SignupForm = () => {
     stateError.details.firstName,
     stateError.status
   );
-  console.log("USERDATA", userData);
+
   return (
     <StyledSignupForm>
-      <form onSubmit={handlePreSubmit}>
+      <form onSubmit={(e) => handelSignupForm(e)}>
         {stateError.status && stateError.details.firstName && (
           <ErrorMsg msg={stateError.details.firstName} />
         )}
