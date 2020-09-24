@@ -9,6 +9,8 @@ import SearchResult from "./Components/views/SearchResult";
 import Login from "./Components/views/Login";
 import Signup from "./Components/views/Signup";
 
+import CardContainer from "./Components/Elements/CardContainer";
+
 // Global Style///////////
 import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";
 /* function onChange(date, dateString) {
@@ -57,6 +59,8 @@ function App() {
         <Login path="/login" />
         <Signup path="/signup" />
         <ImageUpload path="/test" />
+
+        <CardContainer path="/cardContainer" />
         {/*         <DateRangePicker onChange={onChange} path="/test1" /> */}
       </Router>
       <GlobalStyle />
