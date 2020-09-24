@@ -15,7 +15,7 @@ const useSearchProviders = () => {
     setSearchData((prev) => ({ ...prev, city: v.value }));
   };
   const handleServiceChange = (v, string) => {
-    setSearchData((prev) => ({ ...prev, service: v }));
+    setSearchData((prev) => ({ ...prev, services: v._id }));
   };
 
   const handlePreFetchSearchForm = (e) => {
@@ -28,19 +28,20 @@ const useSearchProviders = () => {
 
   const handleFetchSearchForm = async (e) => {
     const servicesQuery = () =>
-      searchData.services ? `services=${searchData.services._id}&` : "";
+      searchData.services ? `services=${searchData.services}&` : "";
     const cityQuery = () => (searchData.city ? `city=${searchData.city}&` : "");
     //if (e) {
 
     setError({ status: false, details: {} });
-    const url = () =>
-      `${SERVER_ENDPOINT}/users?${servicesQuery()}${cityQuery()}`;
+    const url = `${SERVER_ENDPOINT}/users?${servicesQuery()}${cityQuery()}`;
+    const fetchURL = url.slice(0, -1);
+    console.log(fetchURL);
     let response;
     try {
       setLoading(true);
       setError(false);
       response = await (
-        await fetch(url(), {
+        await fetch(fetchURL, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
