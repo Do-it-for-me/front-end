@@ -92,7 +92,7 @@ export const SignupForm = () => {
         )}
         <div className="city">
           <SelectServices
-            handleCityChange={(v) => handleCityChange(v)}
+            onChange={(v) => handleCityChange(v)}
             type="city"
             name="city"
             required="true"
