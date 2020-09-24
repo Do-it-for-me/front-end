@@ -1,15 +1,22 @@
-import React from "react";
-
+import React, { useState, useContext } from "react";
+import SearchResultContext from "../../data/SearchResultContext";
 const SearchResult = () => {
+  const [providers, setProviders] = useState([]);
+
+  let handleSetProvider = (array) => {
+    setProviders(array);
+  };
+  const contextProvidersValue = {
+    providersArray: providers,
+    handleSetProvider: handleSetProvider,
+  };
   return (
-    <div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+    <SearchResultContext.Provider value={contextProvidersValue}>
       <h1>SEARCH RESULT</h1>
-    </div>
+      <div className="SearchResult">
+        {providers && providers.map((item) => <h1 key={new Date()}>{item}</h1>)}
+      </div>
+    </SearchResultContext.Provider>
   );
 };
 

@@ -26,7 +26,6 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(loggedInUser.user);
     if (loggedInUser.user && loggedInUser.user._id) {
       window.localStorage.setItem(
         "loggedUser",

@@ -11,7 +11,7 @@ export default function SelectServices(props) {
     <StyledSelectServices>
       <AutoComplete
         style={{}}
-        onChange={(v) => props.handleCityChange(v)}
+        onChange={(...p) => props.onChange(...p)}
         options={options}
         placeholder={`Select a ${props.type}`}
         filterOption={(inputValue, option) =>
