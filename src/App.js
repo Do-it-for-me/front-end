@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
 
 // Components ///////////////
@@ -14,9 +14,41 @@ import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";
 /* function onChange(date, dateString) {
   console.log(date, dateString);
 } */
+import UserContext from "./data/UserContext";
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
+  const handleLoggedInUser = (logged, user) => {
+    setLoggedInUser({ logged: logged, user: user });
+  };
+  const contextValue = {
+    user: loggedInUser,
+    handleLoggedInUser: handleLoggedInUser,
+  };
+
+  useEffect(() => {
+    console.log(loggedInUser.user);
+    if (loggedInUser.user && loggedInUser.user._id) {
+      window.localStorage.setItem(
+        "loggedUser",
+        JSON.stringify(loggedInUser.user)
+      );
+    }
+  }, [loggedInUser]);
+
+  useEffect(() => {
+    if (document.cookie.includes("loggedIn=true")) {
+      const existingUsers = window.localStorage.getItem("loggedUser");
+      //console.log("existingUsers", typeof existingUsers, existingUsers);
+      if (existingUsers != "undefined") {
+        const user = JSON.parse(existingUsers);
+
+        handleLoggedInUser(true, user);
+      }
+    }
+  }, []);
+
   return (
-    <div className="App">
+    <UserContext.Provider value={contextValue}>
       <Header />
 
       <Router>
@@ -28,7 +60,7 @@ function App() {
         {/*         <DateRangePicker onChange={onChange} path="/test1" /> */}
       </Router>
       <GlobalStyle />
-    </div>
+    </UserContext.Provider>
   );
 }
 

@@ -1,10 +1,14 @@
-import { useState } from "react";
-import { SERVER_ENDPOINT } from "../config";
+import { redirectTo } from "@reach/router";
+import { useState, useContext } from "react";
+import { SERVER_ENDPOINT, BROWSER_ENDPOINT } from "../config";
+import UserContext from "./UserContext";
+const useSignUpForm = () => {
+  const { handleLoggedInUser } = useContext(UserContext);
 
-const useSignUpForm = (callback) => {
   const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(false);
   const [stateError, setError] = useState({ status: false, details: "" });
+  const [loggedInUserData, setLoggedInUserData] = useState();
   const handleFieldsChange = (e) => {
     setUserData((prev) => ({ ...prev, [e.name]: e.value }));
   };
@@ -18,59 +22,49 @@ const useSignUpForm = (callback) => {
   const cleanupProviderData = () =>
     setUserData((prev) => ({ ...prev, services: [], availability: {} }));
 
-  const handlePreSubmit = (event) => {
+  /*   const handlePreSubmit = (event) => {
     if (event) {
-      event.preventDefault();
       setError({ status: false, details: {} });
-      /*       const user = {
-        ...userData,
-        address: {
-          city: userData.city,
-          street: userData.street,
-          zip: userData.zip,
-        },
-      };
-      delete user.street;
-      delete user.city;
-      delete user.zip;
-      setUserData(userData); */
-      signupForm(userData);
+      signupForm(event, userData);
     }
-  };
-  const signupForm = async (user) => {
-    setError({ status: false, details: {} });
-    const url = `${SERVER_ENDPOINT}/users/signup`;
-    let response;
+  }; */
 
-    try {
-      response = await (
-        await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            /*  "Access-Control-Allow-Origin":
-            "* ,'http://localhost:3000','http://localhost:3001'",
-          "Access-Control-Allow-Headers": "*", */
-            //" Accept": "*/*",
-          },
-          body: JSON.stringify(user),
-        })
-      ).json();
-      //console.log(response.error);
-      if (response.status != 201) {
-        console.log("response", response);
-        let errorDetails = {};
-        response.error.details &&
-          response.error.details.map(
-            (item) => (errorDetails[item.field] = item.message)
-          );
-        console.log("errorDetails", errorDetails);
-        setError({ status: true, details: errorDetails });
-      } else {
+  const handelSignupForm = async (event) => {
+    if (event) {
+      setError({ status: false, details: {} });
+      event.preventDefault();
+      const url = `${SERVER_ENDPOINT}/users/signup`;
+      let response;
+      try {
+        response = await (
+          await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify(userData),
+          })
+        ).json();
+        /*       console.log("fetched"); */
+
+        if (response.status != 201) {
+          let errorDetails = {};
+          if (response.error && response.error.details)
+            response.error.details.map(
+              (item) => (errorDetails[item.field] = item.message)
+            );
+
+          setError({ status: true, details: errorDetails });
+        }
+      } catch (err) {
+        console.log("catch Error", err);
       }
-    } catch (err) {
-      console.log("catch Error", err);
-      //setError({ status: true, details: err });
+      console.log("handelSignupForm-response", response);
+      if (response && response._id) {
+        handleLoggedInUser(true, { ...response });
+        window.location = BROWSER_ENDPOINT;
+      }
     }
   };
 
@@ -84,16 +78,65 @@ const useSignUpForm = (callback) => {
     }
     setUserData((prev) => ({ ...prev, services: services }));
   };
+  const handleLogout = (callback) => {
+    console.log("logout");
+    handleLoggedInUser(false, null);
+    window.localStorage.removeItem("loggedUser");
+  };
+  /*   useEffect(() => {
+    handleLogout();
+  }, [loggedInUserData]); */
+  const handleLoginForm = async (e) => {
+    if (e) {
+      e.preventDefault();
+      setError({ status: false, details: {} });
+      const url = `${SERVER_ENDPOINT}/users/login`;
+      const user = { email: userData.email, password: userData.password };
+      let response;
+      try {
+        response = await (
+          await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify(user),
+          })
+        ).json();
+        console.log("response", response, typeof response);
+        if (response.error) {
+          setError({
+            status: true,
+            details: { emailPassword: response.error.message },
+          });
+        }
+
+        //window.localStorage.setItem("loggedUser", JSON.stringify(response));
+        // window.location = BROWSER_ENDPOINT;
+      } catch (err) {
+        console.log("catch Error", err);
+      }
+
+      if (response && response._id) {
+        handleLoggedInUser(true, { ...response });
+        window.location = BROWSER_ENDPOINT;
+      }
+    }
+  };
 
   return {
     userData,
     stateError,
+    handleLogout,
     handleFieldsChange,
     handleCityChange,
-    handlePreSubmit,
     handleServiceChange,
     handleDateChange,
     cleanupProviderData,
+    loggedInUserData,
+    handleLoginForm,
+    handelSignupForm,
   };
 };
 
