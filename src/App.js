@@ -14,8 +14,12 @@ import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";
 /* function onChange(date, dateString) {
   console.log(date, dateString);
 } */
+
+import SearchResultContext from "./data/SearchResultContext";
 import UserContext from "./data/UserContext";
+
 function App() {
+  //LoggedIn User Context
   const [loggedInUser, setLoggedInUser] = useState({});
   const handleLoggedInUser = (logged, user) => {
     setLoggedInUser({ logged: logged, user: user });
@@ -23,6 +27,17 @@ function App() {
   const contextValue = {
     user: loggedInUser,
     handleLoggedInUser: handleLoggedInUser,
+  };
+
+  //serchProviders Context
+  const [providers, setProviders] = useState([]);
+  const stateSetter = (array) => {
+    setProviders(array);
+  };
+
+  const contextProvidersValue = {
+    providers: providers,
+    stateSetter: stateSetter,
   };
 
   useEffect(() => {
@@ -48,17 +63,20 @@ function App() {
 
   return (
     <UserContext.Provider value={contextValue}>
-      <Header />
+      <SearchResultContext.Provider value={contextProvidersValue}>
+        <>
+          <Header />
 
-      <Router>
-        <Home path="/" />
-        <SearchResult path="/search-result" />
-        <Login path="/login" />
-        <Signup path="/signup" />
-        <ImageUpload path="/test" />
-        {/*         <DateRangePicker onChange={onChange} path="/test1" /> */}
-      </Router>
-      <GlobalStyle />
+          <Router>
+            <Home path="/" />
+            <SearchResult path="/search-result" />
+            <Login path="/login" />
+            <Signup path="/signup" />
+            <ImageUpload path="/test" />
+          </Router>
+          <GlobalStyle />
+        </>
+      </SearchResultContext.Provider>
     </UserContext.Provider>
   );
 }

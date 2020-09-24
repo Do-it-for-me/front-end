@@ -11,7 +11,7 @@ export const HeroSection = () => {
   const {
     handleServiceChange,
     handleCityChange,
-    handleFetchSearchForm,
+    handlePreFetchSearchForm,
     searchData,
   } = useSearchProviders();
   console.log("searchData", searchData);
@@ -33,8 +33,11 @@ export const HeroSection = () => {
             type="city"
             name="city"
           />
-          <StyledButton type="primary">
-            <Link onClick={handleFetchSearchForm} to="/search-result">
+          <StyledButton
+            onClick={(e) => handlePreFetchSearchForm(e)}
+            type="primary"
+          >
+            <Link to="/search-result">
               <div>Search</div>
             </Link>
           </StyledButton>
