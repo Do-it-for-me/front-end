@@ -25,12 +25,14 @@ export const StyledSearchFilter = styled.div`
     width: 17rem;
   }
   @media screen and (min-width: 768px) {
-    position: relative;
+    position: fixed;
     transform: none;
     transform-origin: none;
     transition: none;
-    width: 400px;
-    height: calc(100vh - 7rem);
+    width: 40%;
+    top: 0;
+    left: 0;
+    height: 100vh;
     font-size: 1.2rem;
   }
 `;

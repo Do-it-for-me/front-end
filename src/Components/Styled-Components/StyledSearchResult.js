@@ -32,6 +32,7 @@ export const StyledSearchResult = styled.div`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     min-height: auto;
+    justify-content: flex-end;
     .filter-btn {
       display: none;
     }

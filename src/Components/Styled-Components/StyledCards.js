@@ -5,8 +5,11 @@ import image1 from "../../images/image1.png";
 export const StyledCards = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 250px;
+  height: 400px;
   margin: 1rem;
-  /* height: 500px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   color: ${colors.dark};
   background-color: rgb(206, 204, 204);
 
