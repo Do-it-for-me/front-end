@@ -10,7 +10,7 @@ export const StyledCardContainer = styled.div`
   background-color: gray;
 
   @media screen and (min-width: 768px) {
-    width: 60%;
+    max-width: calc(100vw - 300px);
     min-height: 100vh;
     flex-direction: row;
     flex-wrap: wrap;

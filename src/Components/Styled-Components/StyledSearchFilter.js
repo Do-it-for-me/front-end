@@ -29,7 +29,8 @@ export const StyledSearchFilter = styled.div`
     transform: none;
     transform-origin: none;
     transition: none;
-    width: 40%;
+    max-width: 300px;
+    min-width: 20%;
     top: 0;
     left: 0;
     height: 100vh;
