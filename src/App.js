@@ -31,15 +31,17 @@ function App() {
     handleLoggedInUser: handleLoggedInUser,
   };
 
-  //serchProviders Context
+  //searchProviders Context
   const [providers, setProviders] = useState([]);
+  const [queryData, setQueryData] = useState({});
   const stateSetter = (array) => {
     setProviders(array);
   };
-
   const contextProvidersValue = {
     providers: providers,
     stateSetter: stateSetter,
+    queryData: queryData,
+    setQueryData: setQueryData,
   };
 
   useEffect(() => {

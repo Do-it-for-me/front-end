@@ -30,7 +30,7 @@ const SearchResult = () => {
           </div>
         </Link>
       </StyledButton>
-      <SearchFilter extend={extend} onClick={invertExtend} />
+      <SearchFilter extend={extend} invertExtend={invertExtend} />
       <CardContainer />
       {/* <h1>SEARCH RESULT</h1> */}
       {/* <div className="SearchResult">

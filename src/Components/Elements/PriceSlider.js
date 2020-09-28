@@ -7,11 +7,16 @@ function formatter(value) {
   return `${value}€`;
 }
 
-export default function PricePicker() {
+export default function PricePicker(props) {
   return (
     <StyledPriceSlider>
       <div className="priceLabel">Max Price</div>
-      <Slider tipFormatter={formatter} max={15} defaultValue={9} />
+      <Slider
+        tipFormatter={formatter}
+        max={15}
+        defaultValue={9}
+        onChange={props.onChange}
+      />
     </StyledPriceSlider>
   );
 }

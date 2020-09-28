@@ -15,6 +15,9 @@ export const StyledSearchResult = styled.div`
   margin: 0;
   position: relative;
   button {
+    position: sticky;
+    top: 7rem;
+
     width: 100vw;
     z-index: 60;
     div {

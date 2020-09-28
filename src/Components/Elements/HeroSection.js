@@ -34,7 +34,7 @@ export const HeroSection = () => {
             name="city"
           />
           <StyledButton
-            onClick={(e) => handlePreFetchSearchForm(e)}
+            onClick={() => handlePreFetchSearchForm()}
             type="primary"
           >
             <Link to="/search-result">
