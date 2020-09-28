@@ -9,6 +9,10 @@ import StarRate from "./StarRate";
 import useSearchProviders from "../../data/useSearchProviders";
 import SearchResultContext from "../../data/SearchResultContext";
 export default function SearchFilter({ extend, invertExtend }) {
+  const handleClick = () => {
+    handlePreFetchSearchForm();
+    invertExtend();
+  };
   const { queryData } = useContext(SearchResultContext);
   const {
     handleServiceChange,
@@ -36,14 +40,7 @@ export default function SearchFilter({ extend, invertExtend }) {
       <StarRate onChange={handleRateChange} />
       <Link to="/search-result">
         <StyledButton type="primary">
-          <div
-            onClick={() => {
-              handlePreFetchSearchForm();
-              invertExtend();
-            }}
-          >
-            Search
-          </div>
+          <div onClick={() => handleClick()}>Search</div>
         </StyledButton>
       </Link>
     </StyledSearchFilter>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Router } from "@reach/router";
 
 // Components ///////////////
@@ -37,11 +37,12 @@ function App() {
   const stateSetter = (array) => {
     setProviders(array);
   };
-  const contextProvidersValue = {
-    providers: providers,
-    stateSetter: stateSetter,
-    queryData: queryData,
-    setQueryData: setQueryData,
+  console.log("querydata from app.js", queryData);
+  const searchResultContextValue = {
+    providers,
+    stateSetter,
+    queryData,
+    setQueryData,
   };
 
   useEffect(() => {
@@ -67,7 +68,7 @@ function App() {
 
   return (
     <UserContext.Provider value={contextValue}>
-      <SearchResultContext.Provider value={contextProvidersValue}>
+      <SearchResultContext.Provider value={searchResultContextValue}>
         <>
           <Header />
 

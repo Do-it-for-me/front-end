@@ -9,7 +9,8 @@ const useSearchProviders = () => {
   const { stateSetter, queryData, setQueryData } = useContext(
     SearchResultContext
   );
-  const [searchData, setSearchData] = useState({});
+  console.log("customHook render");
+  const [searchData, setSearchData] = useState({ ...queryData });
 
   const [loading, setLoading] = useState({});
   const [stateError, setError] = useState({ status: false, details: "" });
@@ -32,12 +33,11 @@ const useSearchProviders = () => {
   };
 
   const handlePreFetchSearchForm = () => {
-    console.log("handlePreFetchSearchForm");
-
-    setQueryData(searchData);
+    setQueryData((prev) => ({ ...prev, ...searchData }));
   };
   useEffect(() => {
     const handleFetchSearchForm = async (e) => {
+      console.log("fetch", queryData);
       const servicesQuery = () =>
         queryData.services ? `services=${queryData.services}&` : "";
       const cityQuery = () => (queryData.city ? `city=${queryData.city}&` : "");
