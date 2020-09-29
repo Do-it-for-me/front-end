@@ -10,6 +10,7 @@ export default function SelectServices(props) {
   return (
     <StyledSelectServices>
       <AutoComplete
+        defaultValue={props.defaultValue}
         style={{}}
         placeholder={props.placeholder}
         onChange={props.onChange}

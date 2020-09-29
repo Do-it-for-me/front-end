@@ -14,6 +14,9 @@ export default function SearchFilter({ extend, invertExtend }) {
     invertExtend();
   };
   const { queryData } = useContext(SearchResultContext);
+
+  const { homepageService, homepageCity } = queryData;
+
   const {
     handleServiceChange,
     handleCityChange,
@@ -26,13 +29,13 @@ export default function SearchFilter({ extend, invertExtend }) {
   return (
     <StyledSearchFilter extend={extend}>
       <SelectServices
-        placeholder={queryData.services}
+        defaultValue={homepageService}
         type="Service"
         onChange={(string, v) => handleServiceChange(v)}
       />
       <SelectServices
         type="City"
-        placeholder={queryData.city}
+        defaultValue={homepageCity}
         onChange={(string, v) => handleCityChange(v)}
       />
       <OneDatePicker onChange={(date, string) => handleDateChange(string)} />

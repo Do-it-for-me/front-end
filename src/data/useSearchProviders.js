@@ -16,10 +16,19 @@ const useSearchProviders = () => {
   const [stateError, setError] = useState({ status: false, details: "" });
   console.log(searchData);
   const handleCityChange = (v, string) => {
-    setSearchData((prev) => ({ ...prev, city: v.value }));
+    setSearchData((prev) => ({
+      ...prev,
+      homepageCity: v.value,
+      city: v.value,
+    }));
   };
   const handleServiceChange = (v, string) => {
-    setSearchData((prev) => ({ ...prev, services: v._id }));
+    console.log(v);
+    setSearchData((prev) => ({
+      ...prev,
+      homepageService: v.value,
+      services: v._id,
+    }));
   };
 
   const handleDateChange = (string) => {

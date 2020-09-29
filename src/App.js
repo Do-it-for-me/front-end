@@ -59,10 +59,8 @@ function App() {
     if (document.cookie.includes("loggedIn=true")) {
       const existingUsers = window.localStorage.getItem("loggedUser");
       //console.log("existingUsers", typeof existingUsers, existingUsers);
-
-      if (existingUsers != "undefined") {
-        const user = JSON.parse(existingUsers);
-
+      const user = JSON.parse(existingUsers);
+      if (user) {
         handleLoggedInUser(true, user);
       } else {
         handleLoggedInUser(false, undefined);
