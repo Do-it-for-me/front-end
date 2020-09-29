@@ -18,7 +18,7 @@ export const DateRangePicker = (props) => {
           moment("2015/01/01", dateFormat),
         ]} */
         format={dateFormat}
-        onChange={props.handleOnChange}
+        onChange={props.onChange}
       />
     </Space>
   );

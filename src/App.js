@@ -6,6 +6,7 @@ import Home from "./Components/views/Home";
 import Header from "./Components/Elements/Header";
 import ImageUpload from "./Components/ImageUpload";
 import SearchResult from "./Components/views/SearchResult";
+import Profile from "./Components/views/Profile";
 import Login from "./Components/views/Login";
 import Signup from "./Components/views/Signup";
 
@@ -24,7 +25,7 @@ function App() {
   //LoggedIn User Context
   const [loggedInUser, setLoggedInUser] = useState({});
   const handleLoggedInUser = (logged, user) => {
-    setLoggedInUser({ logged: logged, user: user });
+    setLoggedInUser({ logged: logged, user: { ...user } });
   };
   const contextValue = {
     user: loggedInUser,
@@ -58,6 +59,7 @@ function App() {
     if (document.cookie.includes("loggedIn=true")) {
       const existingUsers = window.localStorage.getItem("loggedUser");
       //console.log("existingUsers", typeof existingUsers, existingUsers);
+
       if (existingUsers != "undefined") {
         const user = JSON.parse(existingUsers);
 
@@ -78,7 +80,7 @@ function App() {
             <Login path="/login" />
             <Signup path="/signup" />
             <ImageUpload path="/test" />
-
+            <Profile path="/:id" />
             <CardContainer path="/cardContainer" />
             {/*         <DateRangePicker onChange={onChange} path="/test1" /> */}
           </Router>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import colors from "./General-Styles/colors";
-import image1 from "../../images/image1.png";
+import image1 from "../../images/profileImage.jpg";
 
 export const StyledCards = styled.div`
   position: relative;

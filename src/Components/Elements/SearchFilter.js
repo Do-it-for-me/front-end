@@ -28,12 +28,12 @@ export default function SearchFilter({ extend, invertExtend }) {
       <SelectServices
         placeholder={queryData.services}
         type="Service"
-        handleOnChange={(string, v) => handleServiceChange(v)}
+        onChange={(string, v) => handleServiceChange(v)}
       />
       <SelectServices
         type="City"
         placeholder={queryData.city}
-        handleOnChange={(string, v) => handleCityChange(v)}
+        onChange={(string, v) => handleCityChange(v)}
       />
       <OneDatePicker onChange={(date, string) => handleDateChange(string)} />
       <PriceSlider onChange={(v) => handlePriceChange(v)} />

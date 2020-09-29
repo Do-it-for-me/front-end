@@ -12,7 +12,7 @@ export default function SelectServices(props) {
       <AutoComplete
         style={{}}
         placeholder={props.placeholder}
-        onChange={props.handleOnChange}
+        onChange={props.onChange}
         options={options}
         placeholder={`Select a ${props.type}`}
         filterOption={(inputValue, option) =>
