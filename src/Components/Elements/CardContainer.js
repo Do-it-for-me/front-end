@@ -8,15 +8,15 @@ const CardContainer = () => {
   return (
     <StyledCardContainer>
       {providers &&
+        providers.map((item) => <Cards key={item._id} data={item} />)}
+      {/* {providers &&
         providers.map((item) => <Cards key={new Date()} data={item} />)}
       {providers &&
         providers.map((item) => <Cards key={new Date()} data={item} />)}
       {providers &&
         providers.map((item) => <Cards key={new Date()} data={item} />)}
       {providers &&
-        providers.map((item) => <Cards key={new Date()} data={item} />)}
-      {providers &&
-        providers.map((item) => <Cards key={new Date()} data={item} />)}
+        providers.map((item) => <Cards key={new Date()} data={item} />)} */}
     </StyledCardContainer>
   );
 };

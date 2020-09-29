@@ -4,6 +4,8 @@ import { StyledNavBarMobile } from "../Styled-Components/StyledNavBarMobile";
 import { StyledButton } from "../Styled-Components/StyledButton";
 import UserContext from "../../data/UserContext";
 import useSignUpForm from "../../data/useSignupForm";
+import { StyledProfileIcon } from "../Styled-Components/StyledProfileIcon";
+
 const NavBarMobile = ({ extend, unExtend }) => {
   const { loggedInUserData, handleLogout } = useSignUpForm();
 
@@ -36,8 +38,15 @@ const NavBarMobile = ({ extend, unExtend }) => {
           <StyledButton type="secondary" onClick={unExtend}>
             Provide a Service
           </StyledButton>
-          <Link onClick={unExtend} to="/">
-            <div>profile</div>
+          <Link
+            onClick={unExtend}
+            to={`/${user.user ? user.user._id : "login"}`}
+          >
+            <StyledProfileIcon
+              image={user.user ? user.user.image : null}
+              logged={user.logged}
+              mobile
+            />
           </Link>
         </StyledNavBarMobile>
       )}

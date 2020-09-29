@@ -104,7 +104,7 @@ const useSignUpForm = () => {
             body: JSON.stringify(user),
           })
         ).json();
-        console.log("response", response, typeof response);
+
         if (response.error) {
           setError({
             status: true,
