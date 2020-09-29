@@ -21,9 +21,10 @@ export const StyledSearchFilter = styled.div`
 
   ${({ extend }) => extend && `transform: scaleX(1);`}
 
-  a button {
+  button[type="primary"] {
     width: 17rem;
   }
+
   @media screen and (min-width: 768px) {
     position: fixed;
     transform: none;

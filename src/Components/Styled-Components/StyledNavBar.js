@@ -5,18 +5,19 @@ export const StyledNavBar = styled.div`
   font-size: 16px;
   width: 50vw;
   display: none;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   button {
     max-width: 160px;
     max-height: 40px;
     font-size: inherit;
+    margin-right: 3rem;
   }
   div {
     position: relative;
     font-weight: bold;
     text-align: center;
-    /* width: 20%; */
+    margin-right: 3rem;
     color: ${colors.light};
     cursor: pointer;
     :hover {

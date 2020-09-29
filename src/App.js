@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Router } from "@reach/router";
 
 // Components ///////////////
@@ -6,6 +6,7 @@ import Home from "./Components/views/Home";
 import Header from "./Components/Elements/Header";
 import ImageUpload from "./Components/ImageUpload";
 import SearchResult from "./Components/views/SearchResult";
+import Profile from "./Components/views/Profile";
 import Login from "./Components/views/Login";
 import Signup from "./Components/views/Signup";
 
@@ -24,22 +25,25 @@ function App() {
   //LoggedIn User Context
   const [loggedInUser, setLoggedInUser] = useState({});
   const handleLoggedInUser = (logged, user) => {
-    setLoggedInUser({ logged: logged, user: user });
+    setLoggedInUser({ logged: logged, user: { ...user } });
   };
   const contextValue = {
     user: loggedInUser,
     handleLoggedInUser: handleLoggedInUser,
   };
 
-  //serchProviders Context
+  //searchProviders Context
   const [providers, setProviders] = useState([]);
+  const [queryData, setQueryData] = useState({});
   const stateSetter = (array) => {
     setProviders(array);
   };
-
-  const contextProvidersValue = {
-    providers: providers,
-    stateSetter: stateSetter,
+  console.log("querydata from app.js", queryData);
+  const searchResultContextValue = {
+    providers,
+    stateSetter,
+    queryData,
+    setQueryData,
   };
 
   useEffect(() => {
@@ -55,6 +59,7 @@ function App() {
     if (document.cookie.includes("loggedIn=true")) {
       const existingUsers = window.localStorage.getItem("loggedUser");
       //console.log("existingUsers", typeof existingUsers, existingUsers);
+
       if (existingUsers != "undefined") {
         const user = JSON.parse(existingUsers);
 
@@ -65,7 +70,7 @@ function App() {
 
   return (
     <UserContext.Provider value={contextValue}>
-      <SearchResultContext.Provider value={contextProvidersValue}>
+      <SearchResultContext.Provider value={searchResultContextValue}>
         <>
           <Header />
 
@@ -75,7 +80,7 @@ function App() {
             <Login path="/login" />
             <Signup path="/signup" />
             <ImageUpload path="/test" />
-
+            <Profile path="/:id" />
             <CardContainer path="/cardContainer" />
             {/*         <DateRangePicker onChange={onChange} path="/test1" /> */}
           </Router>

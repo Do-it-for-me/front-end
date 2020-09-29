@@ -9,7 +9,7 @@ function OneDatePicker(props) {
   return (
     <StyledOneDatePicker>
       <Space direction="vertical" size={12}>
-        <DatePicker format={dateFormat} />
+        <DatePicker onChange={props.onChange} format={dateFormat} />
       </Space>
     </StyledOneDatePicker>
   );
