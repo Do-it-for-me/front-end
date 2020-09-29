@@ -14,7 +14,7 @@ export default function PricePicker(props) {
       <Slider
         tipFormatter={formatter}
         max={15}
-        defaultValue={9}
+        defaultValue={props.defaultValue ? props.defaultValue : 9}
         onChange={props.onChange}
       />
     </StyledPriceSlider>

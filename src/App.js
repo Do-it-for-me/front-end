@@ -9,7 +9,7 @@ import SearchResult from "./Components/views/SearchResult";
 import Profile from "./Components/views/Profile";
 import Login from "./Components/views/Login";
 import Signup from "./Components/views/Signup";
-
+import ServicesToggler from "./Components/Elements/ServicesToggler";
 import CardContainer from "./Components/Elements/CardContainer";
 
 // Global Style///////////
@@ -64,6 +64,8 @@ function App() {
         const user = JSON.parse(existingUsers);
 
         handleLoggedInUser(true, user);
+      } else {
+        handleLoggedInUser(false, undefined);
       }
     }
   }, []);
@@ -82,7 +84,7 @@ function App() {
             <ImageUpload path="/test" />
             <Profile path="/:id" />
             <CardContainer path="/cardContainer" />
-            {/*         <DateRangePicker onChange={onChange} path="/test1" /> */}
+            <ServicesToggler path="/test1" />
           </Router>
           <GlobalStyle />
         </>

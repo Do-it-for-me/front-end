@@ -18,6 +18,8 @@ export const SignupForm = () => {
     handelSignupForm,
     handleServiceChange,
     handleDateChange,
+    handleBioChange,
+    handlePriceChange,
   } = useSignupForm();
   const [extendProvider, setExtendProvider] = useState(false);
   console.log(
@@ -124,6 +126,8 @@ export const SignupForm = () => {
             handleServiceChange={handleServiceChange}
             handleDateChange={handleDateChange}
             cleanupProviderData={cleanupProviderData}
+            handleBioChange={handleBioChange}
+            handlePriceChange={handlePriceChange}
           />
         ) : (
           ""

@@ -27,6 +27,23 @@ export const StyledProvideService = styled.div`
     }
   }
   /* servicesContainer ends */
+  .priceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .priceLabel {
+      display: none;
+    }
+    .ant-slider-rail {
+      background-color: ${colors.middle};
+    }
+  }
+  .bioContainer {
+    textarea {
+      width: 90%;
+      height: 8rem;
+    }
+  }
   .availabilityContainer {
     margin: 2rem 0;
     display: flex;
