@@ -4,6 +4,7 @@ import { StyledButton } from "../Styled-Components/StyledButton";
 import ErrorMsg from "../Elements/ErrorMsg";
 import useSignupForm from "../../data/useSignupForm";
 import UserContext from "../../data/UserContext";
+import { Link } from "@reach/router";
 export const LoginForm = () => {
   const {
     userData,
@@ -38,6 +39,11 @@ export const LoginForm = () => {
               placeholder="Password"
             />
             <StyledButton type="primary">Submit</StyledButton>
+            <Link to="/signup">
+              <div className="to-signup">
+                Or signup if you don't already have an account
+              </div>
+            </Link>
           </form>
         </StyledSignupForm>
       )}

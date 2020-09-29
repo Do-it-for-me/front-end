@@ -37,7 +37,10 @@ export default function SearchFilter({ extend, invertExtend }) {
       />
       <OneDatePicker onChange={(date, string) => handleDateChange(string)} />
       <PriceSlider onChange={(v) => handlePriceChange(v)} />
-      <StarRate onChange={handleRateChange} />
+      <div>
+        <div className="rateLabel">Minimum Rate</div>
+        <StarRate onChange={handleRateChange} />
+      </div>
       <Link to="/search-result">
         <StyledButton type="primary">
           <div onClick={() => handleClick()}>Search</div>

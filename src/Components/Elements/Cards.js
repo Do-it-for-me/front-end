@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StyledCards } from "../Styled-Components/StyledCards";
+import StarRate from "./StarRate";
 
 const Cards = (props) => {
   const [extend, setExtend] = useState(false);
@@ -14,7 +15,9 @@ const Cards = (props) => {
 
   return (
     <StyledCards extend={extend} image={props.image || ""}>
-      <div className="profilePic"></div>
+      <div className="profilePic">
+        <StarRate disabled={true} />
+      </div>
       <div className="infoSection">
         <div className="__namePriceContainer">
           <h3>{data.fullName}</h3>
@@ -28,11 +31,22 @@ const Cards = (props) => {
             </p>
           ))}
           {/* <p className="note">{data.note}</p> */}
-          <p className="text">
+          <p className="bioText">
             {data.bio}
             <span className="more" onClick={() => setExtend(!extend)}>
               ^
             </span>
+            Hello mr. Wafi, I would like Hello mr. Wafi, I would like Hello mr.
+            Wafi, I would like Hello mr. Wafi, I would like Hello mr. Wafi, I
+            would like Hello mr. Wafi, I would like Hello mr. Wafi, I would like
+            Hello mr. Wafi, I would like Hello mr. Wafi, I would like Hello mr.
+            Wafi, I would like Hello mr. Wafi, I would like Hello mr. Wafi, I
+            would like Hello mr. Wafi, I would like Hello mr. Wafi, I would like
+            Hello mr. Wafi, I would like Hello mr. Wafi, I would like Hello mr.
+            Wafi, I would like Hello mr. Wafi, I would like Hello mr. Wafi, I
+            would like Hello mr. Wafi, I would like Hello mr. Wafi, I would like
+            Hello mr. Wafi, I would like Hello mr. Wafi, I would like Hello mr.
+            Wafi, I would like
           </p>
         </div>
 

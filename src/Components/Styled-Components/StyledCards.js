@@ -13,6 +13,7 @@ export const StyledCards = styled.div`
   justify-content: space-between;
   color: ${colors.dark};
   background-color: rgb(206, 204, 204);
+  overflow: hidden;
 
   .profilePic {
     background-image: url(${(props) => (props.image ? props.image : image1)});
@@ -30,9 +31,15 @@ export const StyledCards = styled.div`
     width: 100%;
     transition: all ease-in-out 0.5s;
     height: ${(props) => (props.extend ? "430px" : "230px")};
+    max-height: ${(props) => (props.extend ? "430px" : "230px")};
     top: ${(props) => (props.extend ? "30px" : "230px")};
     display: flex;
     flex-direction: column;
+
+    .bioText {
+      height: ${(props) => (props.extend ? "290px" : "90px")};
+      overflow: hidden;
+    }
 
     .__namePriceContainer {
       width: 100%;
@@ -82,6 +89,8 @@ export const StyledCards = styled.div`
 
     .__buttonContainer {
       width: 100%;
+      position: absolute;
+      bottom: 14px;
       display: flex;
 
       .viewProfile {

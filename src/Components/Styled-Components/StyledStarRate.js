@@ -7,10 +7,6 @@ export const StyledStarRate = styled.div`
   display: flex;
   flex-flow: column;
 
-  .rateLabel {
-    color: ${colors.light};
-  }
-
   .ant-rate {
     /* background-color: red; */
     color: ${colors.dark};
