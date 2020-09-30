@@ -4,7 +4,7 @@ import { Router } from "@reach/router";
 // Components ///////////////
 import Home from "./Components/views/Home";
 import Header from "./Components/Elements/Header";
-import ImageUpload from "./Components/ImageUpload";
+
 import SearchResult from "./Components/views/SearchResult";
 import Profile from "./Components/views/Profile";
 import Login from "./Components/views/Login";
@@ -79,7 +79,7 @@ function App() {
             <SearchResult path="/search-result" />
             <Login path="/login" />
             <Signup path="/signup" />
-            <ImageUpload path="/test" />
+
             <Profile path="/:id" />
             <CardContainer path="/cardContainer" />
             <ServicesToggler path="/test1" />

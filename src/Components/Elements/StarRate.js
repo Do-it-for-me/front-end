@@ -4,13 +4,13 @@ import { Rate } from "antd";
 
 export default function StarRate(props) {
   return (
-    <StyledStarRate {...props}>
-      <div className="rateLabel">Minimum Rate</div>
+    <StyledStarRate>
       <Rate
         allowHalf
         disabled={props.disabled}
         onChange={props.onChange}
-        defaultValue={2.5}
+        defaultValue={props.defaultValue || 2.5}
+        value={props.value}
       />
     </StyledStarRate>
   );
