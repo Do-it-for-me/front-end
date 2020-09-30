@@ -36,6 +36,9 @@ const useSignUpForm = () => {
       signupForm(event, userData);
     }
   }; */
+  const handelUpdateProfile = (e, id) => {
+    if (e) e.preventDefault();
+  };
 
   const handelSignupForm = async (event) => {
     if (event) {
@@ -72,6 +75,7 @@ const useSignUpForm = () => {
       if (response && response._id) {
         handleLoggedInUser(true, { ...response });
         window.location = BROWSER_ENDPOINT;
+        setUserData({});
       }
     }
   };
@@ -147,6 +151,7 @@ const useSignUpForm = () => {
     handelSignupForm,
     handleBioChange,
     handlePriceChange,
+    handelUpdateProfile,
   };
 };
 

@@ -8,7 +8,7 @@ import { StyledButton } from "../Styled-Components/StyledButton";
 import ErrorMsg from "../Elements/ErrorMsg";
 import useSignupForm from "../../data/useSignupForm";
 import UserContext from "../../data/UserContext";
-export const SignupForm = () => {
+export const SignupForm = ({ origin, id }) => {
   const {
     userData,
     stateError,
@@ -20,6 +20,7 @@ export const SignupForm = () => {
     handleDateChange,
     handleBioChange,
     handlePriceChange,
+    handelUpdateProfile,
   } = useSignupForm();
   const [extendProvider, setExtendProvider] = useState(false);
   console.log(
@@ -30,7 +31,13 @@ export const SignupForm = () => {
 
   return (
     <StyledSignupForm>
-      <form onSubmit={(e) => handelSignupForm(e)}>
+      <form
+        onSubmit={(e) => {
+          origin === "signup"
+            ? handelSignupForm(e)
+            : handelUpdateProfile(e, id);
+        }}
+      >
         {stateError.status && stateError.details.firstName && (
           <ErrorMsg msg={stateError.details.firstName} />
         )}

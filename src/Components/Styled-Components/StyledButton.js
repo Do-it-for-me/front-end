@@ -5,6 +5,7 @@ export const StyledButton = styled.button`
   background-color: ${(props) => {
     if (props.type === "primary") return colors.primary;
     if (props.type === "secondary") return colors.secondary;
+    if (props.type === "danger") return colors.danger;
   }};
   cursor: pointer;
   font-size: 1.5rem;

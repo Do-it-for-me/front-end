@@ -27,8 +27,13 @@ const NavBar = () => {
           </Link>
         </>
       )}
-      <StyledButton type="secondary">Provide a Service</StyledButton>
-      <Link to={`/${user.user ? user.user._id : "login"}`}>
+      <Link
+        state={{ provider: true }}
+        to={`/${user.logged ? user.user._id : "login"}`}
+      >
+        <StyledButton type="secondary">Provide a Service</StyledButton>
+      </Link>
+      <Link to={`/${user.logged ? user.user._id : "login"}`}>
         <StyledProfileIcon
           image={user.user ? user.user.image : null}
           logged={user.logged}

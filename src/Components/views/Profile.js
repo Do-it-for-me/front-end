@@ -1,20 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "@reach/router";
+import { useParams, useLocation } from "@reach/router";
 import { useProfileFetch } from "../../data/useProfileFetch";
 import profileImage from "../../images/profileImage.jpg";
+
+import { Link } from "@reach/router";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload, faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 // COMPONENTS
 import { StyledProfile } from "../Styled-Components/StyledProfile";
+import { StyledButton } from "../Styled-Components/StyledButton";
 import StarRate from "../Elements/StarRate";
 import ImageUpload from "../Elements/ImageUpload";
+import SignupForm from "../Elements/SignupForm";
+
 const Profile = (props) => {
-  const [imageUpload, setImageUpload] = useState(true);
+  const [imageUpload, setImageUpload] = useState(false);
+  const [updateProfile, setUpdateProfile] = useState(false);
   const params = useParams();
+  const location = useLocation();
+  console.log("LOCATION", location);
+  console.log(window);
   const { fetchUser, profile } = useProfileFetch();
   useEffect(() => {
     fetchUser(params.id);
+    if (location.state.provider) setUpdateProfile(true);
   }, []);
   return (
     <StyledProfile>
@@ -35,8 +45,18 @@ const Profile = (props) => {
           <div className="ImageUploadComponentBG"> </div>
         </div>
       )}
+      {updateProfile && (
+        <div className="profileUpdateContainer">
+          <div className="profileUpdateBG"> </div>
+          <div className="signupFormContainer">
+            <span onClick={() => setUpdateProfile(false)} className="close">
+              X
+            </span>
+            <SignupForm origin="profile" id={params.id} />
+          </div>
+        </div>
+      )}
       <div className="profileContainer">
-        <div className="uploadImageContainer"></div>
         <div className="profileHeader">
           <div className="imageContainer">
             <img alt={profile.fullName} src={profile.image || profileImage} />
@@ -60,10 +80,19 @@ const Profile = (props) => {
               <StarRate value={Number(profile.rate)} disabled={true} />{" "}
               <span className="ratersQuantity">(23)</span>
             </div>
+            <StyledButton onClick={() => setUpdateProfile(true)} type="danger">
+              Edit Profile
+            </StyledButton>
+          </div>
+        </div>
+        <div className="profileBody">
+          <div className="servicesContainer">
             <div className="services">
               {profile.services &&
                 profile.services.map((item) => (
-                  <span className="service">{item.value}</span>
+                  <span key={item._id} className="service">
+                    {item.value}
+                  </span>
                 ))}
               {profile.availability ? (
                 <>

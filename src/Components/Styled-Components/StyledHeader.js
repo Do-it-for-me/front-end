@@ -2,7 +2,7 @@ import styled from "styled-components";
 import colors from "./General-Styles/colors";
 
 export const StyledHeader = styled.div`
-  z-index: 100;
+  z-index: 10000;
   position: fixed;
   width: 100vw;
   height: 7rem;
