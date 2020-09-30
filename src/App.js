@@ -4,7 +4,6 @@ import { Router } from "@reach/router";
 // Components ///////////////
 import Home from "./Components/views/Home";
 import Header from "./Components/Elements/Header";
-
 import SearchResult from "./Components/views/SearchResult";
 import Profile from "./Components/views/Profile";
 import Login from "./Components/views/Login";

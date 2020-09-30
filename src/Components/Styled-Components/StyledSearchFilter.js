@@ -21,6 +21,10 @@ export const StyledSearchFilter = styled.div`
 
   ${({ extend }) => extend && `transform: scaleX(1);`}
 
+  .rateLabel {
+    color: ${colors.light};
+  }
+
   button[type="primary"] {
     width: 17rem;
   }
@@ -30,7 +34,7 @@ export const StyledSearchFilter = styled.div`
     transform: none;
     transform-origin: none;
     transition: none;
-    width: 40%;
+    width: 300px;
     top: 0;
     left: 0;
     height: 100vh;

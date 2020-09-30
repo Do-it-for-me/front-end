@@ -13,4 +13,12 @@ export const StyledSignup = styled.div`
   color: ${colors.dark};
   padding-top: 10rem;
   margin: 0;
+
+  a {
+    margin-top: 2rem;
+
+    .to-signup {
+      font-size: 1.5rem;
+    }
+  }
 `;
