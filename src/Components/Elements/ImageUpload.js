@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import { StyledImageUpload } from "./Styled-Components/StyledImageUpload";
+import { StyledImageUpload } from "../Styled-Components/StyledImageUpload";
 
 export default class ImageUpload extends Component {
   state = {
@@ -69,7 +69,6 @@ export default class ImageUpload extends Component {
           Upload!
         </button>
       </StyledImageUpload>
-      
     );
   }
 }

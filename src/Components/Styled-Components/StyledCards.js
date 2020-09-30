@@ -8,6 +8,7 @@ export const StyledCards = styled.div`
   width: 250px;
   height: 450px;
   margin: 2rem;
+  -webkit-margin-collapse: collapse;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -21,11 +22,22 @@ export const StyledCards = styled.div`
     background-position: center;
     width: 100%;
     height: 231px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
   }
   .infoSection {
+    .ratePrice {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all ease-in-out 0.5s;
+      position: absolute;
+      top: -30px;
+      padding: 0 1rem;
+
+      .price {
+        font-weight: 700;
+      }
+    }
     background-color: ${colors.middle};
     position: absolute;
     width: 100%;
@@ -36,12 +48,19 @@ export const StyledCards = styled.div`
     display: flex;
     flex-direction: column;
 
+    .arrow {
+      transition: 0.2s ease;
+      ${({ extend }) =>
+        extend ? `transform: rotate(90deg);` : `transform: rotate(-90deg);`}
+      cursor: pointer;
+    }
+
     .bioText {
-      height: ${(props) => (props.extend ? "290px" : "90px")};
+      height: ${(props) => (props.extend ? "270px" : "70px")};
       overflow: hidden;
     }
 
-    .__namePriceContainer {
+    .nameContainer {
       width: 100%;
       display: flex;
       justify-content: space-between;
@@ -59,19 +78,27 @@ export const StyledCards = styled.div`
       }
     }
 
-    .__container {
+    .servicesContainer {
       width: 100%;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       text-align: left;
       padding: 1rem;
       flex-grow: 1;
-      .skills,
-      .note {
-        font-size: 12px;
-        font-weight: 600;
-        width: 234px;
-        height: 20px;
+
+      .skills {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+        .skill {
+          margin-right: 0.3rem;
+          font-weight: 700;
+          .dot {
+            font-size: 0.7rem;
+          }
+        }
       }
 
       .text {

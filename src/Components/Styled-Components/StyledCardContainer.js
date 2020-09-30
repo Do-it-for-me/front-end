@@ -2,9 +2,9 @@ import styled from "styled-components";
 //import colors from "./General-Styles/colors";
 
 export const StyledCardContainer = styled.div`
-  max-width: 100%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   background-color: gray;
