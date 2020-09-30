@@ -24,7 +24,7 @@ const Profile = (props) => {
   const { fetchUser, profile } = useProfileFetch();
   useEffect(() => {
     fetchUser(params.id);
-    if (location.state.provider) setUpdateProfile(true);
+    if (location.state.provideAService) setUpdateProfile(true);
   }, []);
   return (
     <StyledProfile>

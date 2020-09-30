@@ -1,4 +1,4 @@
-import { redirectTo } from "@reach/router";
+import { navigate } from "@reach/router";
 import { useState, useContext } from "react";
 import { SERVER_ENDPOINT, BROWSER_ENDPOINT } from "../config";
 import UserContext from "./UserContext";
@@ -74,8 +74,8 @@ const useSignUpForm = () => {
       console.log("handelSignupForm-response", response);
       if (response && response._id) {
         handleLoggedInUser(true, { ...response });
-        window.location = BROWSER_ENDPOINT;
         setUserData({});
+        navigate(-1);
       }
     }
   };
@@ -90,7 +90,7 @@ const useSignUpForm = () => {
     }
     setUserData((prev) => ({ ...prev, services: services }));
   };
-  const handleLogout = (callback) => {
+  const handleLogout = () => {
     console.log("logout");
     handleLoggedInUser(false, null);
     window.localStorage.removeItem("loggedUser");
@@ -132,7 +132,7 @@ const useSignUpForm = () => {
 
       if (response && response._id) {
         handleLoggedInUser(true, { ...response });
-        window.location = BROWSER_ENDPOINT;
+        /*   window.location = BROWSER_ENDPOINT; */
       }
     }
   };

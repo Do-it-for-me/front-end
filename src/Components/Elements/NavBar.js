@@ -13,7 +13,7 @@ const NavBar = () => {
     <StyledNavBar>
       {user.logged ? (
         <>
-          <Link onClick={() => handleLogout(handleLoggedInUser)} to="/">
+          <Link onClick={() => handleLogout()} to="/">
             <div>Logout</div>
           </Link>
         </>
@@ -28,12 +28,15 @@ const NavBar = () => {
         </>
       )}
       <Link
-        state={{ provider: true }}
+        state={{ provideAService: true }}
         to={`/${user.logged ? user.user._id : "login"}`}
       >
         <StyledButton type="secondary">Provide a Service</StyledButton>
       </Link>
-      <Link to={`/${user.logged ? user.user._id : "login"}`}>
+      <Link
+        state={{ profile: true }}
+        to={`/${user.logged ? user.user._id : "login"}`}
+      >
         <StyledProfileIcon
           image={user.user ? user.user.image : null}
           logged={user.logged}
