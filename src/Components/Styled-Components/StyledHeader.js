@@ -18,9 +18,7 @@ export const StyledHeader = styled.div`
   padding: 0;
   margin: 0;
   z-index: 100;
-  @media (min-width: 900px) {
-    height: 6rem;
-  }
+
   .navBarContainer {
     font-size: 1.6rem;
     padding: 0;
