@@ -9,6 +9,7 @@ const useUpdateProfile = () => {
   const [newUserData, setNewUserData] = useState({
     firstName: "",
     lastName: "",
+    password: "",
   });
 
   /* const [loading, setLoading] = useState(false); */

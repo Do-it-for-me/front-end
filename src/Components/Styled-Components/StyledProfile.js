@@ -213,7 +213,7 @@ export const StyledProfile = styled.div`
         position: absolute;
         font-size: 32px;
         top: 10px;
-        right: 20px;
+        right: 30px;
         font-weight: 700;
         cursor: pointer;
         color: ${colors.danger};

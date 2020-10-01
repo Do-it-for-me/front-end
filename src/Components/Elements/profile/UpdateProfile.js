@@ -1,27 +1,30 @@
 import React, { useState, memo, useContext } from "react";
 import { StyledUpdateProfile } from "../../Styled-Components/StyledUpdateProfile";
 import useUpdateProfile from "../../../data/useUpdateProfile";
-
+import PasswordUpdate from "./PasswordUpdate";
 import BasicDataUpdate from "./BasicDataUpdate";
+
 const UpdateProfile = memo(({ oldUserData }) => {
-  const [basicData, setBasicData] = useState(false);
-  const [password, setPassword] = useState(false);
-  const [providerData, setProviderData] = useState(false);
+  const [navigator, setNavigator] = useState("basic");
+
   return (
     <StyledUpdateProfile>
       <h2>Update Profile</h2>
-      <BasicDataUpdate
-      /*         oldUserData={oldUserData}
-        handleFieldsChange={handleFieldsChange}
-        handleCityChange={handleCityChange}
-        handleDateChange={handleDateChange}
-        handlePriceChange={handlePriceChange}
-        handleBioChange={handleBioChange}
-        clearField={clearField}
-        handelUpdateProfile={handelUpdateProfile}
-        handleServiceChange={handleServiceChange}
-        newUserData={newUserData} */
-      />
+      <div className="updateProfileContainer">
+        <div className="updateProfileNavigator">
+          <button onClick={() => setNavigator("basic")}>
+            Basic Profile Data
+          </button>
+          <button onClick={() => setNavigator("password")}>Password</button>
+          <button onClick={() => setNavigator("provider")}>
+            Services Provider Data
+          </button>
+        </div>
+        <div className="dataContainer">
+          {navigator === "basic" && <BasicDataUpdate />}
+          {navigator === "password" && <PasswordUpdate />}
+        </div>
+      </div>
     </StyledUpdateProfile>
   );
 });

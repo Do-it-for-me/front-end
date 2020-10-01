@@ -14,7 +14,6 @@ const BasicDataUpdate = () => {
       <InputField FieldTitle="Email" field="email" />
       <InputField FieldTitle="Street" field="street" />
       <InputField FieldTitle="ZIP Code" field="zip" />
-
       <UpdateCity
         FieldTitle="City"
         field="city"

@@ -3,15 +3,19 @@ import { StyledInputField } from "../../Styled-Components/StyledInputField";
 import useUpdateProfile from "../../../data/useUpdateProfile";
 import UserContext from "../../../data/UserContext";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+
 const InputField = ({ field, FieldTitle }) => {
   const {
     handleFieldsChange,
     clearField,
     handelUpdateProfile,
-    handleServiceChange,
+
     newUserData,
   } = useUpdateProfile();
   const [active, setActive] = useState(false);
+  const [passwordMood, setPasswordMood] = useState(true);
   const { user } = useContext(UserContext);
   const oldUserData = user.user ? user.user : {};
   return (
@@ -19,11 +23,17 @@ const InputField = ({ field, FieldTitle }) => {
       <label htmlFor={field}>{FieldTitle}</label>
       <div className="inputContainer">
         <input
-          placeholder={oldUserData[field]}
+          placeholder="*********"
+          type={passwordMood && active ? "password" : "text"}
           disabled={!active}
-          value={active ? newUserData[field] || "" : oldUserData[field] || ""}
+          value={active ? newUserData[field] : ""}
           onChange={(e) => handleFieldsChange(e.target)}
           name={field}
+        />
+        <FontAwesomeIcon
+          className="showPassword"
+          onClick={() => setPasswordMood(!passwordMood)}
+          icon={faEye}
         />
       </div>
       <div className="editButtons">
