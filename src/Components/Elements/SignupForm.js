@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import ProvideService from "../Elements/ProvideService";
 import SelectServices from "../Elements/SelectServices";
@@ -7,7 +7,7 @@ import { StyledSignupForm } from "../Styled-Components/StyledSignupForm";
 import { StyledButton } from "../Styled-Components/StyledButton";
 import ErrorMsg from "../Elements/ErrorMsg";
 import useSignupForm from "../../data/useSignupForm";
-import UserContext from "../../data/UserContext";
+/* import UserContext from "../../data/UserContext"; */
 export const SignupForm = ({ origin, id }) => {
   const {
     userData,

@@ -26,7 +26,7 @@ export const HeroSection = () => {
           <SelectServices
             type="Service"
             onChange={(string, v) => handleServiceChange(v)}
-            name="city"
+            name="Service"
           />
           <SelectServices
             onChange={(string, v) => handleCityChange(v)}

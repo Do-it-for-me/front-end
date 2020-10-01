@@ -132,6 +132,7 @@ export const StyledProfile = styled.div`
   }
   .profileBody {
     width: 100%;
+    max-width: 340px;
     margin: 10px auto;
     display: flex;
     flex-direction: column;
@@ -139,6 +140,7 @@ export const StyledProfile = styled.div`
     align-items: stretch;
     @media (min-width: 768px) {
       padding: 20px;
+      max-width: 100%;
     }
     .servicesContainer {
       display: flex;

@@ -1,12 +1,12 @@
 import { navigate } from "@reach/router";
 import { useState, useContext } from "react";
-import { SERVER_ENDPOINT, BROWSER_ENDPOINT } from "../config";
+import { SERVER_ENDPOINT } from "../config";
 import UserContext from "./UserContext";
 const useSignUpForm = () => {
   const { handleLoggedInUser } = useContext(UserContext);
 
   const [userData, setUserData] = useState({});
-  const [loading, setLoading] = useState(false);
+  /* const [loading, setLoading] = useState(false); */
   const [stateError, setError] = useState({ status: false, details: "" });
   console.log(userData);
   const [loggedInUserData, setLoggedInUserData] = useState();

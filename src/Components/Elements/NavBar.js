@@ -6,7 +6,7 @@ import { StyledProfileIcon } from "../Styled-Components/StyledProfileIcon";
 import useSignUpForm from "../../data/useSignupForm";
 import UserContext from "../../data/UserContext";
 const NavBar = () => {
-  const { user, handleLoggedInUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   console.log(user);
   const { handleLogout } = useSignUpForm();
   return (

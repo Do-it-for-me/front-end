@@ -1,31 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, useLocation } from "@reach/router";
 import { useProfileFetch } from "../../data/useProfileFetch";
 import profileImage from "../../images/profileImage.jpg";
 
-import { Link } from "@reach/router";
+/* import { Link } from "@reach/router"; */
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUpload, faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 // COMPONENTS
 import { StyledProfile } from "../Styled-Components/StyledProfile";
 import { StyledButton } from "../Styled-Components/StyledButton";
 import StarRate from "../Elements/StarRate";
 import ImageUpload from "../Elements/ImageUpload";
-import SignupForm from "../Elements/SignupForm";
+import UpdateProfile from "../Elements/profile/UpdateProfile";
+import UserContext from "../../data/UserContext";
 
 const Profile = (props) => {
+  const { user } = useContext(UserContext);
+
   const [imageUpload, setImageUpload] = useState(false);
-  const [updateProfile, setUpdateProfile] = useState(false);
+  const [updateProfile, setUpdateProfile] = useState(true);
   const params = useParams();
   const location = useLocation();
   console.log("LOCATION", location);
   console.log(window);
   const { fetchUser, profile } = useProfileFetch();
+
   useEffect(() => {
     fetchUser(params.id);
-    if (location.state.provideAService) setUpdateProfile(true);
-  }, []);
+    if (location.state && location.state.provideAService)
+      setUpdateProfile(true);
+  }, [user]);
+
   return (
     <StyledProfile>
       {imageUpload && (
@@ -52,7 +58,7 @@ const Profile = (props) => {
             <span onClick={() => setUpdateProfile(false)} className="close">
               X
             </span>
-            <SignupForm origin="profile" id={params.id} />
+            <UpdateProfile />
           </div>
         </div>
       )}

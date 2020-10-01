@@ -7,7 +7,7 @@ import useSignUpForm from "../../data/useSignupForm";
 import { StyledProfileIcon } from "../Styled-Components/StyledProfileIcon";
 
 const NavBarMobile = ({ extend, unExtend }) => {
-  const { loggedInUserData, handleLogout } = useSignUpForm();
+  const { handleLogout } = useSignUpForm();
   const { user, handleLoggedInUser } = useContext(UserContext);
   return (
     <StyledNavBarMobile extend={extend}>
