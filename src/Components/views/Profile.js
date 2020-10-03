@@ -19,7 +19,7 @@ const Profile = (props) => {
   const { user } = useContext(UserContext);
 
   const [imageUpload, setImageUpload] = useState(false);
-  const [updateProfile, setUpdateProfile] = useState(true);
+  const [updateProfile, setUpdateProfile] = useState(false);
   const params = useParams();
   const location = useLocation();
   console.log("LOCATION", location);

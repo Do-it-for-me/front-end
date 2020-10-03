@@ -33,10 +33,19 @@ const NavBarMobile = ({ extend, unExtend }) => {
           </Link>
         </>
       )}
-      <StyledButton type="secondary" onClick={unExtend}>
-        Provide a Service
-      </StyledButton>
-      <Link onClick={unExtend} to={`/${user.logged ? user.user._id : "login"}`}>
+      <Link
+        state={{ provideAService: true }}
+        to={`/${user.logged ? user.user._id : "login"}`}
+      >
+        <StyledButton type="secondary" onClick={unExtend}>
+          Provide a Service
+        </StyledButton>
+      </Link>
+      <Link
+        state={{ profile: true }}
+        onClick={unExtend}
+        to={`/${user.logged ? user.user._id : "login"}`}
+      >
         <StyledProfileIcon
           image={user.user ? user.user.image : null}
           logged={user.logged}

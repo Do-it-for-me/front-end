@@ -2,8 +2,7 @@ import styled from "styled-components";
 import colors from "./General-Styles/colors";
 
 export const StyledPriceSlider = styled.div`
-  width: 17rem;
-
+  width: ${(props) => (props.fullWidth ? "50%" : "17rem")};
   .priceLabel {
     color: ${colors.light};
   }

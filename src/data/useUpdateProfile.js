@@ -148,6 +148,7 @@ const useUpdateProfile = () => {
     handelUpdateProfile,
     handleServiceChange,
     newUserData,
+    setNewUserData,
   };
 };
 

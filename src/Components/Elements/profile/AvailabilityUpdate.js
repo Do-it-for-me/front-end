@@ -1,44 +1,51 @@
 import React, { useState, useContext } from "react";
+import moment from "moment";
 import { StyledInputField } from "../../Styled-Components/StyledInputField";
 import useUpdateProfile from "../../../data/useUpdateProfile";
 import UserContext from "../../../data/UserContext";
-import SelectServices from "../SelectServices";
-import { useOptionsFetch } from "../../../data/useOptionsFetch";
-import { AutoComplete } from "antd";
-import { StylesSelectServicesProfile } from "../../Styled-Components/StylesSelectServicesProfile";
-
-const UpdateCity = ({ field, FieldTitle }) => {
-  const [{ services, cities }] = useOptionsFetch();
-
+import { DatePicker, Space } from "antd";
+import { StyledAvailabilityUpdate } from "../../Styled-Components/StyledAvailabilityUpdate";
+const AvailabilityUpdate = ({ field, FieldTitle }) => {
+  const dateFormat = "YYYY/MM/DD";
+  const { RangePicker } = DatePicker;
   const {
     clearField,
     handelUpdateProfile,
-    handleServiceChange,
-    handleCityChange,
+    handleDateChange,
     newUserData,
   } = useUpdateProfile();
   const [active, setActive] = useState(false);
   const { user } = useContext(UserContext);
   const oldUserData = user.user ? user.user : {};
+  const startDate =
+    oldUserData.availability && oldUserData.availability.startDate
+      ? moment(oldUserData.availability.startDate, dateFormat)
+      : "";
+  const endDate =
+    oldUserData.availability && oldUserData.availability.endDate
+      ? moment(oldUserData.availability.endDate, dateFormat)
+      : "";
   return (
-    <StyledInputField>
+    <StyledAvailabilityUpdate>
       <label htmlFor={field}>{FieldTitle}</label>
-      <div className="select">
-        <AutoComplete
-          disabled={!active}
-          placeholder={oldUserData[field] || ""}
-          onChange={(v) => handleCityChange(v)}
-          disabled={!active}
-          options={cities}
-          value={active ? newUserData[field] || "" : oldUserData[field] || ""}
-          defaultValue={oldUserData[field]}
-          name={field}
-          filterOption={(inputValue, option) =>
-            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-          }
-        />
-      </div>
 
+      <div className="dateContainer">
+        <Space direction="vertical" size={8}>
+          <RangePicker
+            disabled={!active}
+            format={dateFormat}
+            onChange={handleDateChange}
+            value={
+              newUserData.availability && newUserData.availability.startDate
+                ? [
+                    newUserData.availability.startDate,
+                    newUserData.availability.endDate,
+                  ]
+                : [startDate, endDate]
+            }
+          />
+        </Space>
+      </div>
       <div className="editButtons">
         {!active ? (
           <button name={field} onClick={(e) => setActive(true)}>
@@ -69,8 +76,8 @@ const UpdateCity = ({ field, FieldTitle }) => {
           </>
         )}
       </div>
-    </StyledInputField>
+    </StyledAvailabilityUpdate>
   );
 };
 
-export default UpdateCity;
+export default AvailabilityUpdate;

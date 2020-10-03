@@ -1,29 +1,32 @@
 import React, { useState, useContext } from "react";
-import { StyledBiography } from "../../Styled-Components/StyledBiography";
+import { StyledInputField } from "../../Styled-Components/StyledInputField";
 import useUpdateProfile from "../../../data/useUpdateProfile";
 import UserContext from "../../../data/UserContext";
+import PriceSlider from "../PriceSlider";
 
-const Biography = ({ field, FieldTitle }) => {
+const PriceField = ({ field, FieldTitle }) => {
   const {
-    handleBioChange,
     clearField,
     handelUpdateProfile,
-    handleServiceChange,
+    handlePriceChange,
     newUserData,
   } = useUpdateProfile();
   const [active, setActive] = useState(false);
   const { user } = useContext(UserContext);
   const oldUserData = user.user ? user.user : {};
   return (
-    <StyledBiography>
+    <StyledInputField>
       <label htmlFor={field}>{FieldTitle}</label>
-      <div className="inputContainer">
-        <textarea
-          maxLength={700}
-          onChange={(e) => handleBioChange(e.target.value)}
-          placeholder={oldUserData[field]}
+
+      <div className="price">
+        <PriceSlider
           disabled={!active}
-          value={active ? newUserData[field] || "" : oldUserData[field] || ""}
+          defaultValue={
+            active
+              ? newUserData[field] || oldUserData[field]
+              : oldUserData[field] || 0
+          }
+          onChange={handlePriceChange}
           name={field}
         />
       </div>
@@ -57,8 +60,8 @@ const Biography = ({ field, FieldTitle }) => {
           </>
         )}
       </div>
-    </StyledBiography>
+    </StyledInputField>
   );
 };
 
-export default Biography;
+export default PriceField;
