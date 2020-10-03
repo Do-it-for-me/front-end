@@ -28,7 +28,9 @@ const PriceField = ({ field, FieldTitle }) => {
           disabled={!active}
           value={
             active
-              ? newUserData[field] || oldUserData[field]
+              ? newUserData[field] || newUserData[field] === 0
+                ? newUserData[field]
+                : oldUserData[field]
               : oldUserData[field] || 0
           }
           onChange={handlePriceChange}

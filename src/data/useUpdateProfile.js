@@ -35,7 +35,7 @@ const useUpdateProfile = () => {
   };
 
   const handlePriceChange = (v) => {
-    setNewUserData((prev) => ({ ...prev, price: v }));
+    setNewUserData({ price: v });
   };
 
   const handleBioChange = (text) => {
@@ -59,6 +59,7 @@ const useUpdateProfile = () => {
     const updateBody = newUserData;
     for (let i in updateBody) {
       if (!updateBody[i]) {
+        if (i === "price") continue;
         delete updateBody[i];
       }
     }
