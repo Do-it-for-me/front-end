@@ -38,8 +38,9 @@ export const StyledServicesFieldUpdate = styled.div`
       background-color: ${colors.primary};
     }
     .deActiveBTN {
-      border-color: rgb(144, 144, 144);
-      background-color: rgb(144, 144, 144);
+      border-color: rgb(245, 245, 245);
+      background-color: rgb(245, 245, 245);
+      color: rgb(144, 144, 144);
       svg {
         color: rgb(100, 100, 100);
       }

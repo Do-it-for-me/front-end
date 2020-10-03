@@ -7,7 +7,7 @@ export const StyledAvailabilityUpdate = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 40px;
+  height: 30px;
   flex-grow: 1;
   @media screen and (min-width: 768px) {
     max-width: 100%;
@@ -19,21 +19,30 @@ export const StyledAvailabilityUpdate = styled.div`
   }
 
   .dateContainer {
-    max-width:200px;
+    flex-grow: 1;
     display: flex;
+
     justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-  .ant-space {
-    width: 100%;
+    align-items: stretch;
+    width: 40%;
+    padding: 0;
+    flex-grow: 1;
+    margin: 5px;
+    background-color: ${colors.light};
+    border-radius: 2px;
+    border: solid 1px ${colors.middle};
+    .ant-space {
+      width: 100%;
       height: 30px;
       flex-grow: 1;
       margin: 5px;
       background-color: ${colors.light};
       border-radius: 2px;
       border: solid 1px ${colors.middle};
-  }
+      .ant-picker {
+        width: 100%;
+      }
+    }
 
     .editButtons {
       width: 100px;
@@ -61,15 +70,6 @@ export const StyledAvailabilityUpdate = styled.div`
         background-color: ${colors.primary};
       }
     }
-    .price {
-      width: 40%;
-      height: 30px;
-      flex-grow: 1;
-      margin: 5px;
-      background-color: ${colors.light};
-      border-radius: 2px;
-      border: solid 1px ${colors.middle};
-    }
   }
 
   .editButtons {
@@ -96,17 +96,5 @@ export const StyledAvailabilityUpdate = styled.div`
       border-color: ${colors.primary};
       background-color: ${colors.primary};
     }
-  }
-  .price {
-    width: 40%;
-    height: 30px;
-    flex-grow: 1;
-    margin: 5px;
-    background-color: ${colors.light};
-    border-radius: 2px;
-    border: solid 1px ${colors.middle};
-  }
-  .select * {
-    height: 30px;
   }
 `;

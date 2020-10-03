@@ -7,7 +7,7 @@ import BasicDataUpdate from "./BasicDataUpdate";
 import ServiceProviderDataUpdate from "./ServiceProviderDataUpdate";
 
 const UpdateProfile = memo(({ oldUserData }) => {
-  const [navigator, setNavigator] = useState("");
+  const [navigator, setNavigator] = useState("basic");
   const params = useParams();
   const location = useLocation();
   useEffect(() => {

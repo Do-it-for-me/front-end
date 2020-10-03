@@ -23,6 +23,7 @@ const InputField = ({ field, FieldTitle }) => {
       <label htmlFor={field}>{FieldTitle}</label>
       <div className="inputContainer">
         <input
+          className="passwordInput"
           placeholder="*********"
           type={passwordMood && active ? "password" : "text"}
           disabled={!active}

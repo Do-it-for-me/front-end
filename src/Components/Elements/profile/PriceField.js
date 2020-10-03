@@ -3,7 +3,7 @@ import { StyledInputField } from "../../Styled-Components/StyledInputField";
 import useUpdateProfile from "../../../data/useUpdateProfile";
 import UserContext from "../../../data/UserContext";
 import PriceSlider from "../PriceSlider";
-
+import { Slider } from "antd";
 const PriceField = ({ field, FieldTitle }) => {
   const {
     clearField,
@@ -14,14 +14,19 @@ const PriceField = ({ field, FieldTitle }) => {
   const [active, setActive] = useState(false);
   const { user } = useContext(UserContext);
   const oldUserData = user.user ? user.user : {};
+  function formatter(value) {
+    return `${value}€`;
+  }
   return (
     <StyledInputField>
       <label htmlFor={field}>{FieldTitle}</label>
 
       <div className="price">
-        <PriceSlider
+        <Slider
+          tipFormatter={formatter}
+          max={15}
           disabled={!active}
-          defaultValue={
+          value={
             active
               ? newUserData[field] || oldUserData[field]
               : oldUserData[field] || 0

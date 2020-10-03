@@ -121,11 +121,21 @@ export const StyledInputField = styled.div`
     .price {
       width: 40%;
       height: 30px;
-      flex-grow: 1;
+
       margin: 5px;
       background-color: ${colors.light};
       border-radius: 2px;
       border: solid 1px ${colors.middle};
+      div {
+        max-width: 100%;
+      }
+      .ant-slider-step {
+        display: block;
+        max-width: 40%;
+      }
+      .ant-slider {
+        width: 40%;
+      }
     }
   }
 
