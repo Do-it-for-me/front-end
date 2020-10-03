@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import SearchResultContext from "../../data/SearchResultContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons";
+/* import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons"; */
 import SearchFilter from "../Elements/SearchFilter";
 import Cards from "../Elements/Cards";
 import { StyledButton } from "../Styled-Components/StyledButton";
@@ -26,7 +26,7 @@ const SearchResult = () => {
       >
         <Link to="/search-result">
           <div>
-            Search Filters <FontAwesomeIcon icon={faAngleDoubleDown} />
+            Search Filters {/* <FontAwesomeIcon icon={faAngleDoubleDown} /> */}
           </div>
         </Link>
       </StyledButton>

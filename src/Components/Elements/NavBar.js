@@ -6,14 +6,14 @@ import { StyledProfileIcon } from "../Styled-Components/StyledProfileIcon";
 import useSignUpForm from "../../data/useSignupForm";
 import UserContext from "../../data/UserContext";
 const NavBar = () => {
-  const { user, handleLoggedInUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   console.log(user);
   const { handleLogout } = useSignUpForm();
   return (
     <StyledNavBar>
       {user.logged ? (
         <>
-          <Link onClick={() => handleLogout(handleLoggedInUser)} to="/">
+          <Link onClick={() => handleLogout()} to="/">
             <div>Logout</div>
           </Link>
         </>
@@ -27,8 +27,16 @@ const NavBar = () => {
           </Link>
         </>
       )}
-      <StyledButton type="secondary">Provide a Service</StyledButton>
-      <Link to={`/${user._id || "login"}`}>
+      <Link
+        state={{ provideAService: true }}
+        to={`/${user.logged ? user.user._id : "login"}`}
+      >
+        <StyledButton type="secondary">Provide a Service</StyledButton>
+      </Link>
+      <Link
+        state={{ profile: true }}
+        to={`/${user.logged ? user.user._id : "login"}`}
+      >
         <StyledProfileIcon
           image={user.user ? user.user.image : null}
           logged={user.logged}

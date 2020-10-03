@@ -4,11 +4,14 @@ import axios from "axios";
 import { StyledImageUpload } from "../Styled-Components/StyledImageUpload";
 
 export default class ImageUpload extends Component {
-  state = {
-    // Initially, no file is selected
-    selectedFile: null,
-  };
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      // Initially, no file is selected
+      selectedFile: null,
+    };
+  }
   // On file select (from the pop up)
   onFileChange = (event) => {
     // Update the state
@@ -26,16 +29,23 @@ export default class ImageUpload extends Component {
       this.state.selectedFile,
       this.state.selectedFile.name
     );
-
+    //Click handler from parent
+    /*     handleClick = () => {
+      this.props.onClick();
+      this.onFileUpload();
+    }; */
     // Details of the uploaded file
     console.log(this.state.selectedFile);
 
     // Request made to the backend api
     // Send formData object
     axios.post(
-      "http://localhost:3000/api/users/5f58cca54b249c4dac1d7e40/userImage",
+      `http://localhost:3000/api/users/${this.props.id}/userImage`,
       formData
     );
+    if (this.props.onClick) {
+      this.props.onClick();
+    }
   };
 
   // File content to be displayed after

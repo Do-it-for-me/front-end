@@ -2,14 +2,18 @@ import React from "react";
 import { AutoComplete } from "antd";
 import "antd/dist/antd.css";
 import { StyledSelectServices } from "../Styled-Components/StyledSelectServices";
+import { StylesSelectServicesProfile } from "../Styled-Components/StylesSelectServicesProfile";
+
 import { useOptionsFetch } from "../../data/useOptionsFetch";
 
 export default function SelectServices(props) {
   const [{ services, cities }] = useOptionsFetch();
   const options = props.type === "Service" ? services : cities;
+
   return (
     <StyledSelectServices>
       <AutoComplete
+        defaultValue={props.defaultValue}
         style={{}}
         placeholder={props.placeholder}
         onChange={props.onChange}

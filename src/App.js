@@ -4,12 +4,11 @@ import { Router } from "@reach/router";
 // Components ///////////////
 import Home from "./Components/views/Home";
 import Header from "./Components/Elements/Header";
-import ImageUpload from "./Components/Elements/ImageUpload";
 import SearchResult from "./Components/views/SearchResult";
 import Profile from "./Components/views/Profile";
 import Login from "./Components/views/Login";
 import Signup from "./Components/views/Signup";
-
+import ServicesToggler from "./Components/Elements/ServicesToggler";
 import CardContainer from "./Components/Elements/CardContainer";
 
 // Global Style///////////
@@ -59,11 +58,11 @@ function App() {
     if (document.cookie.includes("loggedIn=true")) {
       const existingUsers = window.localStorage.getItem("loggedUser");
       //console.log("existingUsers", typeof existingUsers, existingUsers);
-
-      if (existingUsers != "undefined") {
-        const user = JSON.parse(existingUsers);
-
+      const user = JSON.parse(existingUsers);
+      if (user) {
         handleLoggedInUser(true, user);
+      } else {
+        handleLoggedInUser(false, undefined);
       }
     }
   }, []);
@@ -79,10 +78,10 @@ function App() {
             <SearchResult path="/search-result" />
             <Login path="/login" />
             <Signup path="/signup" />
-            <ImageUpload path="/test" />
+
             <Profile path="/:id" />
             <CardContainer path="/cardContainer" />
-            {/*         <DateRangePicker onChange={onChange} path="/test1" /> */}
+            <ServicesToggler path="/test1" />
           </Router>
           <GlobalStyle />
         </>

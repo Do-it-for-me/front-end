@@ -21,25 +21,39 @@ export const StyledNavBarMobile = styled.div`
   transition: 0.2s ease;
 
   ${({ extend }) => extend && `transform: scaleX(1);`}
-  button {
+  a {
     width: 80%;
-    height: 7rem;
-    font-size: 32px;
     margin-top: 3rem;
-    /*     max-width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      width: 100%;
+      height: 7rem;
+      font-size: 32px;
+      margin-top: 3rem;
+      /*     max-width: 160px;
     max-height: 40px;
     font-size: inherit; */
+    }
   }
-  div {
+  a {
+    width: 80%;
     margin-top: 3rem;
-    position: relative;
-    font-weight: bold;
-    text-align: center;
-    /* width: 20%; */
-    color: ${colors.light};
-    cursor: pointer;
-    :hover {
-      color: ${colors.secondary};
+    display: flex;
+    justify-content: content;
+    align-items: color-interpolation-filters;
+    div {
+      margin-top: 3rem;
+      position: relative;
+      font-weight: bold;
+      text-align: center;
+      /* width: 20%; */
+      color: ${colors.light};
+      cursor: pointer;
+      :hover {
+        color: ${colors.secondary};
+      }
     }
   }
   @media screen and (min-width: 768px) {

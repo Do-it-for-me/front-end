@@ -2,6 +2,7 @@ import React, { memo, useEffect, useRef } from "react";
 import { useOptionsFetch } from "../../data/useOptionsFetch";
 
 import DateRangePicker from "../Elements/DateRangePicker";
+import PriceSlider from "../Elements/PriceSlider";
 import { StyledProvideService } from "../Styled-Components/StyledProvideService";
 
 const ProvideService = memo((props) => {
@@ -34,6 +35,17 @@ const ProvideService = memo((props) => {
         <DateRangePicker
           onChange={props.handleDateChange}
           value={props.value}
+        />
+      </div>
+      <div className="priceContainer">
+        <h2>Price/Uhr</h2>
+        <PriceSlider onChange={props.handlePriceChange} defaultValue={0} />
+      </div>
+      <div className="bioContainer">
+        <h2>Biography</h2>
+        <textarea
+          maxLength={700}
+          onChange={(e) => props.handleBioChange(e.target.value)}
         />
       </div>
     </StyledProvideService>

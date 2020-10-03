@@ -1,13 +1,14 @@
-import { redirectTo } from "@reach/router";
+import { navigate } from "@reach/router";
 import { useState, useContext } from "react";
-import { SERVER_ENDPOINT, BROWSER_ENDPOINT } from "../config";
+import { SERVER_ENDPOINT } from "../config";
 import UserContext from "./UserContext";
 const useSignUpForm = () => {
   const { handleLoggedInUser } = useContext(UserContext);
 
   const [userData, setUserData] = useState({});
-  const [loading, setLoading] = useState(false);
+  /* const [loading, setLoading] = useState(false); */
   const [stateError, setError] = useState({ status: false, details: "" });
+  console.log(userData);
   const [loggedInUserData, setLoggedInUserData] = useState();
   const handleFieldsChange = (e) => {
     setUserData((prev) => ({ ...prev, [e.name]: e.value }));
@@ -19,6 +20,13 @@ const useSignUpForm = () => {
     const [startDate, endDate] = dates;
     setUserData((prev) => ({ ...prev, availability: { startDate, endDate } }));
   };
+  const handlePriceChange = (v) => {
+    setUserData((prev) => ({ ...prev, price: v }));
+  };
+  const handleBioChange = (text) => {
+    setUserData((prev) => ({ ...prev, bio: text }));
+  };
+
   const cleanupProviderData = () =>
     setUserData((prev) => ({ ...prev, services: [], availability: {} }));
 
@@ -28,6 +36,9 @@ const useSignUpForm = () => {
       signupForm(event, userData);
     }
   }; */
+  const handelUpdateProfile = (e, id) => {
+    if (e) e.preventDefault();
+  };
 
   const handelSignupForm = async (event) => {
     if (event) {
@@ -63,7 +74,8 @@ const useSignUpForm = () => {
       console.log("handelSignupForm-response", response);
       if (response && response._id) {
         handleLoggedInUser(true, { ...response });
-        window.location = BROWSER_ENDPOINT;
+        setUserData({});
+        navigate(-1);
       }
     }
   };
@@ -78,7 +90,7 @@ const useSignUpForm = () => {
     }
     setUserData((prev) => ({ ...prev, services: services }));
   };
-  const handleLogout = (callback) => {
+  const handleLogout = () => {
     console.log("logout");
     handleLoggedInUser(false, null);
     window.localStorage.removeItem("loggedUser");
@@ -120,7 +132,7 @@ const useSignUpForm = () => {
 
       if (response && response._id) {
         handleLoggedInUser(true, { ...response });
-        window.location = BROWSER_ENDPOINT;
+        /*   window.location = BROWSER_ENDPOINT; */
       }
     }
   };
@@ -137,6 +149,9 @@ const useSignUpForm = () => {
     loggedInUserData,
     handleLoginForm,
     handelSignupForm,
+    handleBioChange,
+    handlePriceChange,
+    handelUpdateProfile,
   };
 };
 

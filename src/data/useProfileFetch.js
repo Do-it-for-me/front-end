@@ -4,7 +4,7 @@ import { SERVER_ENDPOINT } from "../config";
 export const useProfileFetch = () => {
   const [profile, setProfile] = useState({});
   const [error, setError] = useState(false);
-  console.log(profile);
+
   const fetchUser = async (id) => {
     setError(false);
     /*     setLoading(true); */
@@ -17,7 +17,6 @@ export const useProfileFetch = () => {
           credentials: "include",
         })
       ).json();
-      console.log(profile);
       if (profile) setProfile(profile);
     } catch (err) {
       setError(err);

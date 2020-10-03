@@ -7,9 +7,10 @@ export default function StarRate(props) {
     <StyledStarRate>
       <Rate
         allowHalf
-        onChange={props.onChange}
-        defaultValue={2.5}
         disabled={props.disabled}
+        onChange={props.onChange}
+        defaultValue={props.defaultValue || 2.5}
+        value={props.value}
       />
     </StyledStarRate>
   );
