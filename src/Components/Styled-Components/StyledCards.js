@@ -84,7 +84,7 @@ export const StyledCards = styled.div`
       display: flex;
       flex-direction: column;
       text-align: left;
-      padding: 1rem;
+      padding: 16px;
       flex-grow: 1;
 
       .skills {
@@ -104,7 +104,7 @@ export const StyledCards = styled.div`
       .text {
         font-size: 10px;
         line-height: 12px;
-        margin-top: 0.5rem;
+        margin-top: 8px;
         .more {
           font-size: 2rem;
           cursor: pointer;
@@ -120,7 +120,7 @@ export const StyledCards = styled.div`
       bottom: 14px;
       display: flex;
 
-      .viewProfile {
+      .book {
         margin: 0.2rem;
         width: 50%;
         height: 30px;

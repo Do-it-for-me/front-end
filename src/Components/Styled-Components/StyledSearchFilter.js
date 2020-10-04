@@ -10,7 +10,7 @@ export const StyledSearchFilter = styled.div`
   flex-flow: column;
   align-items: center;
   justify-content: space-around;
-  z-index: 50;
+  z-index: 52;
   background-color: ${colors.middle};
   transform: scaleX(0);
   transform-origin: left;

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { StyledCards } from "../Styled-Components/StyledCards";
 import StarRate from "./StarRate";
+import Booking from "./Booking";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 
 const Cards = (props) => {
   const [extend, setExtend] = useState(false);
+  const [bookingExtend, setBookingExtend] = useState(false);
   const data = props.data;
+
   /* {
     fullName: "John Doe",
     fee: `${13}€/h`,
@@ -17,6 +20,11 @@ const Cards = (props) => {
 
   return (
     <StyledCards extend={extend} image={props.image || ""}>
+      <Booking
+        provider={data}
+        bookingExtend={bookingExtend}
+        setBookingExtend={setBookingExtend}
+      />
       <div className="profilePic"></div>
 
       <div className="infoSection">
@@ -59,8 +67,8 @@ const Cards = (props) => {
         </div>
 
         <div className="__buttonContainer">
-          <button className="viewProfile">
-            <span>View Profile</span>
+          <button onClick={() => setBookingExtend(true)} className="book">
+            <span>Book</span>
           </button>
           <button className="contact">
             <span>Contact</span>
