@@ -22,8 +22,7 @@ const Profile = (props) => {
   const [updateProfile, setUpdateProfile] = useState(false);
   const params = useParams();
   const location = useLocation();
-  console.log("LOCATION", location);
-  console.log(window);
+
   const { fetchUser, profile } = useProfileFetch();
 
   useEffect(() => {

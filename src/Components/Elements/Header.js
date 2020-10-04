@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <div className="navBarContainer">
-        <div className="logoContainer">
+        <div onClick={() => setExtend(false)} className="logoContainer">
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>

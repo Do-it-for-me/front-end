@@ -17,6 +17,20 @@ export const StyledBooking = styled.div`
   overflow: hidden;
   transform-origin: left;
   transition: all 0.4s ease;
+  textarea {
+    width: 200px;
+    height: 100px;
+    resize: none;
+  }
+  .addressContainer {
+    input {
+      width: 200px;
+      border: 1px solid ${colors.middle};
+      height: 30px;
+      border-radius: 2px;
+      text-align: center;
+    }
+  }
   .title {
     background-color: ${colors.middle};
     width: 100%;

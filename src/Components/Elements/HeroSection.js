@@ -14,7 +14,7 @@ export const HeroSection = () => {
     handlePreFetchSearchForm,
     searchData,
   } = useSearchProviders();
-  console.log("searchData", searchData);
+
   return (
     <StyledHeroSection>
       <div className="heroSection">

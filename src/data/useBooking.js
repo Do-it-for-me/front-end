@@ -3,17 +3,21 @@ import { useState, useContext } from "react";
 import { SERVER_ENDPOINT } from "../config";
 import UserContext from "./UserContext";
 import moment from "moment";
+import SearchResultContext from "./SearchResultContext";
+
 const useBooking = () => {
+  const { queryData } = useContext(SearchResultContext);
+  const initialDate = queryData.date || moment().format("M-D-YYYY");
   const { handleLoggedInUser, user } = useContext(UserContext);
   const searcher = user.user;
   const [newDeal, setNewDeal] = useState({});
   const [stateError, setError] = useState({ status: false, details: "" });
 
   const createDatesArray = (startDate, endDate) => {
-    var dates = [];
+    let dates = [];
 
-    var currDate = moment(startDate).startOf("day");
-    var lastDate = moment(endDate).startOf("day");
+    let currDate = moment(startDate).startOf("day");
+    let lastDate = moment(endDate).startOf("day");
 
     while (currDate.add(1, "days").diff(lastDate) < 0) {
       dates.push(currDate.clone().toDate());
@@ -24,45 +28,45 @@ const useBooking = () => {
     }));
     return result;
   };
-  /*   const handleCityChange = (value) => {
-    setNewUserData((prev) => ({ ...prev, city: value }));
-  }; */
-  /* 
-  const handleDateChange = (dates) => {
-    const [startDate, endDate] = dates;
-    setNewUserData((prev) => ({
-      ...prev,
-      availability: { startDate, endDate },
-    }));
-  }; */
 
-  /* const handlePriceChange = (v) => {
-    setNewUserData({ price: v });
-  }; */
+  const handleDateChange = (value, id) => {
+    setNewDeal((prev) => ({ ...prev, date: moment(id.key)._i }));
+  };
+
+  const handleAddressChange = (text) => {
+    setNewDeal((prev) => ({ ...prev, address: text }));
+  };
 
   const handleNoteChange = (text) => {
     setNewDeal((prev) => ({ ...prev, note: text }));
   };
 
-  /*   const handlePreSubmit = (event) => {
-    if (event) {
-      setError({ status: false, details: {} });
-      signupForm(event, userData);
-    }
-  }; */
+  const handleServiceChange = (serviceID) => {
+    setNewDeal((prev) => ({ ...prev, service: serviceID }));
+  };
+  const handelTimeChange = (time, timeString) => {
+    setNewDeal((prev) => ({ ...prev, time: timeString }));
+  };
+
   const handelCreateNewDeal = async (providerId) => {
+    //create fetch body
     const newDealData = {
       provider: providerId,
       searcher: searcher._id,
-      time: newDeal,
+      time: newDeal.time,
+      address: newDeal.address || `${searcher.street}, ${searcher.city}`,
+      date: newDeal.date || initialDate,
+      note: newDeal.note,
+      service: newDeal.service || queryData.services,
     };
+    console.log(newDealData);
     for (let i in newDealData) {
       if (!newDealData[i]) {
         setError({ status: true, details: [...stateError.details, i] });
       }
     }
-    console.log("newDealData", newDealData);
-    try {
+
+    /*  try {
       const postedDeal = await (
         await fetch(`${SERVER_ENDPOINT}/deals/`, {
           method: "POST",
@@ -74,11 +78,9 @@ const useBooking = () => {
           body: JSON.stringify(newDealData),
         })
       ).json();
-      console.log("postedDeal", postedDeal);
     } catch (err) {
-      console.log("postedDeal", err);
       setError("postedDeal", err);
-    }
+    } */
   };
 
   /*   const handelSignupForm = async (event) => {
@@ -110,9 +112,9 @@ const useBooking = () => {
           setError({ status: true, details: errorDetails });
         }
       } catch (err) {
-        console.log("catch Error", err);
+
       }
-      console.log("handelSignupForm-response", response);
+
       if (response && response._id) {
         handleLoggedInUser(true, { ...response });
         setUserData({});
@@ -121,13 +123,16 @@ const useBooking = () => {
     }
   }; */
 
-  const handleServiceChange = (serviceID) => {
-    setNewDeal((prev) => ({ ...prev, service: serviceID }));
-  };
-
   return {
     newDeal,
     createDatesArray,
+    handleAddressChange,
+    handleServiceChange,
+    handleNoteChange,
+    handleDateChange,
+    handelCreateNewDeal,
+    handelTimeChange,
+    stateError,
   };
 };
 

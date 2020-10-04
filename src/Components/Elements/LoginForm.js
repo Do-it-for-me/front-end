@@ -22,8 +22,10 @@ export const LoginForm = () => {
       });
     } else if (user.logged && location.state.profile) {
       navigate(`${BROWSER_ENDPOINT}${user.user._id}`);
+    } else if (user.logged && location.state.booking) {
+      navigate(`${BROWSER_ENDPOINT}search-result`);
     } else if (user.logged) {
-      navigate(`${BROWSER_ENDPOINT}`);
+      navigate(-1);
     }
   }, [user]);
   return (

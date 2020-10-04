@@ -8,7 +8,7 @@ const useSignUpForm = () => {
   const [userData, setUserData] = useState({});
   /* const [loading, setLoading] = useState(false); */
   const [stateError, setError] = useState({ status: false, details: "" });
-  console.log(userData);
+
   const [loggedInUserData, setLoggedInUserData] = useState();
   const handleFieldsChange = (e) => {
     setUserData((prev) => ({ ...prev, [e.name]: e.value }));
@@ -57,7 +57,6 @@ const useSignUpForm = () => {
             body: JSON.stringify(userData),
           })
         ).json();
-        /*       console.log("fetched"); */
 
         if (response.status != 201) {
           let errorDetails = {};
@@ -91,7 +90,6 @@ const useSignUpForm = () => {
     setUserData((prev) => ({ ...prev, services: services }));
   };
   const handleLogout = () => {
-    console.log("logout");
     handleLoggedInUser(false, null);
     window.localStorage.removeItem("loggedUser");
   };

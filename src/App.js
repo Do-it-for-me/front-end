@@ -37,7 +37,7 @@ function App() {
   const stateSetter = (array) => {
     setProviders(array);
   };
-  console.log("querydata from app.js", queryData);
+
   const searchResultContextValue = {
     providers,
     stateSetter,

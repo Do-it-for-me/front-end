@@ -8,14 +8,14 @@ import { StyledButton } from "../Styled-Components/StyledButton";
 import { Link } from "@reach/router";
 import { StyledSearchResult } from "../Styled-Components/StyledSearchResult";
 import CardContainer from "../Elements/CardContainer";
-//console.log(SearchResultContext.Provider);
+
 const SearchResult = () => {
   /* const { providers } = useContext(SearchResultContext); */
   const [extend, setExtend] = useState(false);
   const invertExtend = () => {
     setExtend(!extend);
   };
-  /* console.log("providers", providers); */
+
   return (
     <StyledSearchResult extend={extend}>
       <StyledButton

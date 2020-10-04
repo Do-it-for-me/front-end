@@ -9,12 +9,12 @@ const useSearchProviders = () => {
   const { stateSetter, queryData, setQueryData } = useContext(
     SearchResultContext
   );
-  console.log("customHook render");
+
   const [searchData, setSearchData] = useState({ ...queryData });
 
   const [loading, setLoading] = useState({});
   const [stateError, setError] = useState({ status: false, details: "" });
-  console.log(searchData);
+
   const handleCityChange = (v, string) => {
     setSearchData((prev) => ({
       ...prev,
@@ -23,7 +23,6 @@ const useSearchProviders = () => {
     }));
   };
   const handleServiceChange = (v, string) => {
-    console.log(v);
     setSearchData((prev) => ({
       ...prev,
       homepageService: v.value,
@@ -46,7 +45,6 @@ const useSearchProviders = () => {
   };
   useEffect(() => {
     const handleFetchSearchForm = async (e) => {
-      console.log("fetch", queryData);
       const servicesQuery = () =>
         queryData.services ? `services=${queryData.services}&` : "";
       const cityQuery = () => (queryData.city ? `city=${queryData.city}&` : "");
@@ -59,7 +57,7 @@ const useSearchProviders = () => {
       setError({ status: false, details: {} });
       const url = `${SERVER_ENDPOINT}/users?${servicesQuery()}${cityQuery()}${dateQuery()}${priceQuery()}${rateQuery()}`;
       const fetchURL = url.slice(0, -1);
-      console.log(fetchURL);
+
       let response;
       try {
         setLoading(true);
@@ -73,7 +71,7 @@ const useSearchProviders = () => {
             credentials: "include",
           })
         ).json();
-        console.log("response", response);
+
         stateSetter(response);
         if (response.error) {
           setError({
@@ -83,9 +81,7 @@ const useSearchProviders = () => {
         }
 
         setLoading(false);
-      } catch (err) {
-        console.log("catch Error", err);
-      }
+      } catch (err) {}
     };
     handleFetchSearchForm();
   }, [queryData]);
