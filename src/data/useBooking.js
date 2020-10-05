@@ -4,6 +4,7 @@ import { SERVER_ENDPOINT } from "../config";
 import UserContext from "./UserContext";
 import moment from "moment";
 import SearchResultContext from "./SearchResultContext";
+import { counter } from "@fortawesome/fontawesome-svg-core";
 
 const useBooking = () => {
   const { queryData } = useContext(SearchResultContext);
@@ -11,8 +12,8 @@ const useBooking = () => {
   const { handleLoggedInUser, user } = useContext(UserContext);
   const searcher = user.user;
   const [newDeal, setNewDeal] = useState({});
-  const [stateError, setError] = useState({ status: false, details: "" });
-
+  const [stateError, setError] = useState({ status: false, details: {} });
+  console.log("errors", stateError);
   const createDatesArray = (startDate, endDate) => {
     let dates = [];
 
@@ -30,7 +31,7 @@ const useBooking = () => {
   };
 
   const handleDateChange = (value, id) => {
-    setNewDeal((prev) => ({ ...prev, date: moment(id.key)._i }));
+    setNewDeal((prev) => ({ ...prev, date: id.value }));
   };
 
   const handleAddressChange = (text) => {
@@ -41,14 +42,18 @@ const useBooking = () => {
     setNewDeal((prev) => ({ ...prev, note: text }));
   };
 
-  const handleServiceChange = (serviceID) => {
-    setNewDeal((prev) => ({ ...prev, service: serviceID }));
+  const handleServiceChange = (value) => {
+    setNewDeal((prev) => ({ ...prev, service: value._id }));
   };
   const handelTimeChange = (time, timeString) => {
     setNewDeal((prev) => ({ ...prev, time: timeString }));
   };
 
   const handelCreateNewDeal = async (providerId) => {
+    setError({
+      status: false,
+      details: {},
+    });
     //create fetch body
     const newDealData = {
       provider: providerId,
@@ -62,7 +67,12 @@ const useBooking = () => {
     console.log(newDealData);
     for (let i in newDealData) {
       if (!newDealData[i]) {
-        setError({ status: true, details: [...stateError.details, i] });
+        if (i === "note") continue;
+        setError((prev) => ({
+          ...prev,
+          status: true,
+          details: { [i]: "must be filled" },
+        }));
       }
     }
 

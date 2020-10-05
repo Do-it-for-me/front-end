@@ -42,7 +42,7 @@ const Booking = ({ bookingExtend, setBookingExtend, provider, searcher }) => {
           options={provider.services}
           placeholder={"Select a Service"}
           style={{ width: 200 }}
-          onChange={handleServiceChange}
+          onChange={(text, v) => handleServiceChange(v)}
         />
       </div>
       <div className="dateContainer">

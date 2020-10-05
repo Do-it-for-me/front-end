@@ -15,7 +15,7 @@ const Cards = (props) => {
   const searcher = user.user;
   const handelBookingExtend = () => {
     if (searcher._id) {
-      setExtend(true);
+      setBookingExtend(true);
     } else {
       navigate(`${BROWSER_ENDPOINT}/login`, { booking: true });
     }
