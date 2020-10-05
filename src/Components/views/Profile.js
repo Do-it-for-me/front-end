@@ -13,6 +13,7 @@ import { StyledButton } from "../Styled-Components/StyledButton";
 import StarRate from "../Elements/StarRate";
 import ImageUpload from "../Elements/ImageUpload";
 import UpdateProfile from "../Elements/profile/UpdateProfile";
+import Deals from "../Elements/profile/Deals";
 import UserContext from "../../data/UserContext";
 
 const Profile = (props) => {
@@ -116,6 +117,7 @@ const Profile = (props) => {
           <div className="bioContainer">
             <p>{profile.bio}</p>
           </div>
+          <Deals />
         </div>
       </div>
     </StyledProfile>
