@@ -4,12 +4,14 @@ import { BROWSER_ENDPOINT } from "../../config";
 import { StyledCards } from "../Styled-Components/StyledCards";
 import StarRate from "./StarRate";
 import Booking from "./Booking";
+import DealResponse from "./DealResponse";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 import UserContext from "../../data/UserContext";
 const Cards = (props) => {
   const [extend, setExtend] = useState(false);
   const [bookingExtend, setBookingExtend] = useState(false);
+  const [responseExtend, setResponseExtend] = useState(false);
   const data = props.data;
   const { user } = useContext(UserContext);
   const searcher = user.user;
@@ -23,7 +25,13 @@ const Cards = (props) => {
 
   return (
     <StyledCards extend={extend} image={props.image || ""}>
+      <DealResponse
+        responseExtend={responseExtend}
+        setResponseExtend={setResponseExtend}
+        setBookingExtend={setBookingExtend}
+      />
       <Booking
+        setResponseExtend={setResponseExtend}
         searcher={searcher}
         provider={data}
         bookingExtend={bookingExtend}

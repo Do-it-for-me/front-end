@@ -8,12 +8,12 @@ import { counter } from "@fortawesome/fontawesome-svg-core";
 
 const useBooking = () => {
   const { queryData } = useContext(SearchResultContext);
-  const initialDate = queryData.date || moment().format("M-D-YYYY");
+  const initialDate = queryData.date || moment().format("YYYY-MM-DD");
   const { handleLoggedInUser, user } = useContext(UserContext);
   const searcher = user.user;
   const [newDeal, setNewDeal] = useState({});
-  const [stateError, setError] = useState({ status: false, details: {} });
-  console.log("errors", stateError);
+  const [error, setError] = useState({});
+
   const createDatesArray = (startDate, endDate) => {
     let dates = [];
 
@@ -25,7 +25,7 @@ const useBooking = () => {
     }
     const result = dates.map((item) => ({
       key: moment(item)._i,
-      value: moment(item).format("M-D-YYYY"),
+      value: moment(item).format("YYYY-MM-DD"),
     }));
     return result;
   };
@@ -49,38 +49,30 @@ const useBooking = () => {
     setNewDeal((prev) => ({ ...prev, time: timeString }));
   };
 
-  const handelCreateNewDeal = async (providerId) => {
-    setError({
-      status: false,
-      details: {},
-    });
-    //create fetch body
-    const newDealData = {
-      provider: providerId,
-      searcher: searcher._id,
-      time: newDeal.time,
-      address: newDeal.address || `${searcher.street}, ${searcher.city}`,
-      date: newDeal.date || initialDate,
-      note: newDeal.note,
-      service: newDeal.service || queryData.services,
-    };
-    console.log(newDealData);
-    for (let i in newDealData) {
-      if (!newDealData[i]) {
-        if (i === "note") continue;
-        setError((prev) => ({
-          ...prev,
-          status: true,
-          details: { [i]: "must be filled" },
-        }));
+  const handelCreateNewDeal = async (providerId, callBack) => {
+    try {
+      //create fetch body
+      const newDealData = {
+        provider: providerId,
+        time: newDeal.time,
+        address: newDeal.address || `${searcher.street}, ${searcher.city}`,
+        dealDate: newDeal.date || initialDate,
+        note: newDeal.note,
+        dealService: newDeal.service || queryData.services,
+      };
+      /*  console.log(newDealData); */
+      for (let i in newDealData) {
+        if (!newDealData[i]) {
+          console.log(i);
+          if (i === "note") continue;
+          setError({ [i]: "must be filled" });
+          throw new Error([i], "must be filled");
+        }
       }
-    }
 
-    /*  try {
       const postedDeal = await (
         await fetch(`${SERVER_ENDPOINT}/deals/`, {
           method: "POST",
-
           headers: {
             "Content-Type": "application/json",
           },
@@ -88,9 +80,13 @@ const useBooking = () => {
           body: JSON.stringify(newDealData),
         })
       ).json();
+      if (postedDeal._id && !error.status) {
+        callBack(true);
+        setNewDeal({});
+      }
     } catch (err) {
-      setError("postedDeal", err);
-    } */
+      console.log(err);
+    }
   };
 
   /*   const handelSignupForm = async (event) => {
@@ -142,7 +138,7 @@ const useBooking = () => {
     handleDateChange,
     handelCreateNewDeal,
     handelTimeChange,
-    stateError,
+    error,
   };
 };
 

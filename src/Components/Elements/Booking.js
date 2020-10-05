@@ -9,7 +9,13 @@ import UserContext from "../../data/UserContext";
 import ErrorMsg from "../Elements/ErrorMsg";
 const { RangePicker } = TimePicker;
 
-const Booking = ({ bookingExtend, setBookingExtend, provider, searcher }) => {
+const Booking = ({
+  bookingExtend,
+  setBookingExtend,
+  provider,
+  searcher,
+  setResponseExtend,
+}) => {
   const { handleLoggedInUser, user } = useContext(UserContext);
   const searcherID = user.user._id;
   const {
@@ -21,7 +27,7 @@ const Booking = ({ bookingExtend, setBookingExtend, provider, searcher }) => {
     handleDateChange,
     handelCreateNewDeal,
     handelTimeChange,
-    stateError,
+    error,
   } = useBooking();
   const datesArr = createDatesArray(
     provider.availability.startDate,
@@ -34,9 +40,7 @@ const Booking = ({ bookingExtend, setBookingExtend, provider, searcher }) => {
       <h2 className="title">BOOKING</h2>
       <h2>{provider.fullName}</h2>
       <div className="serviceContainer">
-        {stateError.status && stateError.details.service && (
-          <ErrorMsg msg={stateError.details.service} />
-        )}
+        {error.dealService && <ErrorMsg msg={error.dealService} />}
         <Select
           defaultValue={queryData.homepageService}
           options={provider.services}
@@ -46,11 +50,9 @@ const Booking = ({ bookingExtend, setBookingExtend, provider, searcher }) => {
         />
       </div>
       <div className="dateContainer">
-        {stateError.status && stateError.details.date && (
-          <ErrorMsg msg={stateError.details.date} />
-        )}
+        {error.dealDate && <ErrorMsg msg={error.dealDate} />}
         <Select
-          defaultValue={queryData.date || moment().format("M-D-YYYY")}
+          defaultValue={queryData.date || moment().format("YYYY-MM-DD")}
           placeholder={"Select a date"}
           options={datesArr}
           style={{ width: 200 }}
@@ -58,9 +60,7 @@ const Booking = ({ bookingExtend, setBookingExtend, provider, searcher }) => {
         />
       </div>
       <div className="timeContainer">
-        {stateError.status && stateError.details.time && (
-          <ErrorMsg msg={stateError.details.time} />
-        )}
+        {error.time && <ErrorMsg msg={error.time} />}
         <RangePicker
           format={"HH:mm"}
           minuteStep={30}
@@ -69,9 +69,7 @@ const Booking = ({ bookingExtend, setBookingExtend, provider, searcher }) => {
         />
       </div>
       <div className="addressContainer">
-        {stateError.status && stateError.details.address && (
-          <ErrorMsg msg={stateError.details.address} />
-        )}
+        {error.address && <ErrorMsg msg={error.address} />}
         <input
           type="text"
           value={newDeal.address || ""}
@@ -89,8 +87,7 @@ const Booking = ({ bookingExtend, setBookingExtend, provider, searcher }) => {
         <button
           className="BTN sendBTN"
           onClick={() => {
-            setBookingExtend(false);
-            handelCreateNewDeal(provider._id);
+            handelCreateNewDeal(provider._id, setResponseExtend);
           }}
         >
           <span>Send</span>
