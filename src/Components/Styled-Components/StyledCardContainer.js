@@ -8,7 +8,7 @@ export const StyledCardContainer = styled.div`
   justify-content: center;
   align-items: center;
   background-color: gray;
-
+  min-height: 100vh;
   @media screen and (min-width: 768px) {
     max-width: calc(100vw - 300px);
     min-height: 100vh;

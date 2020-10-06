@@ -29,13 +29,13 @@ export default function SearchFilter({ extend, invertExtend }) {
   return (
     <StyledSearchFilter extend={extend}>
       <SelectServices
-        defaultValue={homepageService}
+        placeholder={homepageService}
         type="Service"
         onChange={(string, v) => handleServiceChange(v)}
       />
       <SelectServices
         type="City"
-        defaultValue={homepageCity}
+        placeholder={homepageCity}
         onChange={(string, v) => handleCityChange(v)}
       />
       <OneDatePicker onChange={(date, string) => handleDateChange(string)} />

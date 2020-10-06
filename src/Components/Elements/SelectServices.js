@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AutoComplete } from "antd";
 import "antd/dist/antd.css";
 import { StyledSelectServices } from "../Styled-Components/StyledSelectServices";
@@ -15,10 +15,9 @@ export default function SelectServices(props) {
       <AutoComplete
         defaultValue={props.defaultValue}
         style={{}}
-        placeholder={props.placeholder}
         onChange={props.onChange}
         options={options}
-        placeholder={`Select a ${props.type}`}
+        placeholder={props.placeholder || `Select a ${props.type}`}
         filterOption={(inputValue, option) =>
           option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
         }

@@ -9,7 +9,6 @@ const ServicesToggler = () => {
   const [options] = useOptionsFetch();
   const { services } = options;
   const [count, setCount] = useState(0);
-  console.log(count, services);
 
   const [countInTimeout, setCountInTimeout] = useState(0);
   useEffect(() => {

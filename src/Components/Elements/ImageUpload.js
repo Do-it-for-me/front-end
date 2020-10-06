@@ -35,7 +35,6 @@ export default class ImageUpload extends Component {
       this.onFileUpload();
     }; */
     // Details of the uploaded file
-    console.log(this.state.selectedFile);
 
     // Request made to the backend api
     // Send formData object

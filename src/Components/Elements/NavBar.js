@@ -7,7 +7,7 @@ import useSignUpForm from "../../data/useSignupForm";
 import UserContext from "../../data/UserContext";
 const NavBar = () => {
   const { user } = useContext(UserContext);
-  console.log(user);
+
   const { handleLogout } = useSignUpForm();
   return (
     <StyledNavBar>

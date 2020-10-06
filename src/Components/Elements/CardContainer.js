@@ -7,8 +7,11 @@ const CardContainer = () => {
   const { providers } = useContext(SearchResultContext);
   return (
     <StyledCardContainer>
-      {providers &&
-        providers.map((item) => <Cards key={item._id} data={item} />)}
+      {providers.length ? (
+        providers.map((item) => <Cards key={item._id} data={item} />)
+      ) : (
+        <div>no result</div>
+      )}
       {/* {providers &&
         providers.map((item) => <Cards key={new Date()} data={item} />)}
       {providers &&

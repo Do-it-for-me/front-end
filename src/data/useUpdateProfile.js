@@ -15,7 +15,6 @@ const useUpdateProfile = () => {
   /* const [loading, setLoading] = useState(false); */
   const [stateError, setError] = useState({ status: false, details: "" });
 
-  console.log(newUserData);
   /*   const [loggedInUserData, setLoggedInUserData] = useState(); */
 
   const handleFieldsChange = (e) => {
@@ -63,7 +62,7 @@ const useUpdateProfile = () => {
         delete updateBody[i];
       }
     }
-    console.log("updateBody", updateBody);
+
     try {
       const updatedProfile = await (
         await fetch(`${SERVER_ENDPOINT}/users/${id}`, {
@@ -76,10 +75,9 @@ const useUpdateProfile = () => {
           body: JSON.stringify(updateBody),
         })
       ).json();
-      console.log("handelUpdateProfile", updatedProfile);
+
       if (updatedProfile) handleLoggedInUser(true, { ...updatedProfile });
     } catch (err) {
-      console.log("handelUpdateProfile", err);
       setError("handelUpdateProfile", err);
     }
   };

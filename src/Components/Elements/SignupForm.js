@@ -23,11 +23,6 @@ export const SignupForm = ({ origin, id }) => {
     handelUpdateProfile,
   } = useSignupForm();
   const [extendProvider, setExtendProvider] = useState(false);
-  console.log(
-    "STATE-ERROR!!!",
-    stateError.details.firstName,
-    stateError.status
-  );
 
   return (
     <StyledSignupForm>

@@ -1,22 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { navigate } from "@reach/router";
+import { BROWSER_ENDPOINT } from "../../config";
 import { StyledCards } from "../Styled-Components/StyledCards";
 import StarRate from "./StarRate";
+import Booking from "./Booking";
+import DealResponse from "./DealResponse";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
-
+import UserContext from "../../data/UserContext";
 const Cards = (props) => {
   const [extend, setExtend] = useState(false);
+  const [bookingExtend, setBookingExtend] = useState(false);
+  const [responseExtend, setResponseExtend] = useState(false);
   const data = props.data;
-  /* {
-    fullName: "John Doe",
-    fee: `${13}€/h`,
-    skills: ["Dog walking", "Dog sitting", "Plants watering."],
-    note: "Aged & Special Need Pet Care.",
-    aboutText: "Service provider can say something about themselves, it is up to them how much they say, but in the sake of building trust, the more the better..."
-  } */
+  const { user } = useContext(UserContext);
+  const searcher = user.user;
+  const handelBookingExtend = () => {
+    if (searcher._id) {
+      setBookingExtend(true);
+    } else {
+      navigate(`${BROWSER_ENDPOINT}/login`, { booking: true });
+    }
+  };
 
   return (
     <StyledCards extend={extend} image={props.image || ""}>
+      <DealResponse
+        responseExtend={responseExtend}
+        setResponseExtend={setResponseExtend}
+        setBookingExtend={setBookingExtend}
+      />
+      <Booking
+        setResponseExtend={setResponseExtend}
+        searcher={searcher}
+        provider={data}
+        bookingExtend={bookingExtend}
+        setBookingExtend={setBookingExtend}
+      />
       <div className="profilePic"></div>
 
       <div className="infoSection">
@@ -57,10 +77,9 @@ const Cards = (props) => {
             Wafi, I would like
           </p>
         </div>
-
         <div className="__buttonContainer">
-          <button className="viewProfile">
-            <span>View Profile</span>
+          <button onClick={() => handelBookingExtend()} className="book">
+            <span>Book</span>
           </button>
           <button className="contact">
             <span>Contact</span>
