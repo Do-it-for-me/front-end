@@ -7,6 +7,8 @@ export const StyledInfoSection = styled.div`
   justify-content: space-evenly;
   align-items: center;
   justify-content: center;
+
+  background-color: rgba(200, 200, 200, 0.3);
   .infoItem {
     width: 95%;
     margin-top: 2rem;
@@ -16,12 +18,12 @@ export const StyledInfoSection = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background: none;
     transition: 0.3s;
 
-    &:hover {
+    /*     &:hover {
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    }
+    } */
 
     .text2 {
       margin-top: 1rem;
