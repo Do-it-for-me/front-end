@@ -1,9 +1,15 @@
 import React from "react";
 import SearcherDealItem from "./SearcherDealItem";
-const SearcherDealsContainer = ({ list }) => {
-  console.log(list);
+import { StyledDealsContainer } from "../../Styled-Components/StyledDealsContainer";
+const SearcherDealsContainer = ({ list, setChange }) => {
   return (
-    <div>{list && list.map((item) => <SearcherDealItem deal={item} />)}</div>
+    <StyledDealsContainer>
+      <h2 className="searchersTitle">Your Deals as Searcher</h2>
+      {list &&
+        list.map((item) => (
+          <SearcherDealItem key={item._id} setChange={setChange} deal={item} />
+        ))}
+    </StyledDealsContainer>
   );
 };
 

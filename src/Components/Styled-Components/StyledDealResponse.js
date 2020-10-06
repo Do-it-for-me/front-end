@@ -13,7 +13,7 @@ export const StyledDealResponse = styled.div`
   align-items: center;
   width: ${(props) => (props.responseExtend ? "100%" : "0")};
   visibility: ${(props) => (props.responseExtend ? "1" : "0")};
-  z-index: 60;
+  z-index: 55;
   overflow: hidden;
   transform-origin: left;
   transition: all 0.4s ease;

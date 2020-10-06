@@ -85,18 +85,18 @@ const Booking = ({
       </div>
       <div className="BTNContainer">
         <button
+          className="BTN cancelBTN"
+          onClick={() => setBookingExtend(false)}
+        >
+          <span>Cancel</span>
+        </button>
+        <button
           className="BTN sendBTN"
           onClick={() => {
             handelCreateNewDeal(provider._id, setResponseExtend);
           }}
         >
           <span>Send</span>
-        </button>
-        <button
-          className="BTN cancelBTN"
-          onClick={() => setBookingExtend(false)}
-        >
-          <span>Cancel</span>
         </button>
       </div>
     </StyledBooking>

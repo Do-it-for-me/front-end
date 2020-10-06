@@ -24,7 +24,7 @@ const Cards = (props) => {
   };
 
   return (
-    <StyledCards extend={extend} image={props.image || ""}>
+    <StyledCards extend={extend} image={data.image || ""}>
       <DealResponse
         responseExtend={responseExtend}
         setResponseExtend={setResponseExtend}
@@ -60,29 +60,18 @@ const Cards = (props) => {
           </div>
           {/* <p className="note">{data.note}</p> */}
           <p className="bioText">
-            {data.bio}
             <span className="more" onClick={() => setExtend(!extend)}>
               <FontAwesomeIcon icon={faAngleDoubleRight} className="arrow" />{" "}
             </span>
-            Hello mr. Wafi, I would like Hello mr. Wafi, I would like Hello mr.
-            Wafi, I would like Hello mr. Wafi, I would like Hello mr. Wafi, I
-            would like Hello mr. Wafi, I would like Hello mr. Wafi, I would like
-            Hello mr. Wafi, I would like Hello mr. Wafi, I would like Hello mr.
-            Wafi, I would like Hello mr. Wafi, I would like Hello mr. Wafi, I
-            would like Hello mr. Wafi, I would like Hello mr. Wafi, I would like
-            Hello mr. Wafi, I would like Hello mr. Wafi, I would like Hello mr.
-            Wafi, I would like Hello mr. Wafi, I would like Hello mr. Wafi, I
-            would like Hello mr. Wafi, I would like Hello mr. Wafi, I would like
-            Hello mr. Wafi, I would like Hello mr. Wafi, I would like Hello mr.
-            Wafi, I would like
+            {data.bio}
           </p>
         </div>
         <div className="__buttonContainer">
-          <button onClick={() => handelBookingExtend()} className="book">
-            <span>Book</span>
-          </button>
           <button className="contact">
             <span>Contact</span>
+          </button>
+          <button onClick={() => handelBookingExtend()} className="book">
+            <span>Book</span>
           </button>
         </div>
       </div>

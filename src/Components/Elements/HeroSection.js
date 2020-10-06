@@ -4,7 +4,7 @@ import { Link } from "@reach/router";
 import { StyledHeroSection } from "../Styled-Components/StyledHeroSection";
 import { StyledButton } from "../Styled-Components/StyledButton";
 import SelectServices from "../Elements/SelectServices";
-
+import InfoSection from "../Elements/InfoSection";
 import useSearchProviders from "../../data/useSearchProviders";
 
 export const HeroSection = () => {
@@ -44,6 +44,7 @@ export const HeroSection = () => {
         </form>
         {/*    </div> */}
       </div>
+      {/*   <InfoSection /> */}
     </StyledHeroSection>
   );
 };
