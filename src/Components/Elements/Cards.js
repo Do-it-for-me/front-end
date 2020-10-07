@@ -16,7 +16,7 @@ const Cards = (props) => {
   const { user } = useContext(UserContext);
   const searcher = user.user;
   const handelBookingExtend = () => {
-    if (searcher._id) {
+    if (searcher && searcher._id) {
       setBookingExtend(true);
     } else {
       navigate(`${BROWSER_ENDPOINT}/login`, { booking: true });
@@ -32,7 +32,7 @@ const Cards = (props) => {
       />
       <Booking
         setResponseExtend={setResponseExtend}
-        searcher={searcher}
+        searcher={searcher ? searcher : undefined}
         provider={data}
         bookingExtend={bookingExtend}
         setBookingExtend={setBookingExtend}

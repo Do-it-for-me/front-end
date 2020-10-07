@@ -84,7 +84,7 @@ const Profile = (props) => {
             </div>
             <div className="rateContainer">
               <StarRate value={Number(profile.rate)} disabled={true} />{" "}
-              <span className="ratersQuantity">(23)</span>
+              <span className="ratersQuantity">({profile.rateCounter})</span>
             </div>
             <StyledButton onClick={() => setUpdateProfile(true)} type="danger">
               Edit Profile

@@ -17,7 +17,8 @@ const Booking = ({
   setResponseExtend,
 }) => {
   const { handleLoggedInUser, user } = useContext(UserContext);
-  const searcherID = user.user._id;
+  const searcherID = user.user && user.user._id;
+  // const searcher = searcher && searcher;
   const {
     newDeal,
     createDatesArray,
