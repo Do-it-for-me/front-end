@@ -37,7 +37,7 @@ const Profile = ({ refresh, setRefresh }) => {
     setRefresh(true);
     if (location.state && location.state.provideAService)
       setUpdateProfile(true);
-  }, []);
+  }, [refresh]);
 
   return (
     <StyledProfile>

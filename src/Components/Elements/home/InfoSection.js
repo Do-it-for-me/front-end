@@ -22,8 +22,8 @@ const InfoSection = () => {
           services you might provide for others, either for free or for a
           reasonable fee
         </p>
-        <div class="go-corner">
-          <div class="go-arrow"></div>
+        <div className="go-corner">
+          <div className="go-arrow"></div>
         </div>
       </div>
       {/*  <section> */}
@@ -35,8 +35,8 @@ const InfoSection = () => {
           Find a trusted service provider to help you take care of your home or
           pets while you are away or help you do something at home
         </p>
-        <div class="go-corner">
-          <div class="go-arrow"></div>
+        <div className="go-corner">
+          <div className="go-arrow"></div>
         </div>
       </div>
       <div className="infoItem infoItem3">
@@ -47,8 +47,8 @@ const InfoSection = () => {
           Both parties can benefit from this deal, one provides time and skills,
           and one provides money or at least a thank you
         </p>
-        <div class="go-corner">
-          <div class="go-arrow"></div>
+        <div className="go-corner">
+          <div className="go-arrow"></div>
         </div>
       </div>
       {/* </section> */}

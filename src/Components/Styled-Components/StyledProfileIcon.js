@@ -7,7 +7,7 @@ export const StyledProfileIcon = styled.div`
   height: ${(props) => (props.mobile ? "6rem" : "3rem")};
   border-radius: 50%;
   background-size: cover;
-  background-position: center;
+  background-position: ${(props) => (props.refresh ? "center" : "center")};
   border: 4px solid ${(props) => (props.logged ? colors.primary : colors.light)};
   background-image: url(${(props) =>
     props.image ? props.image : profileIcon});
