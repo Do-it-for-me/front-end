@@ -16,6 +16,7 @@ export const StyledButton = styled.button`
   filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.17));
   border-radius: 3px;
   outline: none;
+  transition: all .2s ease-in-out;
   /*   display:flex;
   justify-content: stretch;
   align-items:stretch; */

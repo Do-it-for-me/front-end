@@ -5,12 +5,14 @@ import { StyledHeroSection } from "../Styled-Components/StyledHeroSection";
 import { StyledButton } from "../Styled-Components/StyledButton";
 import SelectServices from "../Elements/SelectServices";
 
+import HeadlineSection from "../Elements/HeadlineSection";
+
 export const HeroSection = () => {
   return (
     <StyledHeroSection>
       <div className="heroSection">
         <div className="headlineSection">
-          <h2>Find trustworthy people to help with your daily chores</h2>
+          <HeadlineSection />
         </div>
         <div className="searchSection">
           <SelectServices type="Service" />
@@ -21,6 +23,13 @@ export const HeroSection = () => {
             </Link>
           </StyledButton>
         </div>
+      </div>
+      <div className="doubleDownIcon-container">
+        <a href="#InfoSection">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
       </div>
     </StyledHeroSection>
   );

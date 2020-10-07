@@ -11,6 +11,8 @@ import Signup from "./Components/views/Signup";
 
 import CardContainer from "./Components/Elements/CardContainer";
 
+import HeadlineSection from "./Components/Elements/HeadlineSection";
+
 // Global Style///////////
 import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";
 /* function onChange(date, dateString) {
@@ -41,7 +43,7 @@ function App() {
     if (document.cookie.includes("loggedIn=true")) {
       const existingUsers = window.localStorage.getItem("loggedUser");
       //console.log("existingUsers", typeof existingUsers, existingUsers);
-      if (existingUsers != "undefined") {
+      if (existingUsers !== "undefined") {
         const user = JSON.parse(existingUsers);
 
         handleLoggedInUser(true, user);
@@ -61,6 +63,9 @@ function App() {
         <ImageUpload path="/test" />
 
         <CardContainer path="/cardContainer" />
+
+        <HeadlineSection path="/headline" />
+
         {/*         <DateRangePicker onChange={onChange} path="/test1" /> */}
       </Router>
       <GlobalStyle />

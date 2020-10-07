@@ -15,7 +15,11 @@ export const StyledHeroSection = styled.div`
   background-position: 50% 20%;
   background-attachment: fixed;
   background-size: cover;
+  @media (min-width: 900px) {
+    min-height: 100vh;
+  }
   .searchSection {
+    margin-top: 5rem;
     width: 80vw;
     display: flex;
     justify-content: center;
@@ -23,6 +27,7 @@ export const StyledHeroSection = styled.div`
     flex-direction: column;
     @media (min-width: 900px) {
       flex-direction: row;
+      margin-top: 5rem;
     }
     div,
     button {
@@ -30,29 +35,53 @@ export const StyledHeroSection = styled.div`
       max-width: 400px;
     }
   }
-  /* search section ends here */
-  .headlineSection {
-    margin-bottom: 5rem;
-    position: relative;
-    width: 80vw;
-    height: 3rem;
-    :before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      content: "";
-      filter: blur(40px);
-      width: 80vw;
-      height: 3rem;
-      background-color: ${colors.middle};
-    }
-    h2 {
-      filter: blur(0px);
-      color: ${colors.primary};
-      font-size: 2.2rem;
-      width: 80vw;
-      font-weight: bold;
-      filter: drop-shadow(0px 0.2rem 0.2rem rgba(0, 0, 0, 0.1));
+
+  .doubleDownIcon-container {
+    position: absolute;
+    bottom: 15%;
+    a {
+      text-decoration: none;
+      color: ${colors.secondary};
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        width: 15px;
+        height: 15px;
+        display: block;
+        border-right: 2px solid ${colors.primary};
+        border-bottom: 2px solid ${colors.primary};
+        transform: rotate(45deg);
+        margin: -10px;
+        animation: animate 2s infinite;
+      }
+
+      span:nth-child(2) {
+        animation-delay: -0.2s;
+      }
+
+      span:nth-child(3) {
+        animation-delay: -0.4s;
+      }
+
+      @keyframes animate {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+          transform: rotate(45deg) translate(10px, 10px);
+        }
+        100% {
+          opacity: 0;
+        }
+      }
     }
   }
 `;

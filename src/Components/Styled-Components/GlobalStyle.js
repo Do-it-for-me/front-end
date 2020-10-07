@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import colors from "./General-Styles/colors";
 export const GlobalStyle = createGlobalStyle`
 :root {
+  scroll-behavior: smooth;
   overflow-x: hidden;
   font-size: 62.5%;
   box-sizing: border-box;
@@ -13,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 /*   @media (min-width: 900px) {
     font-size: 100%;
   } */
-  @media (min-width: 1024px) {
+  @media (min-width: 985px) {
     font-size: 100%;
   }
 }
@@ -24,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     text-align: center;
     background-color: ${colors.light};
+    
     width:100vw;
     *{
       font-family: 'Assistant', sans-serif;

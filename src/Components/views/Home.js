@@ -8,10 +8,8 @@ const Home = () => {
   return (
     <StyledHome>
       <HeroSection />
-     
-      
-      <InfoSection/>
-     
+
+      <InfoSection />
     </StyledHome>
   );
 };
