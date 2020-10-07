@@ -3,15 +3,15 @@ import { Router } from "@reach/router";
 
 // Components ///////////////
 import Home from "./Components/views/Home";
-import Header from "./Components/Elements/Header";
+import Header from "./Components/Elements/header/Header";
 import SearchResult from "./Components/views/SearchResult";
 import Profile from "./Components/views/Profile";
 import Login from "./Components/views/Login";
 import Signup from "./Components/views/Signup";
-import ServicesToggler from "./Components/Elements/ServicesToggler";
-import CardContainer from "./Components/Elements/CardContainer";
+import ServicesToggler from "./Components/Elements/home/ServicesToggler";
+import CardContainer from "./Components/Elements/searchResult/CardContainer";
 
-import HeadlineSection from "./Components/Elements/HeadlineSection";
+import HeadlineSection from "./Components/Elements/home/HeadlineSection";
 
 // Global Style///////////
 import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";

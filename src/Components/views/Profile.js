@@ -10,10 +10,10 @@ import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 // COMPONENTS
 import { StyledProfile } from "../Styled-Components/StyledProfile";
 import { StyledButton } from "../Styled-Components/StyledButton";
-import StarRate from "../Elements/StarRate";
-import ImageUpload from "../Elements/ImageUpload";
-import UpdateProfile from "../Elements/profile/UpdateProfile";
-import Deals from "../Elements/profile/Deals";
+import StarRate from "../Elements/shared/StarRate";
+import ImageUpload from "../Elements/profile/ImageUpload";
+import UpdateProfile from "../Elements/profile/UpdateProfile/UpdateProfile";
+import Deals from "../Elements/profile/DealsHistory/Deals";
 import UserContext from "../../data/UserContext";
 
 const Profile = (props) => {

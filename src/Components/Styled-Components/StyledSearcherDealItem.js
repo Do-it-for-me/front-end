@@ -33,7 +33,7 @@ export const StyledSearcherDealItem = styled.div`
       font-weight: 700;
     }
     .pending {
-      color: ${colors.middle};
+      color: ${colors.light};
     }
     .canceled {
       color: ${colors.danger};
@@ -84,6 +84,7 @@ export const StyledSearcherDealItem = styled.div`
       cursor: pointer;
       :disabled {
         background-color: ${colors.middle};
+        text-decoration: line-through;
       }
     }
     .BTNContainer {
@@ -92,7 +93,7 @@ export const StyledSearcherDealItem = styled.div`
       right: 5px;
       width: 80%;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       .confirm,
       .cancel {
@@ -106,6 +107,7 @@ export const StyledSearcherDealItem = styled.div`
         border: none;
         transition: all ease-in-out 0.5s;
         z-index: 40;
+        margin-right: 3px;
         cursor: pointer;
         span {
           cursor: pointer;

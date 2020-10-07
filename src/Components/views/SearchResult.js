@@ -2,12 +2,12 @@ import React, { useState, useContext } from "react";
 import SearchResultContext from "../../data/SearchResultContext";
 /* import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons"; */
-import SearchFilter from "../Elements/SearchFilter";
-import Cards from "../Elements/Cards";
+import SearchFilter from "../Elements/searchResult/SearchFilter";
+import Card from "../Elements/searchResult/Card";
 import { StyledButton } from "../Styled-Components/StyledButton";
 import { Link } from "@reach/router";
 import { StyledSearchResult } from "../Styled-Components/StyledSearchResult";
-import CardContainer from "../Elements/CardContainer";
+import CardContainer from "../Elements/searchResult/CardContainer";
 
 const SearchResult = () => {
   /* const { providers } = useContext(SearchResultContext); */
