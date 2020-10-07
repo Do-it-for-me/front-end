@@ -2,7 +2,7 @@ import styled from "styled-components";
 import colors from "./General-Styles/colors";
 
 export const StyledHeader = styled.div`
-  z-index: 100;
+  z-index: 10000;
   position: fixed;
   width: 100vw;
   height: 7rem;
@@ -18,9 +18,7 @@ export const StyledHeader = styled.div`
   padding: 0;
   margin: 0;
   z-index: 100;
-  @media (min-width: 900px) {
-    height: 6rem;
-  }
+
   .navBarContainer {
     font-size: 1.6rem;
     padding: 0;

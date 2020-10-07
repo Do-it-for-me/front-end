@@ -4,6 +4,7 @@ const colors = {
   light: "#FFFBFC",
   middle: "#BDB5B2",
   dark: "#30332E",
-  danger: "#B81365",
+  danger: "#BF3100",
+  success: "#45874C",
 };
 export default colors;

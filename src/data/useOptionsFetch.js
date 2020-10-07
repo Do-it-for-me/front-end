@@ -17,6 +17,7 @@ export const useOptionsFetch = () => {
       const servicesArr = servicesArray.filter((item) => {
         return { value: item.value, id: item._id };
       });
+
       setServices(servicesArr);
 
       const citiesArray = await (await fetch(CITIES_ENDPOINT)).json();
@@ -30,7 +31,6 @@ export const useOptionsFetch = () => {
       setCities(CitiesArr);
     } catch (err) {
       setError(true);
-      console.log(err);
     }
     setLoading(false);
   };

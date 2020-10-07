@@ -1,19 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AutoComplete } from "antd";
 import "antd/dist/antd.css";
 import { StyledSelectServices } from "../Styled-Components/StyledSelectServices";
+import { StylesSelectServicesProfile } from "../Styled-Components/StylesSelectServicesProfile";
+
 import { useOptionsFetch } from "../../data/useOptionsFetch";
 
 export default function SelectServices(props) {
   const [{ services, cities }] = useOptionsFetch();
   const options = props.type === "Service" ? services : cities;
+
   return (
     <StyledSelectServices>
       <AutoComplete
+        defaultValue={props.defaultValue}
         style={{}}
-        onChange={(v) => props.handleCityChange(v)}
+        onChange={props.onChange}
         options={options}
-        placeholder={`Select a ${props.type}`}
+        placeholder={props.placeholder || `Select a ${props.type}`}
         filterOption={(inputValue, option) =>
           option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
         }

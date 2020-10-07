@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "@reach/router";
-
 import { StyledHeader } from "../Styled-Components/StyledHeader";
 import NavBar from "../Elements/NavBar";
 import BurgerMenuIcon from "../Elements/BurgerMenuIcon";
 import NavBarMobile from "../Elements/NavBarMobile";
-
 import logo from "../../images/Logo.png";
-import useSignUpForm from "../../data/useSignupForm";
 
 const Header = () => {
   const [extend, setExtend] = useState(false);
@@ -20,7 +17,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <div className="navBarContainer">
-        <div className="logoContainer">
+        <div onClick={() => setExtend(false)} className="logoContainer">
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>

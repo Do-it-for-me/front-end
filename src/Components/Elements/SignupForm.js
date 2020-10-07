@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import ProvideService from "../Elements/ProvideService";
 import SelectServices from "../Elements/SelectServices";
@@ -7,8 +7,8 @@ import { StyledSignupForm } from "../Styled-Components/StyledSignupForm";
 import { StyledButton } from "../Styled-Components/StyledButton";
 import ErrorMsg from "../Elements/ErrorMsg";
 import useSignupForm from "../../data/useSignupForm";
-import UserContext from "../../data/UserContext";
-export const SignupForm = () => {
+/* import UserContext from "../../data/UserContext"; */
+export const SignupForm = ({ origin, id }) => {
   const {
     userData,
     stateError,
@@ -18,17 +18,21 @@ export const SignupForm = () => {
     handelSignupForm,
     handleServiceChange,
     handleDateChange,
+    handleBioChange,
+    handlePriceChange,
+    handelUpdateProfile,
   } = useSignupForm();
   const [extendProvider, setExtendProvider] = useState(false);
-  console.log(
-    "STATE-ERROR!!!",
-    stateError.details.firstName,
-    stateError.status
-  );
 
   return (
     <StyledSignupForm>
-      <form onSubmit={(e) => handelSignupForm(e)}>
+      <form
+        onSubmit={(e) => {
+          origin === "signup"
+            ? handelSignupForm(e)
+            : handelUpdateProfile(e, id);
+        }}
+      >
         {stateError.status && stateError.details.firstName && (
           <ErrorMsg msg={stateError.details.firstName} />
         )}
@@ -92,7 +96,7 @@ export const SignupForm = () => {
         )}
         <div className="city">
           <SelectServices
-            handleCityChange={(v) => handleCityChange(v)}
+            onChange={(v) => handleCityChange(v)}
             type="city"
             name="city"
             required="true"
@@ -124,6 +128,8 @@ export const SignupForm = () => {
             handleServiceChange={handleServiceChange}
             handleDateChange={handleDateChange}
             cleanupProviderData={cleanupProviderData}
+            handleBioChange={handleBioChange}
+            handlePriceChange={handlePriceChange}
           />
         ) : (
           ""
