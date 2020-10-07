@@ -7,6 +7,8 @@ import SelectServices from "../Elements/SelectServices";
 import InfoSection from "../Elements/InfoSection";
 import useSearchProviders from "../../data/useSearchProviders";
 
+import HeadlineSection from "../Elements/HeadlineSection";
+
 export const HeroSection = () => {
   const {
     handleServiceChange,
@@ -19,7 +21,7 @@ export const HeroSection = () => {
     <StyledHeroSection>
       <div className="heroSection">
         <div className="headlineSection">
-          <h2>Find trustworthy people to help with your daily chores</h2>
+          <HeadlineSection />
         </div>
         {/* <div className="searchSection"> */}
         <form className="searchSection">
@@ -44,7 +46,13 @@ export const HeroSection = () => {
         </form>
         {/*    </div> */}
       </div>
-      {/*   <InfoSection /> */}
+      <div className="doubleDownIcon-container">
+        <a href="#InfoSection">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
     </StyledHeroSection>
   );
 };

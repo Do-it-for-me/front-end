@@ -20,6 +20,7 @@ export const StyledNavBar = styled.div`
     margin-right: 3rem;
     color: ${colors.light};
     cursor: pointer;
+    transition: all .2s ease-in-out;
     :hover {
       color: ${colors.secondary};
     }

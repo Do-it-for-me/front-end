@@ -11,6 +11,8 @@ import Signup from "./Components/views/Signup";
 import ServicesToggler from "./Components/Elements/ServicesToggler";
 import CardContainer from "./Components/Elements/CardContainer";
 
+import HeadlineSection from "./Components/Elements/HeadlineSection";
+
 // Global Style///////////
 import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";
 /* function onChange(date, dateString) {

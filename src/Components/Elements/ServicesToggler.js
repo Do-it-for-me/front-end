@@ -1,33 +1,104 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useOptionsFetch } from "../../data/useOptionsFetch";
-const options = [
-  { _id: "5f60941ac6dfc22c43d40fbc", value: "dog walking", __v: 0 },
-  { _id: "5f609431c6dfc22c43d40fbd", value: "plant watering", __v: 0 },
-  { _id: "5f609441c6dfc22c43d40fbe", value: "dog sitting", __v: 0 },
+import React, { useEffect } from "react";
+
+const services = [
+  { _id: "5f60941ac6dfc22c43d40fbc", value: " dog walking", __v: 0 },
+  { _id: "5f609431c6dfc22c43d40fbd", value: " plant watering", __v: 0 },
+  { _id: "5f609441c6dfc22c43d40fbe", value: " dog sitting", __v: 0 },
+  { _id: "5f60941ac6dfc22c43d40fbc", value: " Car Driving", __v: 0 },
+  { _id: "5f609431c6dfc22c43d40fbd", value: " House Cleaning", __v: 0 },
+  { _id: "5f609441c6dfc22c43d40fbe", value: " Furniture Repair", __v: 0 },
 ];
-const ServicesToggler = () => {
-  const [options] = useOptionsFetch();
-  const { services } = options;
-  const [count, setCount] = useState(0);
 
-  const [countInTimeout, setCountInTimeout] = useState(0);
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (count < services.length - 1) {
-        setCount(count + 1);
+const animateLetters = () => {
+  var words = document.getElementsByClassName("word");
+  var wordArray = [];
+  var currentWord = 0;
+
+  words[currentWord].style.opacity = 1;
+  for (let i = 0; i < words.length; i++) {
+    splitLetters(words[i]);
+  }
+
+  function changeWord() {
+    let cw = wordArray[currentWord];
+    let nw =
+      currentWord === words.length - 1
+        ? wordArray[0]
+        : wordArray[currentWord + 1];
+    for (let i = 0; i < cw.length; i++) {
+      animateLetterOut(cw, i);
+    }
+
+    for (let k = 0; k < nw.length; k++) {
+      nw[k].className = "letter behind";
+      nw[0].parentElement.style.opacity = 1;
+      animateLetterIn(nw, k);
+    }
+
+    currentWord = currentWord === wordArray.length - 1 ? 0 : currentWord + 1;
+  }
+
+  function animateLetterOut(cw, i) {
+    setTimeout(function () {
+      cw[i].className = "letter out";
+    }, i * 80);
+  }
+
+  function animateLetterIn(nw, i) {
+    setTimeout(function () {
+      nw[i].className = "letter in";
+    }, 340 + i * 80);
+  }
+
+  function splitLetters(word) {
+    let content = word.innerHTML;
+    word.innerHTML = "";
+    let letters = [];
+    for (let i = 0; i < content.length; i++) {
+      let letter = document.createElement("span");
+      letter.className = "letter";
+
+      if (content.charAt(i) === " ") {
+        letter.innerHTML = "&nbsp";
       } else {
-        setCount(0);
+        letter.innerHTML = content.charAt(i);
       }
-    }, 1000);
-  }, [count]);
 
+      word.appendChild(letter);
+      letters.push(letter);
+    }
+
+    wordArray.push(letters);
+  }
+
+  changeWord();
+  const interval = setInterval(changeWord, 3000);
+  return interval;
+};
+
+const ServicesToggler = () => {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setCount("Timeout called!");
-    }, 1000);
-    return () => clearTimeout(timer);
+    const anim = animateLetters();
+
+    return () => {
+      clearInterval(anim);
+    };
   }, []);
-  return <span>{options[count] && options[count].value}</span>;
+
+  return (
+    <div className="text">
+      <p className="__text">Find trustworthy people to help you with</p>
+      <p className="words-container">
+        {services.map((service, i) => {
+          return (
+            <span key={i} className={`${i} word`}>
+              {service.value}
+            </span>
+          );
+        })}
+      </p>
+    </div>
+  );
 };
 
 export default ServicesToggler;
