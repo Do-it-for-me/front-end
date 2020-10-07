@@ -9,7 +9,7 @@ export default function StarRate(props) {
         allowHalf
         disabled={props.disabled}
         onChange={props.onChange}
-        defaultValue={props.defaultValue || 2.5}
+        defaultValue={props.defaultValue || 0}
         value={props.value}
       />
     </StyledStarRate>

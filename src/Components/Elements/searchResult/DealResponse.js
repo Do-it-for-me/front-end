@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "@reach/router";
 import { StyledDealResponse } from "../../Styled-Components/StyledDealResponse";
+
 const DealResponse = ({
+  searcherId,
   responseExtend,
   setResponseExtend,
   setBookingExtend,
@@ -13,7 +15,7 @@ const DealResponse = ({
         <h3>
           Your request has been sent. This service provider will respond to you
           request as soon as possible. You always can review your deals in your
-          <Link to="/profile">profile page</Link>
+          <Link to={`/${searcherId}`}>profile page</Link>
         </h3>
       </div>
       <div className="BTNContainer">

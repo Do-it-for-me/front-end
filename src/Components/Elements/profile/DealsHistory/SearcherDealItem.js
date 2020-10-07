@@ -8,7 +8,7 @@ const SearcherDealItem = ({ deal, setChange }) => {
   const handleRateChange = (v) => {
     setRateValue(v);
   };
-  console.log(deal);
+
   const { handleCancelDeal, handelRateProvider } = useFetchDeals();
   return (
     <StyledSearcherDealItem>

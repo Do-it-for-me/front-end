@@ -26,6 +26,7 @@ const Card = (props) => {
   return (
     <StyledCard extend={extend} image={data.image || ""}>
       <DealResponse
+        searcherId={searcher._id}
         responseExtend={responseExtend}
         setResponseExtend={setResponseExtend}
         setBookingExtend={setBookingExtend}
@@ -41,7 +42,8 @@ const Card = (props) => {
 
       <div className="infoSection">
         <div className="ratePrice">
-          <StarRate disabled={true} />
+          <StarRate disabled={true} value={data.rate} />{" "}
+          <span>({String(data.rateCounter)})</span>
           <div className="price">{data.price || 0}€/h</div>
         </div>
         <div className="nameContainer">

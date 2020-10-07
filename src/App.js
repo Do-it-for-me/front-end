@@ -16,13 +16,13 @@ import HeadlineSection from "./Components/Elements/home/HeadlineSection";
 // Global Style///////////
 import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";
 /* function onChange(date, dateString) {
-  console.log(date, dateString);
 } */
 
 import SearchResultContext from "./data/SearchResultContext";
 import UserContext from "./data/UserContext";
 
 function App() {
+  const [refresh, setRefresh] = useState(false);
   //LoggedIn User Context
   const [loggedInUser, setLoggedInUser] = useState({});
   const handleLoggedInUser = (logged, user) => {
@@ -59,7 +59,6 @@ function App() {
   useEffect(() => {
     if (document.cookie.includes("loggedIn=true")) {
       const existingUsers = window.localStorage.getItem("loggedUser");
-      //console.log("existingUsers", typeof existingUsers, existingUsers);
       const user = JSON.parse(existingUsers);
       if (user) {
         handleLoggedInUser(true, user);
@@ -73,7 +72,7 @@ function App() {
     <UserContext.Provider value={contextValue}>
       <SearchResultContext.Provider value={searchResultContextValue}>
         <>
-          <Header />
+          <Header refresh={refresh} />
 
           <Router>
             <Home path="/" />
@@ -81,7 +80,7 @@ function App() {
             <Login path="/login" />
             <Signup path="/signup" />
 
-            <Profile path="/:id" />
+            <Profile path="/:id" refresh={refresh} setRefresh={setRefresh} />
             <CardContainer path="/cardContainer" />
             <ServicesToggler path="/test1" />
           </Router>

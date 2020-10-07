@@ -6,7 +6,7 @@ import BurgerMenuIcon from "./BurgerMenuIcon";
 import NavBarMobile from "./NavBarMobile";
 import logo from "../../../images/Logo.png";
 
-const Header = () => {
+const Header = ({ refresh }) => {
   const [extend, setExtend] = useState(false);
   const invertExtend = () => {
     setExtend(!extend);
@@ -14,6 +14,7 @@ const Header = () => {
   const unExtend = () => {
     setExtend(false);
   };
+
   return (
     <StyledHeader>
       <div className="navBarContainer">
@@ -23,7 +24,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="navigationContainer">
-          <NavBar loggedInUserData />
+          <NavBar refresh={refresh} loggedInUserData />
           <NavBarMobile extend={extend} unExtend={unExtend} />
           <BurgerMenuIcon extend={extend} onClick={invertExtend} />
         </div>

@@ -16,7 +16,7 @@ import UpdateProfile from "../Elements/profile/UpdateProfile/UpdateProfile";
 import Deals from "../Elements/profile/DealsHistory/Deals";
 import UserContext from "../../data/UserContext";
 
-const Profile = (props) => {
+const Profile = ({ refresh, setRefresh }) => {
   const { user } = useContext(UserContext);
 
   const [imageUpload, setImageUpload] = useState(false);
@@ -27,10 +27,17 @@ const Profile = (props) => {
   const { fetchUser, profile } = useProfileFetch();
 
   useEffect(() => {
+    console.log("profilerender", user);
     fetchUser(params.id);
+    setRefresh(true);
     if (location.state && location.state.provideAService)
       setUpdateProfile(true);
-  }, [user]);
+  }, [user, imageUpload]);
+  useEffect(() => {
+    setRefresh(true);
+    if (location.state && location.state.provideAService)
+      setUpdateProfile(true);
+  }, []);
 
   return (
     <StyledProfile>
@@ -65,7 +72,10 @@ const Profile = (props) => {
       <div className="profileContainer">
         <div className="profileHeader">
           <div className="imageContainer">
-            <img alt={profile.fullName} src={profile.image || profileImage} />
+            <img
+              alt={profile.fullName}
+              src={profile.image ? profile.image : profileImage}
+            />
             <span
               onClick={() => setImageUpload(!imageUpload)}
               title="upload image"
@@ -84,7 +94,9 @@ const Profile = (props) => {
             </div>
             <div className="rateContainer">
               <StarRate value={Number(profile.rate)} disabled={true} />{" "}
-              <span className="ratersQuantity">({profile.rateCounter})</span>
+              <span className="ratersQuantity">
+                ({String(profile.rateCounter)})
+              </span>
             </div>
             <StyledButton onClick={() => setUpdateProfile(true)} type="danger">
               Edit Profile
@@ -100,7 +112,7 @@ const Profile = (props) => {
                     {item.value}
                   </span>
                 ))}
-              {profile.availability ? (
+              {profile.availability && profile.availability.startDate ? (
                 <>
                   <span className="date">
                     <strong>FROM :</strong> {profile.availability.startDate}

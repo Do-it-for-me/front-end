@@ -60,10 +60,9 @@ const useBooking = () => {
         note: newDeal.note,
         dealService: newDeal.service || queryData.services,
       };
-      /*  console.log(newDealData); */
+
       for (let i in newDealData) {
         if (!newDealData[i]) {
-          console.log(i);
           if (i === "note") continue;
           setError({ [i]: "must be filled" });
           throw new Error([i], "must be filled");

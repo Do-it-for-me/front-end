@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "@reach/router";
 import { StyledNavBar } from "../../Styled-Components/StyledNavBar";
 import { StyledButton } from "../../Styled-Components/StyledButton";
 import { StyledProfileIcon } from "../../Styled-Components/StyledProfileIcon";
 import useSignUpForm from "../../../data/useSignupForm";
 import UserContext from "../../../data/UserContext";
-const NavBar = () => {
+const NavBar = ({ refresh }) => {
   const { user } = useContext(UserContext);
-
+  const [st, setSt] = useState(false);
+  useEffect(() => {
+    setSt(!st);
+  }, [refresh]);
   const { handleLogout } = useSignUpForm();
   return (
     <StyledNavBar>
@@ -38,6 +41,7 @@ const NavBar = () => {
         to={`/${user.logged ? user.user._id : "login"}`}
       >
         <StyledProfileIcon
+          refresh={refresh}
           image={user.user ? user.user.image : null}
           logged={user.logged}
         />

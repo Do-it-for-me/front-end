@@ -42,7 +42,7 @@ export default function SearchFilter({ extend, invertExtend }) {
       <PriceSlider onChange={(v) => handlePriceChange(v)} />
       <div>
         <div className="rateLabel">Minimum Rate</div>
-        <StarRate onChange={handleRateChange} />
+        <StarRate onChange={handleRateChange} defaultValue={0} />
       </div>
       <Link to="/search-result">
         <StyledButton type="primary">

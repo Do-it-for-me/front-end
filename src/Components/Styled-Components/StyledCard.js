@@ -33,7 +33,7 @@ export const StyledCard = styled.div`
       position: absolute;
       top: -30px;
       padding: 0 1rem;
-
+      background-color: rgba(189, 181, 178, 0.3);
       .price {
         font-weight: 700;
       }

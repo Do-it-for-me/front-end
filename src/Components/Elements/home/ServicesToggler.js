@@ -14,7 +14,6 @@ let services;
 const ServicesToggler = () => {
   const [options] = useOptionsFetch();
   services = options.services;
-  console.log(services);
 
   const animateLetters = () => {
     var words = document.getElementsByClassName("word") || [];
