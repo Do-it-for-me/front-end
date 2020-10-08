@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-
 import { StyledImageUpload } from "../../Styled-Components/StyledImageUpload";
+import { useProfileFetch } from "../../../data/useProfileFetch";
 
 export default class ImageUpload extends Component {
   constructor(props) {
@@ -38,12 +38,18 @@ export default class ImageUpload extends Component {
 
     // Request made to the backend api
     // Send formData object
-    axios.post(
-      `http://localhost:3000/api/users/${this.props.id}/userImage`,
-      formData
-    );
+    axios
+      .post(
+        `http://localhost:3000/api/users/${this.props.id}/userImage`,
+        formData
+      )
+      .then(() => this.props.fetchUser(this.props.id));
     if (this.props.onClick) {
       this.props.onClick();
+
+      /*      setTimeout(() => {
+        useProfileFetch().fetchUser(this.props.id);
+      }, 3000); */
     }
   };
 
@@ -52,7 +58,7 @@ export default class ImageUpload extends Component {
   fileData = () => {
     if (this.state.selectedFile) {
       return (
-        <div class="fileInfo">
+        <div className="fileInfo">
           <h2>File Details:</h2>
           <p>File Name: {this.state.selectedFile.name}</p>
           <p>File Type: {this.state.selectedFile.type}</p>
@@ -71,10 +77,14 @@ export default class ImageUpload extends Component {
   render() {
     return (
       <StyledImageUpload>
-        <h3 class="title">Please Upload your Photo</h3>
-        <input class="choose-a-file" type="file" onChange={this.onFileChange} />
+        <h3 className="title">Please Upload your Photo</h3>
+        <input
+          className="choose-a-file"
+          type="file"
+          onChange={this.onFileChange}
+        />
         {this.fileData()}
-        <button class="upload-btn" onClick={this.onFileUpload}>
+        <button className="upload-btn" onClick={this.onFileUpload}>
           Upload!
         </button>
       </StyledImageUpload>

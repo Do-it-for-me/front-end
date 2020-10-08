@@ -10,8 +10,7 @@ import Login from "./Components/views/Login";
 import Signup from "./Components/views/Signup";
 import ServicesToggler from "./Components/Elements/home/ServicesToggler";
 import CardContainer from "./Components/Elements/searchResult/CardContainer";
-
-import HeadlineSection from "./Components/Elements/home/HeadlineSection";
+import NotFound from "./Components/views/NotFound";
 
 // Global Style///////////
 import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";
@@ -80,9 +79,14 @@ function App() {
             <Login path="/login" />
             <Signup path="/signup" />
 
-            <Profile path="/:id" refresh={refresh} setRefresh={setRefresh} />
+            <Profile
+              path="/profile"
+              refresh={refresh}
+              setRefresh={setRefresh}
+            />
             <CardContainer path="/cardContainer" />
             <ServicesToggler path="/test1" />
+            <NotFound default />
           </Router>
           <GlobalStyle />
         </>

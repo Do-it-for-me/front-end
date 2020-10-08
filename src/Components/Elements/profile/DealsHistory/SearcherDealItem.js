@@ -46,7 +46,7 @@ const SearcherDealItem = ({ deal, setChange }) => {
                   allowClear
                   allowHalf
                   disabled={deal.rated}
-                  onChange={handleRateChange}
+                  onChange={(v) => setRateValue(v)}
                 />
                 <div className="RateButtonContainer">
                   <button onClick={() => setRateValue(0)} className="clearBTN ">

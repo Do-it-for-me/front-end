@@ -30,6 +30,7 @@ const Booking = ({
     handelTimeChange,
     error,
   } = useBooking();
+  console.log(error);
   const datesArr = createDatesArray(
     provider.availability.startDate,
     provider.availability.endDate

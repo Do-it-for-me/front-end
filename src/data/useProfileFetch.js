@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import { SERVER_ENDPOINT } from "../config";
+import UserContext from "./UserContext";
 
 export const useProfileFetch = () => {
-  const [profile, setProfile] = useState({});
+  const { handleLoggedInUser } = useContext(UserContext);
+  /*   const [fetchedProfile, setProfile] = useState({}); */
   const [error, setError] = useState(false);
 
   const fetchUser = async (id) => {
@@ -17,10 +19,10 @@ export const useProfileFetch = () => {
           credentials: "include",
         })
       ).json();
-      if (profile) setProfile(profile);
+      if (profile) handleLoggedInUser(true, { ...profile });
     } catch (err) {
       setError(err);
     }
   };
-  return { fetchUser, profile };
+  return { fetchUser };
 };

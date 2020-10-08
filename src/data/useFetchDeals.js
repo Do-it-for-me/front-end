@@ -27,7 +27,6 @@ export const useFetchDeals = () => {
   };
 
   const handelRateProvider = async (dealID, providerID, rateValue) => {
-    const rate = String(rateValue);
     try {
       const ratedUser = await (
         await fetch(`${SERVER_ENDPOINT}/users/${providerID}/rate`, {
@@ -36,7 +35,7 @@ export const useFetchDeals = () => {
             "Content-Type": "application/json",
           },
           credentials: "include",
-          body: JSON.stringify({ dealId: dealID, rate: rate }),
+          body: JSON.stringify({ dealId: dealID, rate: rateValue }),
         })
       ).json();
 
@@ -80,7 +79,6 @@ export const useFetchDeals = () => {
           credentials: "include",
         })
       ).json();
-
       setDeals(dealsArray);
     } catch (err) {
       setError(true);

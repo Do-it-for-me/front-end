@@ -95,11 +95,12 @@ const ServicesToggler = () => {
 
   return (
     <div className="text">
-      <p className="__text">Find trustworthy people to help you with</p>
+      <p className="__text">Find trustworthy people to help you with </p>
       <p className="words-container">
         {services.map((service, i) => {
           return (
             <span key={i} className={`${i} word`}>
+              {" "}
               {service.value}
             </span>
           );

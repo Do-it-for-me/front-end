@@ -8,14 +8,7 @@ const { RangePicker } = DatePicker;
 export const DateRangePicker = (props) => {
   return (
     <Space direction="vertical" size={12}>
-      <RangePicker
-        /* defaultValue={[
-          moment("2015/01/01", dateFormat),
-          moment("2015/01/01", dateFormat),
-        ]} */
-        format={dateFormat}
-        onChange={props.onChange}
-      />
+      <RangePicker format={dateFormat} onChange={props.onChange} />
     </Space>
   );
 };

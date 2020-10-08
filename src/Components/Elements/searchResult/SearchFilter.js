@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { StyledSearchFilter } from "../../Styled-Components/StyledSearchFilter";
 import SelectServices from "../forms/SelectServices";
-import OneDatePicker from "../shared/DateRangePicker";
+import OneDatePicker from "../searchResult/OneDatePicker";
 import { StyledButton } from "../../Styled-Components/StyledButton";
 import { Link } from "@reach/router";
 import PriceSlider from "./PriceSlider";
@@ -42,7 +42,11 @@ export default function SearchFilter({ extend, invertExtend }) {
       <PriceSlider onChange={(v) => handlePriceChange(v)} />
       <div>
         <div className="rateLabel">Minimum Rate</div>
-        <StarRate onChange={handleRateChange} defaultValue={0} />
+        <StarRate
+          onChange={handleRateChange}
+          defaultValue={0}
+          value={searchData.rate}
+        />
       </div>
       <Link to="/search-result">
         <StyledButton type="primary">

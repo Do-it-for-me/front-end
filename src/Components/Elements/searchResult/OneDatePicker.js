@@ -1,7 +1,7 @@
 import React from "react";
 
 import { DatePicker, Space } from "antd";
-import { StyledOneDatePicker } from "../Styled-Components/StyledOneDatePicker";
+import { StyledOneDatePicker } from "../../Styled-Components/StyledOneDatePicker";
 
 const dateFormat = "DD/MM/YYYY";
 

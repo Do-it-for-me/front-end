@@ -65,7 +65,7 @@ export const StyledSearcherDealItem = styled.div`
       border-radius: 3px;
       border: none;
       transition: all ease-in-out 0.5s;
-      z-index: 40;
+
       padding: 0 5px;
       margin-right: 5px;
       cursor: pointer;
@@ -79,7 +79,7 @@ export const StyledSearcherDealItem = styled.div`
       border-radius: 3px;
       border: none;
       transition: all ease-in-out 0.5s;
-      z-index: 40;
+
       padding: 0 5px;
       cursor: pointer;
       :disabled {
@@ -106,7 +106,7 @@ export const StyledSearcherDealItem = styled.div`
         border-radius: 3px;
         border: none;
         transition: all ease-in-out 0.5s;
-        z-index: 40;
+
         margin-right: 3px;
         cursor: pointer;
         span {

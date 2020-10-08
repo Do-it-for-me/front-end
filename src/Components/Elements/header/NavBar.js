@@ -32,13 +32,13 @@ const NavBar = ({ refresh }) => {
       )}
       <Link
         state={{ provideAService: true }}
-        to={`/${user.logged ? user.user._id : "login"}`}
+        to={`/${user.logged ? "profile" : "login"}`}
       >
         <StyledButton type="secondary">Provide a Service</StyledButton>
       </Link>
       <Link
         state={{ profile: true }}
-        to={`/${user.logged ? user.user._id : "login"}`}
+        to={`/${user.logged ? "profile" : "login"}`}
       >
         <StyledProfileIcon
           refresh={refresh}

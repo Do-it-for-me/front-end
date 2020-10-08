@@ -35,7 +35,7 @@ const NavBarMobile = ({ extend, unExtend }) => {
       )}
       <Link
         state={{ provideAService: true }}
-        to={`/${user.logged ? user.user._id : "login"}`}
+        to={`/${user.logged ? "profile" : "login"}`}
       >
         <StyledButton type="secondary" onClick={unExtend}>
           Provide a Service
@@ -44,7 +44,7 @@ const NavBarMobile = ({ extend, unExtend }) => {
       <Link
         state={{ profile: true }}
         onClick={unExtend}
-        to={`/${user.logged ? user.user._id : "login"}`}
+        to={`/${user.logged ? "profile" : "login"}`}
       >
         <StyledProfileIcon
           image={user.user ? user.user.image : null}

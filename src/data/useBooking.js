@@ -65,7 +65,7 @@ const useBooking = () => {
         if (!newDealData[i]) {
           if (i === "note") continue;
           setError({ [i]: "must be filled" });
-          throw new Error([i], "must be filled");
+          /*   throw new Error([i], "must be filled"); */
         }
       }
 
@@ -79,12 +79,13 @@ const useBooking = () => {
           body: JSON.stringify(newDealData),
         })
       ).json();
+      if (!postedDeal.ok) setError({ serverError: postedDeal });
       if (postedDeal._id && !error.status) {
         callBack(true);
         setNewDeal({});
       }
     } catch (err) {
-      console.log(err);
+      console.log("error");
     }
   };
 

@@ -44,7 +44,9 @@ const Card = (props) => {
         <div className="ratePrice">
           <StarRate disabled={true} value={data.rate} />{" "}
           <span>({String(data.rateCounter)})</span>
-          <div className="price">{data.price || 0}€/h</div>
+          <div className="price">
+            {data.price ? `${data.price} €/h` : "for free"}
+          </div>
         </div>
         <div className="nameContainer">
           <h3>{data.fullName}</h3>
