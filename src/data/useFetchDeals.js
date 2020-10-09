@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { SERVER_ENDPOINT } from "../config";
+import DealsContext from "./DealsContext";
 
 export const useFetchDeals = () => {
-  const [deals, setDeals] = useState([]);
+  const { deals, setDeals, change, setChange } = useContext(DealsContext);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
+  useEffect(() => {
+    fetchDeals();
+  }, [change]);
   const handleConfirmDeal = async (dealId) => {
     try {
       const confirmedDeal = await (
@@ -18,16 +21,14 @@ export const useFetchDeals = () => {
           credentials: "include",
         })
       ).json();
-
-      if (confirmedDeal) {
-      }
+      setChange(change + 1);
     } catch (err) {
       setError(err);
     }
   };
 
   const handelRateProvider = async (dealID, providerID, rateValue) => {
-    const rate = String(rateValue);
+    console.log("rate func", dealID, providerID, rateValue);
     try {
       const ratedUser = await (
         await fetch(`${SERVER_ENDPOINT}/users/${providerID}/rate`, {
@@ -36,13 +37,10 @@ export const useFetchDeals = () => {
             "Content-Type": "application/json",
           },
           credentials: "include",
-          body: JSON.stringify({ dealId: dealID, rate: rate }),
+          body: JSON.stringify({ dealId: dealID, rate: rateValue }),
         })
       ).json();
-
-      if (ratedUser) {
-        console.log(ratedUser);
-      }
+      setChange(change + 1);
     } catch (err) {
       setError("handelUpdateProfile", err);
     }
@@ -59,10 +57,7 @@ export const useFetchDeals = () => {
           credentials: "include",
         })
       ).json();
-
-      if (canceledDeals) {
-        console.log(canceledDeals);
-      }
+      setChange(change + 1);
     } catch (err) {
       setError("handelUpdateProfile", err);
     }
@@ -80,8 +75,10 @@ export const useFetchDeals = () => {
           credentials: "include",
         })
       ).json();
-
-      setDeals(dealsArray);
+      if (dealsArray) {
+        console.log("dealsArray", dealsArray);
+        setDeals(dealsArray);
+      }
     } catch (err) {
       setError(true);
       console.log(err);

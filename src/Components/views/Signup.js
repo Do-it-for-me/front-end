@@ -1,6 +1,6 @@
 import React from "react";
 import { StyledSignup } from "../Styled-Components/StyledSignup";
-import SignupForm from "../Elements/SignupForm";
+import SignupForm from "../Elements/forms/SignupForm";
 
 const Signup = () => {
   return (

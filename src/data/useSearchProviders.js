@@ -37,7 +37,7 @@ const useSearchProviders = () => {
     setSearchData((prev) => ({ ...prev, price: v }));
   };
   const handleRateChange = (v) => {
-    setSearchData((prev) => ({ ...prev, rate: v * 2 }));
+    setSearchData((prev) => ({ ...prev, rate: v }));
   };
 
   const handlePreFetchSearchForm = () => {

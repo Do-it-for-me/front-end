@@ -17,7 +17,7 @@ const useBooking = () => {
   const createDatesArray = (startDate, endDate) => {
     let dates = [];
 
-    let currDate = moment(startDate).startOf("day");
+    let currDate = moment().startOf("day");
     let lastDate = moment(endDate).startOf("day");
 
     while (currDate.add(1, "days").diff(lastDate) < 0) {
@@ -50,42 +50,42 @@ const useBooking = () => {
   };
 
   const handelCreateNewDeal = async (providerId, callBack) => {
-    try {
-      //create fetch body
-      const newDealData = {
-        provider: providerId,
-        time: newDeal.time,
-        address: newDeal.address || `${searcher.street}, ${searcher.city}`,
-        dealDate: newDeal.date || initialDate,
-        note: newDeal.note,
-        dealService: newDeal.service || queryData.services,
-      };
-      /*  console.log(newDealData); */
-      for (let i in newDealData) {
-        if (!newDealData[i]) {
-          console.log(i);
-          if (i === "note") continue;
-          setError({ [i]: "must be filled" });
-          throw new Error([i], "must be filled");
-        }
-      }
+    setError({ status: false });
+    const newDealData = {
+      provider: providerId,
+      time: newDeal.time,
+      address: newDeal.address || `${searcher.street}, ${searcher.city}`,
+      dealDate: newDeal.date || initialDate,
+      note: newDeal.note,
+      dealService: newDeal.service || queryData.services,
+    };
 
-      const postedDeal = await (
-        await fetch(`${SERVER_ENDPOINT}/deals/`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify(newDealData),
-        })
-      ).json();
-      if (postedDeal._id && !error.status) {
-        callBack(true);
-        setNewDeal({});
+    for (let i in newDealData) {
+      if (!newDealData[i]) {
+        if (i === "note") continue;
+        setError({ status: true, [i]: "must be filled" });
       }
-    } catch (err) {
-      console.log(err);
+    }
+
+    if (error.status === false) {
+      try {
+        const postedDeal = await (
+          await fetch(`${SERVER_ENDPOINT}/deals/`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify(newDealData),
+          })
+        ).json();
+        if (postedDeal.error) {
+          setError({ serverError: postedDeal.error.message });
+        }
+        callBack(true);
+      } catch (err) {
+        setError({ status: true, serverError: err.message });
+      }
     }
   };
 
@@ -131,6 +131,7 @@ const useBooking = () => {
 
   return {
     newDeal,
+    setNewDeal,
     createDatesArray,
     handleAddressChange,
     handleServiceChange,
@@ -138,6 +139,7 @@ const useBooking = () => {
     handleDateChange,
     handelCreateNewDeal,
     handelTimeChange,
+    setError,
     error,
   };
 };

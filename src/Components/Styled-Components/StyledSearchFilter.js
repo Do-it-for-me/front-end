@@ -15,7 +15,7 @@ export const StyledSearchFilter = styled.div`
   transform: scaleX(0);
   transform-origin: left;
   transition: 0.2s ease;
-  padding-top: 5rem;
+  padding-top: 7rem;
   font-size: 2rem;
   font-weight: 700;
 

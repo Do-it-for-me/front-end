@@ -2,9 +2,10 @@ import { navigate } from "@reach/router";
 import { useState, useContext } from "react";
 import { SERVER_ENDPOINT } from "../config";
 import UserContext from "./UserContext";
-
+import { useProfileFetch } from "../data/useProfileFetch";
 const useUpdateProfile = () => {
   const { handleLoggedInUser } = useContext(UserContext);
+  const { fetchUser } = useProfileFetch();
 
   const [newUserData, setNewUserData] = useState({
     firstName: "",
@@ -47,12 +48,6 @@ const useUpdateProfile = () => {
     setNewUserData(newState);
   };
 
-  /*   const handlePreSubmit = (event) => {
-    if (event) {
-      setError({ status: false, details: {} });
-      signupForm(event, userData);
-    }
-  }; */
   const handelUpdateProfile = async (e, id) => {
     if (e) e.preventDefault();
     const updateBody = newUserData;
@@ -75,52 +70,12 @@ const useUpdateProfile = () => {
           body: JSON.stringify(updateBody),
         })
       ).json();
-
-      if (updatedProfile) handleLoggedInUser(true, { ...updatedProfile });
+      console.log(updatedProfile);
+      if (updatedProfile) fetchUser(id);
     } catch (err) {
       setError("handelUpdateProfile", err);
     }
   };
-
-  /*   const handelSignupForm = async (event) => {
-    if (event) {
-      setError({ status: false, details: {} });
-      event.preventDefault();
-      const url = `${SERVER_ENDPOINT}/users/signup`;
-      let response;
-      try {
-        response = await (
-          await fetch(url, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-           credentials: "include", 
-            body: JSON.stringify(userData),
-          })
-        ).json();
-
-
-        if (response.status != 201) {
-          let errorDetails = {};
-          if (response.error && response.error.details)
-            response.error.details.map(
-              (item) => (errorDetails[item.field] = item.message)
-            );
-
-          setError({ status: true, details: errorDetails });
-        }
-      } catch (err) {
-        console.log("catch Error", err);
-      }
-      console.log("handelSignupForm-response", response);
-      if (response && response._id) {
-        handleLoggedInUser(true, { ...response });
-        setUserData({});
-        navigate(-1);
-      }
-    }
-  }; */
 
   const handleServiceChange = (e) => {
     let services = newUserData.services || [];
@@ -132,10 +87,6 @@ const useUpdateProfile = () => {
     }
     setNewUserData((prev) => ({ ...prev, services: services }));
   };
-
-  /*   useEffect(() => {
-    handleLogout();
-  }, [loggedInUserData]); */
 
   return {
     handleFieldsChange,
