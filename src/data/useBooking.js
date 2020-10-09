@@ -51,7 +51,7 @@ const useBooking = () => {
 
   const handelCreateNewDeal = async (providerId, callBack) => {
     try {
-      //create fetch body
+      setError({});
       const newDealData = {
         provider: providerId,
         time: newDeal.time,
@@ -79,13 +79,15 @@ const useBooking = () => {
           body: JSON.stringify(newDealData),
         })
       ).json();
-      if (!postedDeal.ok) setError({ serverError: postedDeal });
+      if (postedDeal.error) {
+        setError({ serverError: postedDeal.error.message });
+      }
       if (postedDeal._id && !error.status) {
-        callBack(true);
         setNewDeal({});
       }
+      callBack(true);
     } catch (err) {
-      console.log("error");
+      setError({ serverError: err });
     }
   };
 
@@ -138,6 +140,7 @@ const useBooking = () => {
     handleDateChange,
     handelCreateNewDeal,
     handelTimeChange,
+    setError,
     error,
   };
 };

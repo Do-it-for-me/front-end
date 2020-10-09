@@ -7,7 +7,7 @@ import { StyledServicesFieldUpdate } from "../../../Styled-Components/StyledServ
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-const ServicesFieldUpdate = ({ field, FieldTitle }) => {
+const ServicesFieldUpdate = ({ field, FieldTitle, change, setChange }) => {
   const [{ services }] = useOptionsFetch();
 
   const {
@@ -19,7 +19,10 @@ const ServicesFieldUpdate = ({ field, FieldTitle }) => {
   const [active, setActive] = useState(false);
   const { user } = useContext(UserContext);
   const oldUserData = user.user ? user.user : {};
-  const oldServices = oldUserData.services && [...oldUserData.services];
+  const oldServices =
+    oldUserData.services && oldUserData.services.map((item) => item._id);
+  console.log("oldServices", oldServices);
+  console.log("allServices", services);
   const setServicesToTemporaryState = () =>
     setNewUserData({ services: oldServices });
   useEffect(() => {
@@ -69,6 +72,7 @@ const ServicesFieldUpdate = ({ field, FieldTitle }) => {
               onClick={(e) => {
                 handelUpdateProfile(e, oldUserData._id);
                 setActive(false);
+                setChange(!change);
               }}
             >
               save

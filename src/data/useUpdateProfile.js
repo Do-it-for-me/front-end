@@ -2,9 +2,10 @@ import { navigate } from "@reach/router";
 import { useState, useContext } from "react";
 import { SERVER_ENDPOINT } from "../config";
 import UserContext from "./UserContext";
-
+import { useProfileFetch } from "../data/useProfileFetch";
 const useUpdateProfile = () => {
   const { handleLoggedInUser } = useContext(UserContext);
+  const { fetchUser } = useProfileFetch();
 
   const [newUserData, setNewUserData] = useState({
     firstName: "",
@@ -69,8 +70,8 @@ const useUpdateProfile = () => {
           body: JSON.stringify(updateBody),
         })
       ).json();
-
-      if (updatedProfile) handleLoggedInUser(true, { ...updatedProfile });
+      console.log(updatedProfile);
+      if (updatedProfile) fetchUser(id);
     } catch (err) {
       setError("handelUpdateProfile", err);
     }

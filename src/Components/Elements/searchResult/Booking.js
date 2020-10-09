@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import SearchResultContext from "../../../data/SearchResultContext";
 import { StyledBooking } from "../../Styled-Components/StyledBooking";
 import useBooking from "../../../data/useBooking";
@@ -6,6 +6,8 @@ import { Select } from "antd";
 import moment from "moment";
 import { TimePicker } from "antd";
 import UserContext from "../../../data/UserContext";
+import DealResponse from "./DealResponse";
+import DealReject from "./DealReject";
 import ErrorMsg from "../shared/ErrorMsg";
 const { RangePicker } = TimePicker;
 
@@ -14,8 +16,10 @@ const Booking = ({
   setBookingExtend,
   provider,
   searcher,
+  responseExtend,
   setResponseExtend,
 }) => {
+  const [rejectExtend, setRejectExtend] = useState(false);
   const { handleLoggedInUser, user } = useContext(UserContext);
   const searcherID = user.user && user.user._id;
   // const searcher = searcher && searcher;
@@ -28,9 +32,10 @@ const Booking = ({
     handleDateChange,
     handelCreateNewDeal,
     handelTimeChange,
+    setError,
     error,
   } = useBooking();
-  console.log(error);
+
   const datesArr = createDatesArray(
     provider.availability.startDate,
     provider.availability.endDate
@@ -39,6 +44,13 @@ const Booking = ({
 
   return (
     <StyledBooking bookingExtend={bookingExtend}>
+      <DealResponse
+        responseExtend={responseExtend}
+        setResponseExtend={setResponseExtend}
+        setBookingExtend={setBookingExtend}
+        message={error && error.serverError ? error.serverError : ""}
+      />
+
       <h2 className="title">BOOKING</h2>
       <h2>{provider.fullName}</h2>
       <div className="serviceContainer">

@@ -17,6 +17,9 @@ export const StyledDealResponse = styled.div`
   overflow: hidden;
   transform-origin: left;
   transition: all 0.4s ease;
+  .reject {
+    color: ${colors.danger};
+  }
   textarea {
     width: 200px;
     height: 100px;

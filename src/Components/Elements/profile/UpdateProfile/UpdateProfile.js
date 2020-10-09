@@ -6,7 +6,7 @@ import PasswordUpdate from "./PasswordUpdate";
 import BasicDataUpdate from "./BasicDataUpdate";
 import ServiceProviderDataUpdate from "./ServiceProviderDataUpdate";
 
-const UpdateProfile = memo(({ oldUserData }) => {
+const UpdateProfile = () => {
   const [navigator, setNavigator] = useState("basic");
   const params = useParams();
   const location = useLocation();
@@ -46,6 +46,6 @@ const UpdateProfile = memo(({ oldUserData }) => {
       </div>
     </StyledUpdateProfile>
   );
-});
+};
 
 export default UpdateProfile;

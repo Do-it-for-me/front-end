@@ -4,7 +4,7 @@ import { BROWSER_ENDPOINT } from "../../../config";
 import { StyledCard } from "../../Styled-Components/StyledCard";
 import StarRate from "../shared/StarRate";
 import Booking from "./Booking";
-import DealResponse from "./DealResponse";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 import UserContext from "../../../data/UserContext";
@@ -25,18 +25,13 @@ const Card = (props) => {
 
   return (
     <StyledCard extend={extend} image={data.image || ""}>
-      <DealResponse
-        searcherId={searcher._id}
-        responseExtend={responseExtend}
-        setResponseExtend={setResponseExtend}
-        setBookingExtend={setBookingExtend}
-      />
       <Booking
-        setResponseExtend={setResponseExtend}
         searcher={searcher ? searcher : undefined}
         provider={data}
         bookingExtend={bookingExtend}
         setBookingExtend={setBookingExtend}
+        responseExtend={responseExtend}
+        setResponseExtend={setResponseExtend}
       />
       <div className="profilePic"></div>
 
