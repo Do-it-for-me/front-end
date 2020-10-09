@@ -3,7 +3,7 @@ import moment from "moment";
 import { StyledSearcherDealItem } from "../../../Styled-Components/StyledSearcherDealItem";
 import { Rate } from "antd";
 import useFetchDeals from "../../../../data/useFetchDeals";
-const ProviderDealItem = ({ deal, setChange }) => {
+const ProviderDealItem = ({ deal }) => {
   const [rateValue, setRateValue] = useState(0);
   const handleRateChange = (v) => {
     setRateValue(v);
@@ -13,8 +13,8 @@ const ProviderDealItem = ({ deal, setChange }) => {
   return (
     <StyledSearcherDealItem>
       <div className="userDataContainer">
-        <h4>{deal.searcher.fullName} </h4>
-        <h4>{deal.dealService.value}</h4>
+        <h4>{deal.searcher && deal.searcher.fullName} </h4>
+        <h4>{deal.searcher && deal.dealService.value}</h4>
         <h4>
           {moment(deal.dealDate).format("YYYY-MM-DD")} at {deal.time[0]} -{" "}
           {deal.time[1]}
@@ -34,7 +34,7 @@ const ProviderDealItem = ({ deal, setChange }) => {
               <button
                 onClick={() => {
                   handleCancelDeal(deal._id);
-                  setChange("ladj");
+                  /*                   setChange(change + 1); */
                 }}
                 className="cancel"
               >
@@ -43,7 +43,7 @@ const ProviderDealItem = ({ deal, setChange }) => {
               <button
                 onClick={() => {
                   handleConfirmDeal(deal._id);
-                  setChange("ladj");
+                  /*        setChange(change + 1); */
                 }}
                 className="confirm"
               >

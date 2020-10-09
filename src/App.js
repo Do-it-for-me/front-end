@@ -19,9 +19,12 @@ import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";
 
 import SearchResultContext from "./data/SearchResultContext";
 import UserContext from "./data/UserContext";
+import DealsContext from "./data/DealsContext";
+import useFetchDeals from "./data/useFetchDeals";
 
 function App() {
   const [refresh, setRefresh] = useState(false);
+  const { fetchDeals } = useFetchDeals();
   //LoggedIn User Context
   const [loggedInUser, setLoggedInUser] = useState({});
   const handleLoggedInUser = (logged, user) => {
@@ -38,7 +41,6 @@ function App() {
   const stateSetter = (array) => {
     setProviders(array);
   };
-
   const searchResultContextValue = {
     providers,
     stateSetter,
@@ -46,6 +48,16 @@ function App() {
     setQueryData,
   };
 
+  //Deals Context
+  const [deals, setDeals] = useState({});
+  const [change, setChange] = useState(0);
+  const dealsValue = {
+    deals: deals,
+    setDeals: setDeals,
+    change: change,
+    setChange: setChange,
+  };
+  //EFFECTS
   useEffect(() => {
     if (loggedInUser.user && loggedInUser.user._id) {
       window.localStorage.setItem(
@@ -66,30 +78,35 @@ function App() {
       }
     }
   }, []);
+  useEffect(() => {
+    fetchDeals();
+  }, []);
 
   return (
     <UserContext.Provider value={contextValue}>
       <SearchResultContext.Provider value={searchResultContextValue}>
-        <>
-          <Header refresh={refresh} />
+        <DealsContext.Provider value={dealsValue}>
+          <>
+            <Header refresh={refresh} />
 
-          <Router>
-            <Home path="/" />
-            <SearchResult path="/search-result" />
-            <Login path="/login" />
-            <Signup path="/signup" />
+            <Router>
+              <Home path="/" />
+              <SearchResult path="/search-result" />
+              <Login path="/login" />
+              <Signup path="/signup" />
 
-            <Profile
-              path="/profile"
-              refresh={refresh}
-              setRefresh={setRefresh}
-            />
-            <CardContainer path="/cardContainer" />
-            <ServicesToggler path="/test1" />
-            <NotFound default />
-          </Router>
-          <GlobalStyle />
-        </>
+              <Profile
+                path="/profile"
+                refresh={refresh}
+                setRefresh={setRefresh}
+              />
+              <CardContainer path="/cardContainer" />
+              <ServicesToggler path="/test1" />
+              <NotFound default />
+            </Router>
+            <GlobalStyle />
+          </>
+        </DealsContext.Provider>
       </SearchResultContext.Provider>
     </UserContext.Provider>
   );

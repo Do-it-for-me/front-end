@@ -7,6 +7,8 @@ const DealResponse = ({
   setResponseExtend,
   setBookingExtend,
   message,
+  setRejectExtend,
+  rejectExtend,
 }) => {
   return (
     <StyledDealResponse responseExtend={responseExtend}>

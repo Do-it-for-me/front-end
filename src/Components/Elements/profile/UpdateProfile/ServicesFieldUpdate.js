@@ -72,7 +72,6 @@ const ServicesFieldUpdate = ({ field, FieldTitle, change, setChange }) => {
               onClick={(e) => {
                 handelUpdateProfile(e, oldUserData._id);
                 setActive(false);
-                setChange(!change);
               }}
             >
               save

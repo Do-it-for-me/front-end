@@ -11,6 +11,7 @@ export const StyledSearcherDealItem = styled.div`
   margin: 3px 0;
   padding: 3px;
   border-radius: 3px;
+  min-height: 100px;
   h4 {
     font-weight: 700;
   }

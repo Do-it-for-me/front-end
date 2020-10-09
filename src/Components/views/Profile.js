@@ -13,6 +13,8 @@ import ImageUpload from "../Elements/profile/ImageUpload";
 import UpdateProfile from "../Elements/profile/UpdateProfile/UpdateProfile";
 import Deals from "../Elements/profile/DealsHistory/Deals";
 import UserContext from "../../data/UserContext";
+import { useFetchDeals } from "../../data/useFetchDeals";
+import DealsContext from "../../data/DealsContext";
 let profileID;
 const Profile = ({ refresh, setRefresh }) => {
   const { user } = useContext(UserContext).user;
@@ -22,7 +24,12 @@ const Profile = ({ refresh, setRefresh }) => {
   const [updateProfile, setUpdateProfile] = useState(false);
   const params = useParams();
   const location = useLocation();
-  const { fetchUser, fetchedProfile } = useProfileFetch();
+  const { fetchUser } = useProfileFetch();
+  const { deals, setDeals } = useContext(DealsContext);
+  const { fetchDeals } = useFetchDeals();
+  useEffect(() => {
+    fetchDeals();
+  }, []);
   useEffect(() => {
     console.log("profilerender", user);
 
@@ -136,7 +143,12 @@ const Profile = ({ refresh, setRefresh }) => {
           <div className="bioContainer">
             <p>{profile && profile.bio}</p>
           </div>
-          <Deals />
+          <Deals
+            deals={deals}
+            fetchDeals={fetchDeals}
+            /*             change={change}
+            setChange={setChange} */
+          />
         </div>
       </div>
     </StyledProfile>

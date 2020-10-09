@@ -12,6 +12,7 @@ const Card = (props) => {
   const [extend, setExtend] = useState(false);
   const [bookingExtend, setBookingExtend] = useState(false);
   const [responseExtend, setResponseExtend] = useState(false);
+  const [rejectExtend, setRejectExtend] = useState(false);
   const data = props.data;
   const { user } = useContext(UserContext);
   const searcher = user.user;
@@ -32,6 +33,8 @@ const Card = (props) => {
         setBookingExtend={setBookingExtend}
         responseExtend={responseExtend}
         setResponseExtend={setResponseExtend}
+        rejectExtend={rejectExtend}
+        setRejectExtend={setRejectExtend}
       />
       <div className="profilePic"></div>
 

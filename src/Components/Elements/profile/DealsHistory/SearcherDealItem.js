@@ -3,7 +3,7 @@ import moment from "moment";
 import { StyledSearcherDealItem } from "../../../Styled-Components/StyledSearcherDealItem";
 import { Rate } from "antd";
 import useFetchDeals from "../../../../data/useFetchDeals";
-const SearcherDealItem = ({ deal, setChange }) => {
+const SearcherDealItem = ({ deal }) => {
   const [rateValue, setRateValue] = useState(0);
   const handleRateChange = (v) => {
     setRateValue(v);
@@ -13,8 +13,8 @@ const SearcherDealItem = ({ deal, setChange }) => {
   return (
     <StyledSearcherDealItem>
       <div className="userDataContainer">
-        <h4>{deal.provider.fullName} </h4>
-        <h4>{deal.dealService.value}</h4>
+        <h4>{deal.provider && deal.provider.fullName} </h4>
+        <h4>{deal.dealService && deal.dealService.value}</h4>
         <h4>
           {moment(deal.dealDate).format("YYYY-MM-DD")} at {deal.time[0]} -{" "}
           {deal.time[1]}
@@ -54,12 +54,8 @@ const SearcherDealItem = ({ deal, setChange }) => {
                   </button>
                   <button
                     onClick={() => {
-                      handelRateProvider(
-                        deal._id,
-                        deal.provider._id,
-                        rateValue
-                      );
-                      setChange("ds");
+                      handelRateProvider(deal._id, deal.provider, rateValue);
+                      /*  setChange(change + 1); */
                     }}
                     disabled={rateValue ? false : true}
                     className="rateBTN"
@@ -77,7 +73,7 @@ const SearcherDealItem = ({ deal, setChange }) => {
               <button
                 onClick={() => {
                   handleCancelDeal(deal._id);
-                  setChange("ladj");
+                  /*   setChange(change + 1); */
                 }}
                 className="cancel"
               >
@@ -92,23 +88,3 @@ const SearcherDealItem = ({ deal, setChange }) => {
 };
 
 export default SearcherDealItem;
-
-/* 
-{<div className="rate">
-<Rate
-  allowHalf
-
-  disabled={deal.rated}
-  onChange={handleRateChange}
-/>
-<button
-  onClick={() => {
-    handelRateProvider(deal._id, deal.provider._id, rateValue);
-    setChange("ds");
-  }}
-  disabled={rateValue ? false : true}
-  className="rateBTN"
->
-  rate provider
-</button>
-</div>} */

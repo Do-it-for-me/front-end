@@ -18,13 +18,15 @@ const Booking = ({
   searcher,
   responseExtend,
   setResponseExtend,
+  rejectExtend,
+  setRejectExtend,
 }) => {
-  const [rejectExtend, setRejectExtend] = useState(false);
   const { handleLoggedInUser, user } = useContext(UserContext);
   const searcherID = user.user && user.user._id;
   // const searcher = searcher && searcher;
   const {
     newDeal,
+    setNewDeal,
     createDatesArray,
     handleAddressChange,
     handleServiceChange,
@@ -44,12 +46,17 @@ const Booking = ({
 
   return (
     <StyledBooking bookingExtend={bookingExtend}>
-      <DealResponse
-        responseExtend={responseExtend}
-        setResponseExtend={setResponseExtend}
-        setBookingExtend={setBookingExtend}
-        message={error && error.serverError ? error.serverError : ""}
-      />
+      {!error.status && (
+        <DealResponse
+          responseExtend={responseExtend}
+          setResponseExtend={setResponseExtend}
+          setBookingExtend={setBookingExtend}
+          message={error && error.serverError ? error.serverError : ""}
+          setNewDeal={setNewDeal}
+          setRejectExtend={setRejectExtend}
+          rejectExtend={rejectExtend}
+        />
+      )}
 
       <h2 className="title">BOOKING</h2>
       <h2>{provider.fullName}</h2>
@@ -60,6 +67,7 @@ const Booking = ({
           options={provider.services}
           placeholder={"Select a Service"}
           style={{ width: 200 }}
+          value={newDeal.dealService}
           onChange={(text, v) => handleServiceChange(v)}
         />
       </div>
