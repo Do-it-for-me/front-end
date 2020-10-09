@@ -54,7 +54,11 @@ const SearcherDealItem = ({ deal }) => {
                   </button>
                   <button
                     onClick={() => {
-                      handelRateProvider(deal._id, deal.provider, rateValue);
+                      handelRateProvider(
+                        deal._id,
+                        deal.provider._id,
+                        rateValue
+                      );
                       /*  setChange(change + 1); */
                     }}
                     disabled={rateValue ? false : true}

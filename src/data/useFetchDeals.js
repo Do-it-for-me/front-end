@@ -28,6 +28,7 @@ export const useFetchDeals = () => {
   };
 
   const handelRateProvider = async (dealID, providerID, rateValue) => {
+    console.log("rate func", dealID, providerID, rateValue);
     try {
       const ratedUser = await (
         await fetch(`${SERVER_ENDPOINT}/users/${providerID}/rate`, {
