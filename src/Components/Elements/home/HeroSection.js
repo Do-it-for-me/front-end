@@ -35,14 +35,13 @@ const HeroSection = () => {
             type="city"
             name="city"
           />
-          <StyledButton
+          <Link to="/search-result">
+            <StyledButton
             onClick={() => handlePreFetchSearchForm()}
             type="primary"
           >
-            <Link to="/search-result">
-              <div>Search</div>
-            </Link>
-          </StyledButton>
+              Search
+          </StyledButton></Link>
         </form>
         {/*    </div> */}
       </div>

@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { SERVER_ENDPOINT} from "../config";
 import SearchResultContext from "./SearchResultContext";
-
+import moment, { invalid } from "moment"
 
 const useSearchProviders = () => {
 
@@ -29,8 +29,12 @@ const useSearchProviders = () => {
     }));
   };
 
-  const handleDateChange = (string) => {
-    setSearchData((prev) => ({ ...prev, date: string }));
+  const handleDateChange = (value,string) => {
+ 
+    value=moment(value).format("YYYY-MM-DD")
+    if (value === "Invalid date") value = moment().format("YYYY-MM-DD")
+    console.log("value",value)
+    setSearchData((prev) => ({ ...prev, date: value }));
   };
   const handlePriceChange = (v) => {
     setSearchData((prev) => ({ ...prev, price: v }));
@@ -44,6 +48,7 @@ const useSearchProviders = () => {
   };
   useEffect(() => {
     const handleFetchSearchForm = async (e) => {
+      setLoading(true);
       const servicesQuery = () =>
         queryData.services ? `services=${queryData.services}&` : "";
       const cityQuery = () => (queryData.city ? `city=${queryData.city}&` : "");
@@ -52,11 +57,11 @@ const useSearchProviders = () => {
         queryData.price ? `price=${queryData.price}&` : "";
       const rateQuery = () => (queryData.rate ? `rate=${queryData.rate}&` : "");
 
-
+      console.log("DATEQUERY",dateQuery())
       setError({ status: false, details: {} });
       const url = `${SERVER_ENDPOINT}/users?${servicesQuery()}${cityQuery()}${dateQuery()}${priceQuery()}${rateQuery()}`;
       const fetchURL = url.slice(0, -1);
-      console.log(url)
+      console.log(fetchURL)
       let response;
       try {
         setLoading(true);
@@ -92,6 +97,7 @@ const useSearchProviders = () => {
     handleDateChange,
     handlePriceChange,
     handleRateChange,
+  loading,
   };
 };
 

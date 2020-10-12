@@ -10,6 +10,8 @@ import DealResponse from "./DealResponse";
 import ErrorMsg from "../shared/ErrorMsg";
 const { RangePicker } = TimePicker;
 
+
+const {Option} = Select
 const Booking = ({
   bookingExtend,
   setBookingExtend,
@@ -67,17 +69,17 @@ const Booking = ({
           style={{ width: 200 }}
           value={newDeal.dealService}
           onChange={(text, v) => handleServiceChange(v)}
-        />
+      />
       </div>
       <div className="dateContainer">
         {error.dealDate && <ErrorMsg msg={error.dealDate} />}
         <Select
-          defaultValue={queryData.date || moment().format("YYYY-MM-DD")}
+          defaultValue={queryData.date /* ||todayDate */ }
           placeholder={"Select a date"}
-          options={datesArr}
+          /* options={datesArr} */
           style={{ width: 200 }}
           onChange={handleDateChange}
-        />
+        >{datesArr.map(item=><Option key={item} value={item}>{item}</Option>)}</Select>
       </div>
       <div className="timeContainer">
         {error.time && <ErrorMsg msg={error.time} />}

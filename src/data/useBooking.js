@@ -23,16 +23,16 @@ const useBooking = () => {
     while (currDate.add(1, "days").diff(lastDate) < 0) {
       dates.push(currDate.clone().toDate());
     }
-    const result = dates.map((item) => ({
-      key: moment(item).format("YYYY-MM-DD"),
-      value: moment(item).format("YYYY-MM-DD"),
-    }));
-    console.log(result)
+    const result = dates.map((item) => (
+  moment(item).format("YYYY-MM-DD")
+    
+    ));
+
     return result;
   };
 
-  const handleDateChange = (value, id) => {
-    setNewDeal((prev) => ({ ...prev, date: id.value }));
+  const handleDateChange = (value, string) => {
+    setNewDeal((prev) => ({ ...prev, date: string }));
   };
 
   const handleAddressChange = (text) => {

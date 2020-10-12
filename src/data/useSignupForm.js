@@ -2,6 +2,7 @@ import { navigate } from "@reach/router";
 import { useState, useContext } from "react";
 import { SERVER_ENDPOINT } from "../config";
 import UserContext from "./UserContext";
+import moment from "moment"
 const useSignUpForm = () => {
   const { handleLoggedInUser } = useContext(UserContext);
 
@@ -16,8 +17,11 @@ const useSignUpForm = () => {
   const handleCityChange = (value) => {
     setUserData((prev) => ({ ...prev, city: value }));
   };
-  const handleDateChange = (dates) => {
-    const [startDate, endDate] = dates;
+  const handleDateChange = (dates,stringDates) => {
+    let [startDate, endDate] = dates
+    startDate = moment(startDate).format("YYYY-MM-DD")
+    endDate = moment(startDate).format("YYYY-MM-DD")
+    console.log("startDate",startDate,"endDate", endDate)
     setUserData((prev) => ({ ...prev, availability: { startDate, endDate } }));
   };
   const handlePriceChange = (v) => {

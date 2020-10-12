@@ -21,7 +21,7 @@ export const StyledButton = styled.button`
   /*   display:flex;
   justify-content: stretch;
   align-items:stretch; */
-  a {
+/*   a {
     :visited,
     :link,
     :hover,
@@ -31,8 +31,8 @@ export const StyledButton = styled.button`
   }
   div {
     width: 100%;
-    height: 100%100vh;
-  }
+    height: 100%;
+  } */
   :hover {
     opacity: 0.8;
   }

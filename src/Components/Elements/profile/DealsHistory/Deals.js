@@ -4,7 +4,7 @@ import ProviderDealsContainer from "./ProviderDealsContainer";
 import { StyledDeals } from "../../../Styled-Components/StyledDeals";
 
 const Deals = ({ deals }) => {
-  console.log("deals", deals);
+
   return (
     <StyledDeals>
   
