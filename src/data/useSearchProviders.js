@@ -24,7 +24,7 @@ const useSearchProviders = () => {
   const handleServiceChange = (v, string) => {
     setSearchData((prev) => ({
       ...prev,
-      homepageService: v.value,
+      homepageService: v.value ,
       services: v._id,
     }));
   };
