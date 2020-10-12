@@ -1,15 +1,15 @@
-import { navigate } from "@reach/router";
+
 import { useState, useContext } from "react";
 import { SERVER_ENDPOINT } from "../config";
 import UserContext from "./UserContext";
 import moment from "moment";
 import SearchResultContext from "./SearchResultContext";
-import { counter } from "@fortawesome/fontawesome-svg-core";
+
 
 const useBooking = () => {
   const { queryData } = useContext(SearchResultContext);
   const initialDate = queryData.date || moment().format("YYYY-MM-DD");
-  const { handleLoggedInUser, user } = useContext(UserContext);
+  const {  user } = useContext(UserContext);
   const searcher = user.user;
   const [newDeal, setNewDeal] = useState({});
   const [error, setError] = useState({});
@@ -24,9 +24,10 @@ const useBooking = () => {
       dates.push(currDate.clone().toDate());
     }
     const result = dates.map((item) => ({
-      key: moment(item)._i,
+      key: moment(item).format("YYYY-MM-DD"),
       value: moment(item).format("YYYY-MM-DD"),
     }));
+    console.log(result)
     return result;
   };
 
@@ -50,7 +51,8 @@ const useBooking = () => {
   };
 
   const handelCreateNewDeal = async (providerId, callBack) => {
-    setError({ status: false });
+    try {
+      setError({ status: false });
     const newDealData = {
       provider: providerId,
       time: newDeal.time,
@@ -68,7 +70,6 @@ const useBooking = () => {
     }
 
     if (error.status === false) {
-      try {
         const postedDeal = await (
           await fetch(`${SERVER_ENDPOINT}/deals/`, {
             method: "POST",
@@ -79,55 +80,17 @@ const useBooking = () => {
             body: JSON.stringify(newDealData),
           })
         ).json();
+        console.log("WWW")
         if (postedDeal.error) {
           setError({ serverError: postedDeal.error.message });
         }
         callBack(true);
-      } catch (err) {
+      }
+    } catch (err) {
         setError({ status: true, serverError: err.message });
       }
-    }
+    
   };
-
-  /*   const handelSignupForm = async (event) => {
-    if (event) {
-      setError({ status: false, details: {} });
-      event.preventDefault();
-      const url = `${SERVER_ENDPOINT}/users/signup`;
-      let response;
-      try {
-        response = await (
-          await fetch(url, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-           credentials: "include", 
-            body: JSON.stringify(userData),
-          })
-        ).json();
-
-
-        if (response.status != 201) {
-          let errorDetails = {};
-          if (response.error && response.error.details)
-            response.error.details.map(
-              (item) => (errorDetails[item.field] = item.message)
-            );
-
-          setError({ status: true, details: errorDetails });
-        }
-      } catch (err) {
-
-      }
-
-      if (response && response._id) {
-        handleLoggedInUser(true, { ...response });
-        setUserData({});
-        navigate(-1);
-      }
-    }
-  }; */
 
   return {
     newDeal,

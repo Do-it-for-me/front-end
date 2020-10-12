@@ -9,7 +9,7 @@ const useSignUpForm = () => {
   /* const [loading, setLoading] = useState(false); */
   const [stateError, setError] = useState({ status: false, details: "" });
 
-  const [loggedInUserData, setLoggedInUserData] = useState();
+  const [loggedInUserData] = useState();
   const handleFieldsChange = (e) => {
     setUserData((prev) => ({ ...prev, [e.name]: e.value }));
   };

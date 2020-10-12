@@ -8,7 +8,7 @@ const Biography = ({ field, FieldTitle }) => {
     handleBioChange,
     clearField,
     handelUpdateProfile,
-    handleServiceChange,
+
     newUserData,
   } = useUpdateProfile();
   const [active, setActive] = useState(false);

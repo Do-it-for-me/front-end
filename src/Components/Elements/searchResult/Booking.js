@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, {  useContext } from "react";
 import SearchResultContext from "../../../data/SearchResultContext";
 import { StyledBooking } from "../../Styled-Components/StyledBooking";
 import useBooking from "../../../data/useBooking";
@@ -7,7 +7,6 @@ import moment from "moment";
 import { TimePicker } from "antd";
 import UserContext from "../../../data/UserContext";
 import DealResponse from "./DealResponse";
-import DealReject from "./DealReject";
 import ErrorMsg from "../shared/ErrorMsg";
 const { RangePicker } = TimePicker;
 
@@ -21,9 +20,9 @@ const Booking = ({
   rejectExtend,
   setRejectExtend,
 }) => {
-  const { handleLoggedInUser, user } = useContext(UserContext);
+  const {  user } = useContext(UserContext);
   const searcherID = user.user && user.user._id;
-  // const searcher = searcher && searcher;
+
   const {
     newDeal,
     setNewDeal,
@@ -34,7 +33,6 @@ const Booking = ({
     handleDateChange,
     handelCreateNewDeal,
     handelTimeChange,
-    setError,
     error,
   } = useBooking();
 
@@ -95,7 +93,7 @@ const Booking = ({
         <input
           type="text"
           value={newDeal.address || ""}
-          placeholder={`${searcher.street}, ${searcher.city}`}
+          placeholder={searcher&&`${searcher.street}, ${searcher.city}`}
           onChange={(e) => handleAddressChange(e.target.value)}
         />
       </div>
@@ -114,9 +112,7 @@ const Booking = ({
         </button>
         <button
           className="BTN sendBTN"
-          onClick={() => {
-            handelCreateNewDeal(provider._id, setResponseExtend);
-          }}
+          onClick={() =>handelCreateNewDeal(provider._id, setResponseExtend)}
         >
           <span>Send</span>
         </button>

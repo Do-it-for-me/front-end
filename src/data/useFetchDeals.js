@@ -76,12 +76,10 @@ export const useFetchDeals = () => {
         })
       ).json();
       if (dealsArray) {
-        console.log("dealsArray", dealsArray);
         setDeals(dealsArray);
       }
     } catch (err) {
       setError(true);
-      console.log(err);
     }
     setLoading(false);
   };

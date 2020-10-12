@@ -1,14 +1,13 @@
-import React, { useState, memo, useEffect } from "react";
-import { useParams, useLocation } from "@reach/router";
+import React, { useState,  useEffect } from "react";
+import { useLocation } from "@reach/router";
 import { StyledUpdateProfile } from "../../../Styled-Components/StyledUpdateProfile";
-import useUpdateProfile from "../../../../data/useUpdateProfile";
 import PasswordUpdate from "./PasswordUpdate";
 import BasicDataUpdate from "./BasicDataUpdate";
 import ServiceProviderDataUpdate from "./ServiceProviderDataUpdate";
 
 const UpdateProfile = () => {
   const [navigator, setNavigator] = useState("basic");
-  const params = useParams();
+
   const location = useLocation();
   useEffect(() => {
     if (location.state && location.state.provideAService)

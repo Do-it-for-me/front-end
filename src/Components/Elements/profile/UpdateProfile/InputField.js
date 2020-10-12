@@ -8,7 +8,6 @@ const InputField = ({ field, FieldTitle }) => {
     handleFieldsChange,
     clearField,
     handelUpdateProfile,
-    handleServiceChange,
     newUserData,
   } = useUpdateProfile();
   const [active, setActive] = useState(false);

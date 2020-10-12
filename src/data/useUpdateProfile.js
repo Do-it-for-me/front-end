@@ -1,4 +1,4 @@
-import { navigate } from "@reach/router";
+
 import { useState, useContext } from "react";
 import { SERVER_ENDPOINT } from "../config";
 import UserContext from "./UserContext";

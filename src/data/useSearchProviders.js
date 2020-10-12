@@ -1,11 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
-import { SERVER_ENDPOINT, BROWSER_ENDPOINT } from "../config";
+import { useState, useContext, useEffect } from "react";
+import { SERVER_ENDPOINT} from "../config";
 import SearchResultContext from "./SearchResultContext";
 
-//import UserContext from "./UserContext";
+
 const useSearchProviders = () => {
-  //const { handleLoggedInUser } = useContext(UserContext);
-  //stateSetter is a function that updates the list of providers in context state
+
   const { stateSetter, queryData, setQueryData } = useContext(
     SearchResultContext
   );
@@ -52,12 +51,12 @@ const useSearchProviders = () => {
       const priceQuery = () =>
         queryData.price ? `price=${queryData.price}&` : "";
       const rateQuery = () => (queryData.rate ? `rate=${queryData.rate}&` : "");
-      //if (e) {
+
 
       setError({ status: false, details: {} });
       const url = `${SERVER_ENDPOINT}/users?${servicesQuery()}${cityQuery()}${dateQuery()}${priceQuery()}${rateQuery()}`;
       const fetchURL = url.slice(0, -1);
-
+      console.log(url)
       let response;
       try {
         setLoading(true);

@@ -38,7 +38,7 @@ export default function SearchFilter({ extend, invertExtend }) {
         placeholder={homepageCity}
         onChange={(string, v) => handleCityChange(v)}
       />
-      <OneDatePicker onChange={(date, string) => handleDateChange(string)} />
+      <OneDatePicker onChange={(date, string) => handleDateChange(date)} />
       <PriceSlider onChange={(v) => handlePriceChange(v)} />
       <div>
         <div className="rateLabel">Minimum Rate</div>
