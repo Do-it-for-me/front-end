@@ -69,8 +69,8 @@ const Card = (props) => {
           </p>
         </div>
         <div className="__buttonContainer">
-          <button className="contact">
-            <span>Contact</span>
+        <button className="contact">
+        <span><a target="_blanc" href={`mailto:${data.email}`} >Contact</a></span>
           </button>
           <button onClick={() => handelBookingExtend()} className="book">
             <span>Book</span>

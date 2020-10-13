@@ -188,7 +188,9 @@ export const StyledCard = styled.div`
           display: inline-block;
           position: relative;
           transition: 0.5s;
-
+          a{
+            color:${colors.dark}
+          }
           ::after {
             content: "»";
             position: absolute;

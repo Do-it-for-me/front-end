@@ -106,6 +106,7 @@ const Booking = ({
         />
       </div>
       <div className="BTNContainer">
+       
         <button
           className="BTN cancelBTN"
           onClick={() => setBookingExtend(false)}
