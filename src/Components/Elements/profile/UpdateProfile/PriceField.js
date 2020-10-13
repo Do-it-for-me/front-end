@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { StyledInputField } from "../../../Styled-Components/StyledInputField";
 import useUpdateProfile from "../../../../data/useUpdateProfile";
 import UserContext from "../../../../data/UserContext";
-import PriceSlider from "../../searchResult/PriceSlider";
 import { Slider } from "antd";
 const PriceField = ({ field, FieldTitle }) => {
   const {

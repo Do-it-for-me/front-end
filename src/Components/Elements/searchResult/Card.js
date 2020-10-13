@@ -6,7 +6,7 @@ import StarRate from "../shared/StarRate";
 import Booking from "./Booking";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronCircleRight } from "@fortawesome/free-solid-svg-icons";
 import UserContext from "../../../data/UserContext";
 const Card = (props) => {
   const [extend, setExtend] = useState(false);
@@ -49,6 +49,9 @@ const Card = (props) => {
         <div className="nameContainer">
           <h3>{data.fullName}</h3>
           {/* <p className="fee">{data.price}</p> */}
+          <span className="more" onClick={() => setExtend(!extend)}>
+              <FontAwesomeIcon icon={faChevronCircleRight} className="arrow" />{" "}
+            </span>
         </div>
         <div className="servicesContainer">
           <div className="skills">
@@ -62,9 +65,7 @@ const Card = (props) => {
           </div>
           {/* <p className="note">{data.note}</p> */}
           <p className="bioText">
-            <span className="more" onClick={() => setExtend(!extend)}>
-              <FontAwesomeIcon icon={faAngleDoubleRight} className="arrow" />{" "}
-            </span>
+            
             {data.bio}
           </p>
         </div>

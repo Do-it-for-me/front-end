@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { SERVER_ENDPOINT} from "../config";
 import SearchResultContext from "./SearchResultContext";
-import moment, { invalid } from "moment"
+import moment from "moment"
 
 const useSearchProviders = () => {
 
@@ -56,11 +56,10 @@ const useSearchProviders = () => {
         queryData.price ? `price=${queryData.price}&` : "";
       const rateQuery = () => (queryData.rate ? `rate=${queryData.rate}&` : "");
 
-      console.log("DATEQUERY",dateQuery())
       setError({ status: false, details: {} });
       const url = `${SERVER_ENDPOINT}/users?${servicesQuery()}${cityQuery()}${dateQuery()}${priceQuery()}${rateQuery()}`;
       const fetchURL = url.slice(0, -1);
-      console.log(fetchURL)
+      
       let response;
       try {
         setLoading(true);

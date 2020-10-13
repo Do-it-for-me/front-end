@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
 
 // Components ///////////////
@@ -13,9 +13,9 @@ import CardContainer from "./Components/Elements/searchResult/CardContainer";
 import NotFound from "./Components/views/NotFound";
 
 // Global Style///////////
+
 import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";
-/* function onChange(date, dateString) {
-} */
+
 
 import SearchResultContext from "./data/SearchResultContext";
 import UserContext from "./data/UserContext";
@@ -36,6 +36,7 @@ function App() {
   };
 
   //searchProviders Context
+
   const [providers, setProviders] = useState([]);
   const [queryData, setQueryData] = useState({});
   const stateSetter = (array) => {
@@ -49,6 +50,7 @@ function App() {
   };
 
   //Deals Context
+
   const [deals, setDeals] = useState({});
   const [change, setChange] = useState(0);
   const dealsValue = {
@@ -58,6 +60,7 @@ function App() {
     setChange: setChange,
   };
   //EFFECTS
+
   useEffect(() => {
     if (loggedInUser.user && loggedInUser.user._id) {
       window.localStorage.setItem(

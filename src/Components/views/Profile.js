@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams, useLocation } from "@reach/router";
+import { useLocation } from "@reach/router";
 
 import profileImage from "../../images/profileImage.jpg";
 import { useProfileFetch } from "../../data/useProfileFetch";
@@ -22,10 +22,10 @@ const Profile = ({ refresh, setRefresh }) => {
   profileID = profile && profile._id;
   const [imageUpload, setImageUpload] = useState(false);
   const [updateProfile, setUpdateProfile] = useState(false);
-  const params = useParams();
+  
   const location = useLocation();
   const { fetchUser } = useProfileFetch();
-  const { deals, setDeals } = useContext(DealsContext);
+  const { deals } = useContext(DealsContext);
   const { fetchDeals } = useFetchDeals();
   useEffect(() => {
     fetchDeals();

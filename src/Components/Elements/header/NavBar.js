@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "@reach/router";
 import { StyledNavBar } from "../../Styled-Components/StyledNavBar";
 import { StyledButton } from "../../Styled-Components/StyledButton";
