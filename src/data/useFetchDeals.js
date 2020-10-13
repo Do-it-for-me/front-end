@@ -1,9 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import { SERVER_ENDPOINT } from "../config";
 import DealsContext from "./DealsContext";
+import UserContext from "./UserContext"
+
 
 export const useFetchDeals = () => {
   const { deals, setDeals, change, setChange } = useContext(DealsContext);
+  
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -70,6 +73,7 @@ export const useFetchDeals = () => {
     setError(false);
     setLoading(true);
     try {
+      
       const dealsArray = await (
         await fetch(`${SERVER_ENDPOINT}/deals`, {
           headers: {

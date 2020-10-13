@@ -67,7 +67,7 @@ const useUpdateProfile = () => {
           body: JSON.stringify(updateBody),
         })
       ).json();
-      console.log(updatedProfile);
+      
       if (updatedProfile) fetchUser(id);
     } catch (err) {
       setError("handelUpdateProfile", err);
@@ -96,6 +96,7 @@ const useUpdateProfile = () => {
     handleServiceChange,
     newUserData,
     setNewUserData,
+    stateError
   };
 };
 

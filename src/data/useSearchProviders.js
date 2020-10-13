@@ -56,11 +56,10 @@ const useSearchProviders = () => {
         queryData.price ? `price=${queryData.price}&` : "";
       const rateQuery = () => (queryData.rate ? `rate=${queryData.rate}&` : "");
 
-      console.log("DATEQUERY",dateQuery())
       setError({ status: false, details: {} });
       const url = `${SERVER_ENDPOINT}/users?${servicesQuery()}${cityQuery()}${dateQuery()}${priceQuery()}${rateQuery()}`;
       const fetchURL = url.slice(0, -1);
-      console.log(fetchURL)
+      
       let response;
       try {
         setLoading(true);

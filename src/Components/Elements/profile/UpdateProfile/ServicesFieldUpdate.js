@@ -21,8 +21,7 @@ const ServicesFieldUpdate = ({ field, FieldTitle, change, setChange }) => {
   const oldUserData = user.user ? user.user : {};
   const oldServices =
     oldUserData.services && oldUserData.services.map((item) => item._id);
-  console.log("oldServices", oldServices);
-  console.log("allServices", services);
+  
   const setServicesToTemporaryState = () =>
     setNewUserData({ services: oldServices });
   useEffect(() => {
