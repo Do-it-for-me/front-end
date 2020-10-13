@@ -38,7 +38,7 @@ const ProvideService = memo((props) => {
         />
       </div>
       <div className="priceContainer">
-        <h2>Price/Uhr</h2>
+        <h2>Fee/Uhr</h2>
         <PriceSlider onChange={props.handlePriceChange} defaultValue={0} />
       </div>
       <div className="bioContainer">

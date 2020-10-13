@@ -7,9 +7,9 @@ import ServicesFieldUpdate from "./ServicesFieldUpdate";
 const ServiceProviderDataUpdate = () => {
   return (
     <StyledBasicDataUpdate>
-      <ServicesFieldUpdate field="services" />
-      <PriceField FieldTitle="Price Per Uhr" field="price" />
       <AvailabilityUpdate FieldTitle="Availability" field="availability" />
+      <ServicesFieldUpdate field="services" />
+      <PriceField FieldTitle="Fee p/h" field="price" />
     </StyledBasicDataUpdate>
   );
 };

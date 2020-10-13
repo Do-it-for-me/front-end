@@ -27,9 +27,7 @@ const useUpdateProfile = () => {
   };
 
   const handleDateChange = (dates,stringDate) => {
-    let [startDate, endDate] = dates
-    startDate = moment(startDate).format("YYYY-MM-DD")
-    endDate = moment(endDate).format("YYYY-MM-DD")
+    const [startDate, endDate] = dates
     setNewUserData((prev) => ({
       ...prev,
       availability: { startDate, endDate },

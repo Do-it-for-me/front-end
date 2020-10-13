@@ -10,7 +10,7 @@ function formatter(value) {
 export default function PricePicker(props) {
   return (
     <StyledPriceSlider>
-      {props.name !== "price" && <div className="priceLabel">Max Price</div>}
+      {props.name !== "price" && <div className="priceLabel">Max Fee</div>}
       <Slider
         disabled={props.disabled}
         tipFormatter={formatter}

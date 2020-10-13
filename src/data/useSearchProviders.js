@@ -30,7 +30,6 @@ const useSearchProviders = () => {
   };
 
   const handleDateChange = (value,string) => {
- 
     value=moment(value).format("YYYY-MM-DD")
     if (value === "Invalid date") value = moment().format("YYYY-MM-DD")
     console.log("value",value)
