@@ -6,7 +6,7 @@ const SearcherDealsContainer = ({ list, setChange }) => {
     <StyledDealsContainer>
       <h2 className="searchersTitle">Your Deals as Searcher</h2>
       {list&&list.length ?
-        list.map((item) => (
+        list.reverse().map((item) => (
           <SearcherDealItem key={item._id} setChange={setChange} deal={item} />
         )):<h4>You don't have deals yet</h4>}
     </StyledDealsContainer>
