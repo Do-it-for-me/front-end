@@ -5,13 +5,12 @@ import useBooking from "../../../data/useBooking";
 import { Select } from "antd";
 import moment from "moment";
 import { TimePicker } from "antd";
-import UserContext from "../../../data/UserContext";
 import DealResponse from "./DealResponse";
 import ErrorMsg from "../shared/ErrorMsg";
 const { RangePicker } = TimePicker;
 
 
-const {Option} = Select
+
 const Booking = ({
   bookingExtend,
   setBookingExtend,
@@ -22,8 +21,6 @@ const Booking = ({
   rejectExtend,
   setRejectExtend,
 }) => {
-  const {  user } = useContext(UserContext);
-  const searcherID = user.user && user.user._id;
 
   const {
     newDeal,

@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { SERVER_ENDPOINT} from "../config";
 import SearchResultContext from "./SearchResultContext";
-import moment, { invalid } from "moment"
+import moment from "moment"
 
 const useSearchProviders = () => {
 

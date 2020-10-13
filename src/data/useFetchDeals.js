@@ -22,6 +22,7 @@ export const useFetchDeals = () => {
         })
       ).json();
       setChange(change + 1);
+      if (confirmedDeal) console.log("")
     } catch (err) {
       setError(err);
     }
@@ -41,6 +42,7 @@ export const useFetchDeals = () => {
         })
       ).json();
       setChange(change + 1);
+      if (ratedUser) console.log("")
     } catch (err) {
       setError("handelUpdateProfile", err);
     }
@@ -58,6 +60,7 @@ export const useFetchDeals = () => {
         })
       ).json();
       setChange(change + 1);
+      if (canceledDeals) console.log("")
     } catch (err) {
       setError("handelUpdateProfile", err);
     }
@@ -90,6 +93,8 @@ export const useFetchDeals = () => {
     handleCancelDeal,
     handelRateProvider,
     handleConfirmDeal,
+    loading,
+    error,
   };
 };
 

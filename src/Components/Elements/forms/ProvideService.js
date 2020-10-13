@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from "react";
+import React, { memo, useEffect } from "react";
 import { useOptionsFetch } from "../../../data/useOptionsFetch";
 
 import DateRangePicker from "../shared/DateRangePicker";

@@ -33,14 +33,16 @@ export const StyledCard = styled.div`
       position: absolute;
       top: -30px;
       padding: 0 1rem;
-      background-color: rgba(189, 181, 178, 0.8);
+      /* background-color: rgba(189, 181, 178, 0.8); */
+      background: rgb(189,181,178);
+      background: linear-gradient(0deg, rgba(189,181,178,0.7) 0%, rgba(189,181,178,0.7) 70%, rgba(189,181,178,0) 100%);
       .rateCounter{
         font-weight: 700;
-        color:${colors.light};
+        color:${colors.dark};
       }
       .price {
         font-weight: 700;
-        color:${colors.light};
+        color:${colors.dark};
       }
     }
     background-color: ${colors.middle};
@@ -53,11 +55,19 @@ export const StyledCard = styled.div`
     display: flex;
     flex-direction: column;
 
-    .arrow {
+    .more {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      .arrow {
       transition: 0.2s ease;
       ${({ extend }) =>
         extend ? `transform: rotate(90deg);` : `transform: rotate(-90deg);`}
       cursor: pointer;
+      color: ${colors.secondary};
+      font-size: 20px;
+    }
     }
 
     .bioText {

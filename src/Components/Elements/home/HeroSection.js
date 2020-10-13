@@ -4,7 +4,7 @@ import { Link } from "@reach/router";
 import { StyledHeroSection } from "../../Styled-Components/StyledHeroSection";
 import { StyledButton } from "../../Styled-Components/StyledButton";
 import SelectServices from "../forms/SelectServices";
-import InfoSection from "./InfoSection";
+
 import useSearchProviders from "../../../data/useSearchProviders";
 
 import HeadlineSection from "./HeadlineSection";
@@ -14,7 +14,7 @@ const HeroSection = () => {
     handleServiceChange,
     handleCityChange,
     handlePreFetchSearchForm,
-    searchData,
+    
   } = useSearchProviders();
 
   return (

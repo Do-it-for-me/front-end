@@ -2,19 +2,16 @@ import React, { useState, useContext } from "react";
 import { StyledInputField } from "../../../Styled-Components/StyledInputField";
 import useUpdateProfile from "../../../../data/useUpdateProfile";
 import UserContext from "../../../../data/UserContext";
-import SelectServices from "../../forms/SelectServices";
 import { useOptionsFetch } from "../../../../data/useOptionsFetch";
 
 import { AutoComplete } from "antd";
-import { StylesSelectServicesProfile } from "../../../Styled-Components/StylesSelectServicesProfile";
 
 const UpdateCity = ({ field, FieldTitle }) => {
-  const [{ services, cities }] = useOptionsFetch();
+  const [{ cities }] = useOptionsFetch();
 
   const {
     clearField,
     handelUpdateProfile,
-    handleServiceChange,
     handleCityChange,
     newUserData,
   } = useUpdateProfile();
@@ -29,7 +26,6 @@ const UpdateCity = ({ field, FieldTitle }) => {
           disabled={!active}
           placeholder={oldUserData[field] || ""}
           onChange={(v) => handleCityChange(v)}
-          disabled={!active}
           options={cities}
           value={active ? newUserData[field] || "" : oldUserData[field] || ""}
           defaultValue={oldUserData[field]}

@@ -5,9 +5,7 @@ import { Rate } from "antd";
 import useFetchDeals from "../../../../data/useFetchDeals";
 const SearcherDealItem = ({ deal }) => {
   const [rateValue, setRateValue] = useState(0);
-  const handleRateChange = (v) => {
-    setRateValue(v);
-  };
+  
 
   const { handleCancelDeal, handelRateProvider } = useFetchDeals();
   return (

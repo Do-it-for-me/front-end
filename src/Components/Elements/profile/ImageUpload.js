@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { StyledImageUpload } from "../../Styled-Components/StyledImageUpload";
-import { useProfileFetch } from "../../../data/useProfileFetch";
 
 export default class ImageUpload extends Component {
   constructor(props) {

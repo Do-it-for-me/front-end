@@ -24,5 +24,5 @@ export const useProfileFetch = () => {
       setError(err);
     }
   };
-  return { fetchUser };
+  return { fetchUser, error };
 };

@@ -2,12 +2,10 @@ import { navigate } from "@reach/router";
 import { useState, useContext } from "react";
 import { SERVER_ENDPOINT } from "../config";
 import UserContext from "./UserContext";
-import moment from "moment"
 const useSignUpForm = () => {
   const { handleLoggedInUser } = useContext(UserContext);
 
   const [userData, setUserData] = useState({});
-  /* const [loading, setLoading] = useState(false); */
   const [stateError, setError] = useState({ status: false, details: "" });
 
   const [loggedInUserData] = useState();
@@ -53,8 +51,7 @@ const useSignUpForm = () => {
             body: JSON.stringify(userData),
           })
         ).json();
-
-        if (response.status != 201) {
+        if (response.status !== 201) {
           let errorDetails = {};
           if (response.error && response.error.details)
             response.error.details.map(

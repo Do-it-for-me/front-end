@@ -1,10 +1,7 @@
-import moment from "moment"
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { SERVER_ENDPOINT } from "../config";
-import UserContext from "./UserContext";
 import { useProfileFetch } from "../data/useProfileFetch";
 const useUpdateProfile = () => {
-  const { handleLoggedInUser } = useContext(UserContext);
   const { fetchUser } = useProfileFetch();
 
   const [newUserData, setNewUserData] = useState({
@@ -13,10 +10,10 @@ const useUpdateProfile = () => {
     password: "",
   });
 
-  /* const [loading, setLoading] = useState(false); */
+  
   const [stateError, setError] = useState({ status: false, details: "" });
 
-  /*   const [loggedInUserData, setLoggedInUserData] = useState(); */
+
 
   const handleFieldsChange = (e) => {
     setNewUserData((prev) => ({ ...prev, [e.name]: e.value }));

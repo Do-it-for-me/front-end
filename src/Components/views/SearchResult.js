@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
-import SearchResultContext from "../../data/SearchResultContext";
+import React, { useState } from "react";
+
 import SearchFilter from "../Elements/searchResult/SearchFilter";
-import Card from "../Elements/searchResult/Card";
+
 import { StyledButton } from "../Styled-Components/StyledButton";
 import { Link } from "@reach/router";
 import { StyledSearchResult } from "../Styled-Components/StyledSearchResult";
@@ -25,7 +25,7 @@ const SearchResult = () => {
       >
         <Link to="/search-result">
           <div>
-            Search Filters {/* <FontAwesomeIcon icon={faAngleDoubleDown} /> */}
+            Search Filters 
           </div>
         </Link>
       </StyledButton>

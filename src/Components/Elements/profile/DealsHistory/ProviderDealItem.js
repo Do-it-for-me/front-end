@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import moment from "moment";
 import { StyledSearcherDealItem } from "../../../Styled-Components/StyledSearcherDealItem";
-import { Rate } from "antd";
+
 import useFetchDeals from "../../../../data/useFetchDeals";
 const ProviderDealItem = ({ deal }) => {
-  const [rateValue, setRateValue] = useState(0);
-  const handleRateChange = (v) => {
-    setRateValue(v);
-  };
+  
 
   const { handleCancelDeal, handleConfirmDeal } = useFetchDeals();
   return (
