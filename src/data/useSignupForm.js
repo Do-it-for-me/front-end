@@ -20,7 +20,7 @@ const useSignUpForm = () => {
   const handleDateChange = (dates,stringDates) => {
     let [startDate, endDate] = dates
     startDate = moment(startDate).format("YYYY-MM-DD")
-    endDate = moment(startDate).format("YYYY-MM-DD")
+    endDate = moment(endDate).format("YYYY-MM-DD")
     console.log("startDate",startDate,"endDate", endDate)
     setUserData((prev) => ({ ...prev, availability: { startDate, endDate } }));
   };
@@ -34,12 +34,6 @@ const useSignUpForm = () => {
   const cleanupProviderData = () =>
     setUserData((prev) => ({ ...prev, services: [], availability: {} }));
 
-  /*   const handlePreSubmit = (event) => {
-    if (event) {
-      setError({ status: false, details: {} });
-      signupForm(event, userData);
-    }
-  }; */
   const handelUpdateProfile = (e, id) => {
     if (e) e.preventDefault();
   };

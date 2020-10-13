@@ -33,7 +33,7 @@ const ProvideService = memo((props) => {
       <div className="availabilityContainer">
         <h2>Availability</h2>
         <DateRangePicker
-          onChange={props.handleDateChange}
+          onChange={(d,s)=>props.handleDateChange(d,s)}
           value={props.value}
         />
       </div>

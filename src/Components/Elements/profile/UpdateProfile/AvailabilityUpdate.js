@@ -34,7 +34,7 @@ const AvailabilityUpdate = ({ field, FieldTitle }) => {
           <RangePicker
             disabled={!active}
             format={dateFormat}
-            onChange={handleDateChange}
+            onChange={(d,s)=>handleDateChange(d,s)}
             value={
               newUserData.availability && newUserData.availability.startDate
                 ? [
