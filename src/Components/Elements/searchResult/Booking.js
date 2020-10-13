@@ -74,12 +74,12 @@ const Booking = ({
       <div className="dateContainer">
         {error.dealDate && <ErrorMsg msg={error.dealDate} />}
         <Select
-          defaultValue={queryData.date /* ||todayDate */ }
+          defaultValue={queryData.date || moment().format("YYYY-MM-DD")}
           placeholder={"Select a date"}
-          /* options={datesArr} */
+          options={datesArr} 
           style={{ width: 200 }}
           onChange={handleDateChange}
-        >{datesArr.map(item=><Option key={item} value={item}>{item}</Option>)}</Select>
+        />
       </div>
       <div className="timeContainer">
         {error.time && <ErrorMsg msg={error.time} />}
