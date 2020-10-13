@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, {  useContext } from "react";
 import SearchResultContext from "../../../data/SearchResultContext";
 import { StyledBooking } from "../../Styled-Components/StyledBooking";
 import useBooking from "../../../data/useBooking";
@@ -7,10 +7,11 @@ import moment from "moment";
 import { TimePicker } from "antd";
 import UserContext from "../../../data/UserContext";
 import DealResponse from "./DealResponse";
-import DealReject from "./DealReject";
 import ErrorMsg from "../shared/ErrorMsg";
 const { RangePicker } = TimePicker;
 
+
+const {Option} = Select
 const Booking = ({
   bookingExtend,
   setBookingExtend,
@@ -21,9 +22,9 @@ const Booking = ({
   rejectExtend,
   setRejectExtend,
 }) => {
-  const { handleLoggedInUser, user } = useContext(UserContext);
+  const {  user } = useContext(UserContext);
   const searcherID = user.user && user.user._id;
-  // const searcher = searcher && searcher;
+
   const {
     newDeal,
     setNewDeal,
@@ -34,7 +35,6 @@ const Booking = ({
     handleDateChange,
     handelCreateNewDeal,
     handelTimeChange,
-    setError,
     error,
   } = useBooking();
 
@@ -69,17 +69,17 @@ const Booking = ({
           style={{ width: 200 }}
           value={newDeal.dealService}
           onChange={(text, v) => handleServiceChange(v)}
-        />
+      />
       </div>
       <div className="dateContainer">
         {error.dealDate && <ErrorMsg msg={error.dealDate} />}
         <Select
-          defaultValue={queryData.date || moment().format("YYYY-MM-DD")}
+          defaultValue={queryData.date /* ||todayDate */ }
           placeholder={"Select a date"}
-          options={datesArr}
+          /* options={datesArr} */
           style={{ width: 200 }}
           onChange={handleDateChange}
-        />
+        >{datesArr.map(item=><Option key={item} value={item}>{item}</Option>)}</Select>
       </div>
       <div className="timeContainer">
         {error.time && <ErrorMsg msg={error.time} />}
@@ -95,7 +95,7 @@ const Booking = ({
         <input
           type="text"
           value={newDeal.address || ""}
-          placeholder={`${searcher.street}, ${searcher.city}`}
+          placeholder={searcher&&`${searcher.street}, ${searcher.city}`}
           onChange={(e) => handleAddressChange(e.target.value)}
         />
       </div>
@@ -114,9 +114,7 @@ const Booking = ({
         </button>
         <button
           className="BTN sendBTN"
-          onClick={() => {
-            handelCreateNewDeal(provider._id, setResponseExtend);
-          }}
+          onClick={() =>handelCreateNewDeal(provider._id, setResponseExtend)}
         >
           <span>Send</span>
         </button>

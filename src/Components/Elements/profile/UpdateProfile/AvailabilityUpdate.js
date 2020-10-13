@@ -6,7 +6,7 @@ import UserContext from "../../../../data/UserContext";
 import { DatePicker, Space } from "antd";
 import { StyledAvailabilityUpdate } from "../../../Styled-Components/StyledAvailabilityUpdate";
 const AvailabilityUpdate = ({ field, FieldTitle }) => {
-  const dateFormat = "YYYY/MM/DD";
+  const dateFormat = "YYYY-MM-DD";
   const { RangePicker } = DatePicker;
   const {
     clearField,

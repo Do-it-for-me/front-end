@@ -30,7 +30,7 @@ export const StyledHeroSection = styled.div`
       margin-top: 5rem;
     }
     div,
-    button {
+    a, button {
       width: 100%;
       max-width: 400px;
     }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { AutoComplete } from "antd";
 import "antd/dist/antd.css";
 import { StyledSelectServices } from "../../Styled-Components/StyledSelectServices";
@@ -12,6 +12,7 @@ export default function SelectServices(props) {
   return (
     <StyledSelectServices>
       <AutoComplete
+
         defaultValue={props.defaultValue}
         style={{}}
         onChange={props.onChange}

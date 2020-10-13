@@ -1,11 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
-import { SERVER_ENDPOINT, BROWSER_ENDPOINT } from "../config";
+import { useState, useContext, useEffect } from "react";
+import { SERVER_ENDPOINT} from "../config";
 import SearchResultContext from "./SearchResultContext";
+import moment, { invalid } from "moment"
 
-//import UserContext from "./UserContext";
 const useSearchProviders = () => {
-  //const { handleLoggedInUser } = useContext(UserContext);
-  //stateSetter is a function that updates the list of providers in context state
+
   const { stateSetter, queryData, setQueryData } = useContext(
     SearchResultContext
   );
@@ -25,13 +24,17 @@ const useSearchProviders = () => {
   const handleServiceChange = (v, string) => {
     setSearchData((prev) => ({
       ...prev,
-      homepageService: v.value,
+      homepageService: v.value ,
       services: v._id,
     }));
   };
 
-  const handleDateChange = (string) => {
-    setSearchData((prev) => ({ ...prev, date: string }));
+  const handleDateChange = (value,string) => {
+ 
+    value=moment(value).format("YYYY-MM-DD")
+    if (value === "Invalid date") value = moment().format("YYYY-MM-DD")
+    console.log("value",value)
+    setSearchData((prev) => ({ ...prev, date: value }));
   };
   const handlePriceChange = (v) => {
     setSearchData((prev) => ({ ...prev, price: v }));
@@ -45,6 +48,7 @@ const useSearchProviders = () => {
   };
   useEffect(() => {
     const handleFetchSearchForm = async (e) => {
+      setLoading(true);
       const servicesQuery = () =>
         queryData.services ? `services=${queryData.services}&` : "";
       const cityQuery = () => (queryData.city ? `city=${queryData.city}&` : "");
@@ -52,12 +56,12 @@ const useSearchProviders = () => {
       const priceQuery = () =>
         queryData.price ? `price=${queryData.price}&` : "";
       const rateQuery = () => (queryData.rate ? `rate=${queryData.rate}&` : "");
-      //if (e) {
 
+      console.log("DATEQUERY",dateQuery())
       setError({ status: false, details: {} });
       const url = `${SERVER_ENDPOINT}/users?${servicesQuery()}${cityQuery()}${dateQuery()}${priceQuery()}${rateQuery()}`;
       const fetchURL = url.slice(0, -1);
-
+      console.log(fetchURL)
       let response;
       try {
         setLoading(true);
@@ -93,6 +97,7 @@ const useSearchProviders = () => {
     handleDateChange,
     handlePriceChange,
     handleRateChange,
+  loading,
   };
 };
 

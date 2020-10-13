@@ -8,6 +8,9 @@ import PriceSlider from "./PriceSlider";
 import StarRate from "../shared/StarRate";
 import useSearchProviders from "../../../data/useSearchProviders";
 import SearchResultContext from "../../../data/SearchResultContext";
+import moment from "moment"
+
+
 export default function SearchFilter({ extend, invertExtend }) {
   const handleClick = () => {
     handlePreFetchSearchForm();
@@ -38,7 +41,7 @@ export default function SearchFilter({ extend, invertExtend }) {
         placeholder={homepageCity}
         onChange={(string, v) => handleCityChange(v)}
       />
-      <OneDatePicker onChange={(date, string) => handleDateChange(string)} />
+      <OneDatePicker defaultValue={moment()} onChange={(date, string) => handleDateChange(date,string)} />
       <PriceSlider onChange={(v) => handlePriceChange(v)} />
       <div>
         <div className="rateLabel">Minimum Rate</div>

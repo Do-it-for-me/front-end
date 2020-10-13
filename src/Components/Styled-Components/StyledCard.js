@@ -33,9 +33,14 @@ export const StyledCard = styled.div`
       position: absolute;
       top: -30px;
       padding: 0 1rem;
-      background-color: rgba(189, 181, 178, 0.3);
+      background-color: rgba(189, 181, 178, 0.8);
+      .rateCounter{
+        font-weight: 700;
+        color:${colors.light};
+      }
       .price {
         font-weight: 700;
+        color:${colors.light};
       }
     }
     background-color: ${colors.middle};
@@ -107,10 +112,13 @@ export const StyledCard = styled.div`
         margin-top: 8px;
         .more {
           font-size: 2rem;
+
           cursor: pointer;
           ${(props) =>
             props.extend ? `transform:rotate(90deg)` : `transform:rotate(0)`};
+        
         }
+
       }
     }
 
@@ -119,6 +127,7 @@ export const StyledCard = styled.div`
       position: absolute;
       bottom: 14px;
       display: flex;
+      background-color:${colors.middle};
 
       .book {
         margin: 0.2rem;

@@ -1,8 +1,7 @@
-import React, { useState, memo } from "react";
+import React from "react";
 import { StyledBasicDataUpdate } from "../../../Styled-Components/StyledBasicDataUpdate";
 import InputField from "./InputField";
 import Biography from "../Biography";
-import SelectServices from "../../forms/SelectServices";
 import UpdateCity from "./UpdateCity";
 import useUpdateProfile from "../../../../data/useUpdateProfile";
 const BasicDataUpdate = () => {
