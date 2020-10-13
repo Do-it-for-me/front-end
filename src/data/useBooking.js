@@ -14,7 +14,7 @@ const useBooking = () => {
   const [newDeal, setNewDeal] = useState({});
   const [error, setError] = useState({});
 
-  const createDatesArray = (startDate, endDate) => {
+/*   const createDatesArray = (startDate, endDate) => {
     let dates = [];
 
     let currDate = moment().startOf("day");
@@ -29,10 +29,23 @@ const useBooking = () => {
     ));
 
     return result;
+  }; */
+  const createDatesArray = (startDate, endDate) => {
+    let dates = [];
+    let currDate = moment(startDate).startOf("day");
+    let lastDate = moment(endDate).startOf("day");
+    while (currDate.add(1, "days").diff(lastDate) < 0) {
+      dates.push(currDate.clone().toDate());
+    }
+    const result = dates.map((item) => ({
+      key: moment(item)._i,
+      value: moment(item).format("YYYY-MM-DD"),
+    }));
+    return result;
   };
 
   const handleDateChange = (value, string) => {
-    setNewDeal((prev) => ({ ...prev, date: string }));
+    setNewDeal((prev) => ({ ...prev, date: value._id }));
   };
 
   const handleAddressChange = (text) => {
