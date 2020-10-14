@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { SERVER_ENDPOINT } from "../config";
 import DealsContext from "./DealsContext";
-import UserContext from "./UserContext"
+
 
 
 export const useFetchDeals = () => {

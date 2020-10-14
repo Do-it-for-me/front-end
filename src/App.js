@@ -11,7 +11,7 @@ import Signup from "./Components/views/Signup";
 import ServicesToggler from "./Components/Elements/home/ServicesToggler";
 import CardContainer from "./Components/Elements/searchResult/CardContainer";
 import NotFound from "./Components/views/NotFound";
-
+import UpdateProfile from "./Components/Elements/profile/UpdateProfile/UpdateProfile"
 // Global Style///////////
 
 import { GlobalStyle } from "./Components/Styled-Components/GlobalStyle";
@@ -103,6 +103,10 @@ function App() {
                 refresh={refresh}
                 setRefresh={setRefresh}
               />
+              <UpdateProfile
+                 path="/update-profile"
+                refresh={refresh}
+                setRefresh={setRefresh}/>
               <CardContainer path="/cardContainer" />
               <ServicesToggler path="/test1" />
               <NotFound default />
