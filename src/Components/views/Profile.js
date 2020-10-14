@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useLocation } from "@reach/router";
+import { useLocation , navigate } from "@reach/router";
 
 import profileImage from "../../images/profileImage.jpg";
 import { useProfileFetch } from "../../data/useProfileFetch";
@@ -60,23 +60,7 @@ const Profile = ({ refresh, setRefresh }) => {
           <div className="ImageUploadComponentBG"> </div>
         </div>
       )}
-      {updateProfile && (
-        <div className="profileUpdateContainer">
-          <div className="profileUpdateBG"> </div>
-          <div className="signupFormContainer">
-            <span
-              onClick={() => {
-                setUpdateProfile(false);
-                setRefresh(!refresh);
-              }}
-              className="close"
-            >
-              X
-            </span>
-            <UpdateProfile />
-          </div>
-        </div>
-      )}
+      
       <div className="profileContainer">
         <div className="profileHeader">
           <div className="imageContainer">
@@ -109,7 +93,7 @@ const Profile = ({ refresh, setRefresh }) => {
                 ({profile && String(profile.rateCounter)})
               </span>
             </div>
-            <StyledButton onClick={() => setUpdateProfile(true)} type="danger">
+            <StyledButton onClick={()=>navigate("/update-profile")} type="danger">
               Edit Profile
             </StyledButton>
           </div>
