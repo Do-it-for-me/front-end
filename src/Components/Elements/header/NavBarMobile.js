@@ -35,7 +35,7 @@ const NavBarMobile = ({ extend, unExtend }) => {
       )}
       <Link
         state={{ provideAService: true }}
-        to={`/${user.logged ? "profile" : "login"}`}
+        to={`/${user.logged ? "update-profile" : "login"}`}
       >
         <StyledButton type="secondary" onClick={unExtend}>
           Provide a Service

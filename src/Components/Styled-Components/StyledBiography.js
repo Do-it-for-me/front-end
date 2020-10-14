@@ -5,9 +5,9 @@ export const StyledBiography = styled.div`
   width: 100%;
   max-width: 400px;
   display: flex;
-  justify-content: stretch;
+
   align-items: flex-start;
-  height: 40px;
+  
   flex-grow: 1;
   @media screen and (min-width: 768px) {
     max-width: 100%;
@@ -29,7 +29,7 @@ export const StyledBiography = styled.div`
       background-color: ${colors.light};
       border-radius: 2px;
       border-color: ${colors.middle};
-      height: 400px;
+      height: 200px;
       margin: 5px;
     }
   }

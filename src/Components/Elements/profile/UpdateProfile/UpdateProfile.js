@@ -4,7 +4,8 @@ import { StyledUpdateProfile } from "../../../Styled-Components/StyledUpdateProf
 import PasswordUpdate from "./PasswordUpdate";
 import BasicDataUpdate from "./BasicDataUpdate";
 import ServiceProviderDataUpdate from "./ServiceProviderDataUpdate";
-
+import {StyledButton} from "../../../Styled-Components/StyledButton"
+import {Link} from "@reach/router"
 const UpdateProfile = () => {
   const [navigator, setNavigator] = useState("basic");
 
@@ -15,8 +16,9 @@ const UpdateProfile = () => {
   }, []);
   return (
     <StyledUpdateProfile>
-      <h2>Update Profile</h2>
+
       <div className="updateProfileContainer">
+      <div className="updateProfileNavigatorContainer">
         <div className="updateProfileNavigator">
           <button
             className={navigator === "basic" ? "active" : ""}
@@ -35,8 +37,12 @@ const UpdateProfile = () => {
             onClick={() => setNavigator("provider")}
           >
             Services Provider Data
-          </button>
+          </button></div>
+          <div className="BTNContainer">
+      <Link to="/profile"><StyledButton className="styled" type="dark">Back to Profile</StyledButton></Link>
+      <Link to="/"><StyledButton className="styled" type="dark">Back to Homepage</StyledButton></Link></div>
         </div>
+       
         <div className="dataContainer">
           {navigator === "basic" && <BasicDataUpdate />}
           {navigator === "password" && <PasswordUpdate />}

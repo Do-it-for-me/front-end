@@ -6,6 +6,9 @@ export const StyledButton = styled.button`
     if (props.type === "primary") return colors.primary;
     if (props.type === "secondary") return colors.secondary;
     if (props.type === "danger") return colors.danger;
+    if (props.type === "middle") return colors.middle;
+    if (props.type === "success") return colors.success;
+    if (props.type === "dark") return colors.dark;
   }};
   cursor: pointer;
   font-size: 1.5rem;
@@ -18,21 +21,7 @@ export const StyledButton = styled.button`
   border-radius: 3px;
   outline: none;
   transition: all .2s ease-in-out;
-  /*   display:flex;
-  justify-content: stretch;
-  align-items:stretch; */
-/*   a {
-    :visited,
-    :link,
-    :hover,
-    :active {
-      color: ${colors.light};
-    }
-  }
-  div {
-    width: 100%;
-    height: 100%;
-  } */
+
   :hover {
     opacity: 0.8;
   }

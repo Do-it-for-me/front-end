@@ -29,7 +29,7 @@ const NavBar = ({ refresh }) => {
       )}
       <Link
         state={{ provideAService: true }}
-        to={`/${user.logged ? "profile" : "login"}`}
+        to={`/${user.logged ? "update-profile" : "login"}`}
       >
         <StyledButton type="secondary">Provide a Service</StyledButton>
       </Link>
