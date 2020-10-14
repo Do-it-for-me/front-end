@@ -82,9 +82,12 @@ const useSignUpForm = () => {
     }
     setUserData((prev) => ({ ...prev, services: services }));
   };
-  const handleLogout = () => {
+  const  handleLogout = () => {
+/*     navigate("/")
+ */    
     handleLoggedInUser(false, null);
     window.localStorage.removeItem("loggedUser");
+
   };
   /*   useEffect(() => {
     handleLogout();
