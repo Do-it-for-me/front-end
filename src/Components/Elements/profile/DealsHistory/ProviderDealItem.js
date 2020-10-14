@@ -17,6 +17,7 @@ const ProviderDealItem = ({ deal }) => {
           {deal.time[1]}
         </h4>
 
+        <h4>{deal.note && deal.note}</h4>
         <h4>{deal.provider.price ? (`${deal.provider.price} $/h`) : "free"}</h4>
       </div>
       <div className="actionsContainer">

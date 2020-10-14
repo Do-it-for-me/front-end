@@ -17,7 +17,7 @@ const SearcherDealItem = ({ deal }) => {
           {moment(deal.dealDate).format("YYYY-MM-DD")} at {deal.time[0]} -{" "}
           {deal.time[1]}
         </h4>
-
+        <p>{deal.note && deal.note}</p>
         <h4>{deal.provider.price ? (`${deal.provider.price} $/h`) : "free"}</h4>
       </div>
       <div className="actionsContainer">
