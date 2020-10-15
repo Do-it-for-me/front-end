@@ -40,7 +40,7 @@ const UpdateProfile = () => {
           </button></div>
           <div className="BTNContainer">
       <Link to="/profile"><StyledButton className="styled" type="dark">Back to Profile</StyledButton></Link>
-      <Link to="/"><StyledButton className="styled" type="dark">Back to Homepage</StyledButton></Link></div>
+      <Link to="/"><StyledButton className="styled" type="dark">Homepage</StyledButton></Link></div>
         </div>
        
         <div className="dataContainer">

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-
+import {navigate} from "@reach/router"
 import useUpdateProfile from "../../../../data/useUpdateProfile";
 import UserContext from "../../../../data/UserContext";
 import { useOptionsFetch } from "../../../../data/useOptionsFetch";
@@ -17,28 +17,30 @@ const ServicesFieldUpdate = ({ field, FieldTitle, change, setChange }) => {
     setNewUserData,
   } = useUpdateProfile();
   const [active, setActive] = useState(false);
-  const { user } = useContext(UserContext);
+  const {  user } = useContext(UserContext);
   const oldUserData = user.user ? user.user : {};
   const oldServices =
     oldUserData.services && oldUserData.services.map((item) => item._id);
-  
+  const {logged} =user &&user 
   const setServicesToTemporaryState = () =>
     setNewUserData({ services: oldServices });
   useEffect(() => {
     setServicesToTemporaryState();
   }, [oldUserData]);
-  return (
+  console.log(newUserData)
+return (
     <StyledServicesFieldUpdate>
+      {logged?(<>
       <label>Services</label>
       <div className="serviceContainer">
-        {services.map((item) => (
+        {services&&services.map((item) => (
           <button
             className={
               active
-                ? newUserData.services &&
+                ? (newUserData.services &&
                   newUserData.services.includes(item._id)
                   ? "serviceBTN activeBTN"
-                  : "serviceBTN"
+                  : "serviceBTN")
                 : "serviceBTN deActiveBTN"
             }
             disabled={!active}
@@ -87,7 +89,7 @@ const ServicesFieldUpdate = ({ field, FieldTitle, change, setChange }) => {
             </button>
           </>
         )}
-      </div>
+      </div></>):<div> </div>}
     </StyledServicesFieldUpdate>
   );
 };
